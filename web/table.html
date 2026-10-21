@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Обработка таблицы</title>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<main>
+  <nav><a href="/">Пояснительная записка</a><a href="/check">Проверка ссылок</a><b>Обработка таблицы</b><a href="/files/result.xlsx">Таблица результата (xlsx)</a><a href="https://github.com/rioboyara/books-monitoring">Код на GitHub</a></nav>
+  <h1>Обработка таблицы с новыми строками</h1>
+  <p>Загрузите исходную таблицу в том же формате, например с добавленными строками. Нужен лист "Задание 1" с колонками: правообладатель, автор, название, тип контента, url, сайт. Лист "Задание 2" необязателен.</p>
+  <p>В ответ скачается обработанная таблица с теми же листами, что и <a href="/files/result.xlsx">готовая</a>. ID уже известных книг не меняются, новые строки получают ID своей книги или новый, дубли и спорные случаи пересчитываются. Для адресов, которые уже проверялись, подставляется результат проверки страницы.</p>
+  <p><input type="file" id="file" accept=".xlsx"></p>
+  <p><button id="go">Обработать</button> <span id="state" class="muted"></span></p>
+</main>
+<script>
+async function upload() {
+  const file = document.getElementById("file").files[0];
+  const state = document.getElementById("state");
+  if (!file) {
+    state.textContent = "Сначала выберите файл.";
+    return;
+  }
+  state.textContent = "Обрабатываю...";
+  try {
+    const resp = await fetch(location.origin + "/api/table", {method: "POST", body: file});
+    if (!resp.ok) throw new Error((await resp.json()).detail || resp.status);
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(await resp.blob());
+    link.download = "result.xlsx";
+    link.click();
+    state.textContent = "Готово, файл скачан.";
+  } catch (e) {
+    state.textContent = "Ошибка: " + e.message;
+  }
+}
+
+document.getElementById("go").onclick = upload;
+</script>
+</body>
+</html>

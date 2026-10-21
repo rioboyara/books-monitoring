@@ -89,8 +89,9 @@ def title_vs_url(title, url):
     return share, lost
 
 
-def load_rows(path, sheet="Задание 1"):
-    ws = openpyxl.load_workbook(path)[sheet]
+def load_rows(src, sheet="Задание 1"):
+    """src: путь, файл или уже открытая книга openpyxl."""
+    ws = (src if isinstance(src, openpyxl.Workbook) else openpyxl.load_workbook(src))[sheet]
     rows = []
     for n, values in enumerate(ws.iter_rows(min_row=2, values_only=True), start=2):
         if any(values[:6]):
@@ -184,6 +185,54 @@ def catalog(rows):
     return books
 
 
+# какие данные закрыли бы вопрос, по тексту пометки
+NEEDS = [
+    ("адрес страницы не похож", "ID книги у правообладателя (артикул или ISBN) для каждой ссылки"),
+    ("номер тома", "серия и номер тома отдельными полями"),
+    ("есть у других авторов", "ID книги или ISBN, чтобы различать одноимённые книги"),
+    ("тот же автор", "список псевдонимов и вариантов имени автора"),
+    ("два написания", "основное имя автора и варианты написания"),
+    ("тега, раздела или сборника", "ссылка на страницу конкретной книги или состав сборника"),
+    ("похожа на аудио", "на какие форматы есть права: текст, аудио"),
+    ("другая книга", "подтверждение правообладателя, к какой книге относится ссылка"),
+    ("автора из каталога", "варианты имени автора и псевдонимы"),
+    ("в списке на странице", "ссылка на страницу конкретной книги"),
+    ("Книг из каталога на странице нет", "проверить, та ли ссылка указана для книги"),
+    ("Страницы нет", "не нужны: страница удалена, ссылку можно закрыть"),
+    ("покупку в Литрес", "не нужны: страница партнёрская"),
+    ("скачать, читать или слушать нельзя", "не нужны: размещения нет"),
+]
+
+HOW_TO_READ = [
+    "Как читать эту таблицу",
+    "",
+    "Строки: все строки исходного листа \"Задание 1\". Слева исходные значения и номер строки, справа очищенные поля, ID книги, дубли, пометки и результат проверки страницы.",
+    "Книги: каталог после объединения. ID книги считается из очищенных автора и названия, поэтому при добавлении строк не меняется.",
+    "Дубли: та же страница (ключ адреса без зеркал s4., www., index.php и слеша в конце) для той же книги. Первая строка основная.",
+    "Спорные: строки, где данные или сама страница вызывают вопрос, и каких данных не хватает, чтобы его закрыть.",
+    "Задание 2: исходный лист с заполненными колонками статуса и признаков, плюс статус страницы, извлечённые данные, совпадение с каталогом и причина.",
+    "",
+    "Нормализация: лишние пробелы и знаки по краям убраны, псевдоним в скобках вынесен отдельно. Названия сравниваются только по буквам и цифрам без пробелов, ё равно е. Автор сравнивается по набору слов без учёта порядка и инициалов.",
+    "Статусы проверки страницы: 1 найдено совпадение и признаки размещения, 0 совпадение или размещение не подтверждено, 2 автоматически определить не удалось.",
+]
+
+
+def page_state(p):
+    return ", ".join(str(x) for x in (p.get("http_status"), p.get("page_state")) if x) or "нет ответа"
+
+
+def extracted(p):
+    """Что прототип достал со страницы: заголовок, автор, тип файла."""
+    return "; ".join(filter(None, [
+        f"заголовок: {p['heading'][:150]}" if p.get("heading") else "",
+        f"автор на странице: {p['page_author']}" if p.get("page_author") else "",
+        f"тип: {p['content_type']}" if p.get("content_type") and "html" not in p["content_type"] else ""]))
+
+
+def needs(text):
+    return "; ".join(dict.fromkeys(n for k, n in NEEDS if k in text))
+
+
 def write_xlsx(rows, books, path, part2=None, pages=None):
     pages = pages or {}
     wb = openpyxl.Workbook()
@@ -211,7 +260,11 @@ def write_xlsx(rows, books, path, part2=None, pages=None):
         found = p["match"]["book_id"] if p.get("match") else ""
         return [p["status"], p["reason"], found]
 
-    wb.remove(wb.active)
+    wb.active.title = "Как читать"
+    for line in HOW_TO_READ:
+        wb.active.append([line])
+    wb.active["A1"].font = Font(bold=True, size=13)
+    wb.active.column_dimensions["A"].width = 160
     ws = sheet("Строки", [
         "Строка в исходнике", *SOURCE_COLUMNS, "Автор (чистый)", "Псевдоним", "Название (чистое)",
         "Ключ страницы", "ID книги", "Дубль строки", "Слов названия в адресе, %", "Пометки", "Спорно",
@@ -248,37 +301,47 @@ def write_xlsx(rows, books, path, part2=None, pages=None):
         elif p and p["page_state"] in ("ok", "страницы нет") and p["status"] != 1:
             page_doubt = f"страница не подтвердила книгу (статус {p['status']}): {p['reason']}"
         if r["doubts"] or page_doubt:
-            doubtful.append([r["row"], r["author"], r["title"], r["url"], "; ".join(r["doubts"]), page_doubt])
-    sheet("Спорные", ["Строка", "Автор", "Название", "url", "Что не так по данным", "Что показала страница"],
-          doubtful, [8, 22, 40, 55, 60, 60])
+            data_doubt = "; ".join(r["doubts"])
+            doubtful.append([r["row"], r["author"], r["title"], r["url"], data_doubt, page_doubt,
+                             needs(data_doubt + " " + page_doubt)])
+    sheet("Спорные", ["Строка", "Автор", "Название", "url", "Что не так по данным", "Что показала страница",
+                      "Каких данных не хватает"],
+          doubtful, [8, 22, 40, 50, 55, 55, 45])
 
     if part2:
-        sheet("Задание 2", ["Строка в исходнике", *SOURCE_COLUMNS, "Пират-1/не пират-0 (статус 0/1/2)",
-                            "Признаки", "Ответ сайта", "Что на странице", "Книга на странице"],
+        sheet("Задание 2", ["Строка в исходнике", *SOURCE_COLUMNS, "Пират-1/не пират-0 (статус 0/1/2)", "Признаки",
+                            "Статус страницы", "Извлечённые данные", "Совпадение с каталогом", "Причина решения"],
               [[r["row"], *[r[c] for c in SOURCE_COLUMNS], *part2_cols(pages.get(r["url"]))] for r in part2],
-              [9, 12, 20, 30, 8, 40, 18, 12, 60, 14, 45, 35])
+              [9, 12, 20, 30, 8, 40, 18, 12, 40, 16, 50, 30, 60])
     wb.save(path)
 
 
 def part2_cols(p):
     if not p:
-        return ["", "не проверено", "", "", ""]
+        return ["", "", "не проверено", "", "", ""]
     m = p.get("match")
-    return [p["status"], p["reason"], p["page_state"], p.get("heading", "")[:200],
-            f"{m['author']}. {m['title']}" if m else ""]
+    return [p["status"], "; ".join(p["signs"]), page_state(p), extracted(p),
+            f"{m['author']}. {m['title']}" if m else "нет", p["reason"]]
+
+
+def build(src, dst, pages=None):
+    """Собирает таблицу результата. src и dst: пути или файлы. pages: результаты checker.py по url."""
+    wb = src if isinstance(src, openpyxl.Workbook) else openpyxl.load_workbook(src)
+    rows = process(load_rows(wb))
+    books = catalog(rows)
+    part2 = load_rows(wb, "Задание 2") if "Задание 2" in wb.sheetnames else []
+    for r in part2:
+        r["url"] = clean(r["url"])
+    write_xlsx(rows, books, dst, part2, pages or {})
+    return rows, books
 
 
 def main(src, dst, pages_path=None):
-    rows = process(load_rows(src))
-    books = catalog(rows)
     pages = {}
     if pages_path:
         with open(pages_path, encoding="utf-8") as f:
             pages = {p["url"]: p for p in json.load(f)}
-    part2 = load_rows(src, "Задание 2")
-    for r in part2:
-        r["url"] = clean(r["url"])
-    write_xlsx(rows, books, dst, part2, pages)
+    rows, books = build(src, dst, pages)
     dups = sum(r["dup_of"] != r["row"] for r in rows)
     print(f"строк {len(rows)}, книг {len(books)}, дублей {dups}, спорных {sum(bool(r['doubts']) for r in rows)}")
 

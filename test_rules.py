@@ -1,6 +1,6 @@
 """Проверка правил на примерах из задания. Запуск: python test_rules.py (или pytest)."""
 from checker import PRIVATE, decide, find_book, js_cookie, public_connection
-from normalize import author_key, key, loose, split_author, title_vs_url, url_key
+from normalize import author_key, key, loose, process, split_author, title_vs_url, url_key
 
 CATALOG = [
     {"book_id": "B1", "author": "Джейн Симс", "title": "Раз. Два. Призраки идут"},
@@ -24,6 +24,15 @@ def test_normalize():
     assert title_vs_url("Ценадоверия", "https://free-kniga.ru/romany/tsena-proscheniya-147884/")[0] == 0
     assert title_vs_url("Позывной Хоттабыч#6", "https://free-kniga.ru/p/pozyvnoy-hottabych-7-ch-2/")[1] == ["6"]
     assert title_vs_url("Ложь напоказ", "https://storipad.ru/story/168175")[0] is None
+
+
+def test_new_rows_keep_ids():
+    row = {"row": 2, "Правообладатель": "Литрес", "Автор": "Рудин Алекс", "Название": "Тайновидец. Том 9",
+           "Тип контента": "ebook", "url": "https://a.ru/taynovidets-tom-9/", "Сайт": "a.ru"}
+    before = process([dict(row)])
+    after = process([dict(row), {**row, "row": 3, "Автор": "Алекс Рудин", "url": "https://s4.a.ru/taynovidets-tom-9"}])
+    assert before[0]["book"] == after[0]["book"] == after[1]["book"]
+    assert after[1]["dup_of"] == 2
 
 
 def test_js_cookie():

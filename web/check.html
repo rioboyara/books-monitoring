@@ -8,7 +8,7 @@
 </head>
 <body>
 <main class="wide">
-  <nav><a href="/">Пояснительная записка</a><b>Проверка ссылок</b><a href="/files/result.xlsx">Таблица результата (xlsx)</a><a href="https://github.com/rioboyara/books-monitoring">Код на GitHub</a></nav>
+  <nav><a href="/">Пояснительная записка</a><b>Проверка ссылок</b><a href="/table">Обработка таблицы</a><a href="/files/result.xlsx">Таблица результата (xlsx)</a><a href="https://github.com/rioboyara/books-monitoring">Код на GitHub</a></nav>
   <h1>Проверка ссылок</h1>
   <p>Адреса по одному в строке, не больше 30. Десять адресов проверяются 10-30 секунд. Каталог книг собран из обоих листов исходной таблицы, сейчас в нём 101 книга.</p>
   <p class="muted small">Статусы: <span class="st st1">1</span> совпадение с книгой и признаки размещения, <span class="st st0">0</span> не подтверждено, <span class="st st2">2</span> автоматически определить не удалось.</p>
@@ -29,7 +29,7 @@ https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-g
     <p><button class="plain" id="json">Скачать JSON</button> <button class="plain" id="csv">Скачать CSV</button></p>
     <div class="table">
       <table>
-        <thead><tr><th>URL</th><th>Ответ сайта</th><th>Что на странице</th><th>Книга из каталога</th><th>Статус</th><th>Причина</th></tr></thead>
+        <thead><tr><th>URL</th><th>Статус страницы</th><th>Извлечённые данные</th><th>Совпадение с каталогом</th><th>Статус</th><th>Причина решения</th></tr></thead>
         <tbody id="rows"></tbody>
       </table>
     </div>
@@ -46,7 +46,20 @@ function cell(tr, text, cls) {
 }
 
 function book(r) {
-  return r.match ? r.match.author + ". " + r.match.title : "";
+  return r.match ? r.match.author + ". " + r.match.title : "нет";
+}
+
+function pageState(r) {
+  return [r.http_status, r.page_state].filter(Boolean).join(", ") || "нет ответа";
+}
+
+function extracted(r) {
+  const parts = [];
+  if (r.heading) parts.push("Заголовок: " + r.heading.slice(0, 160));
+  if (r.page_author) parts.push("Автор на странице: " + r.page_author);
+  if (r.content_type && !r.content_type.includes("html")) parts.push("Тип: " + r.content_type);
+  if (r.signs.length) parts.push("Признаки: " + r.signs.join(", "));
+  return parts.join(". ");
 }
 
 function count(status) {
@@ -61,8 +74,8 @@ function render() {
     const a = document.createElement("a");
     a.href = r.url; a.textContent = r.url; a.target = "_blank"; a.rel = "noopener noreferrer";
     cell(tr, "", "url").append(a);
-    cell(tr, [r.http_status, r.page_state].filter(Boolean).join(", "));
-    cell(tr, r.heading.slice(0, 160));
+    cell(tr, pageState(r));
+    cell(tr, extracted(r));
     cell(tr, book(r));
     const st = document.createElement("span");
     st.className = "st st" + r.status; st.textContent = r.status;
@@ -86,7 +99,7 @@ async function runCheck() {
   button.disabled = true;
   state.textContent = "Проверяю " + urls.length + " адр., подождите...";
   try {
-    const resp = await fetch("/api/check", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({urls: urls})});
+    const resp = await fetch(location.origin + "/api/check", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({urls: urls})});
     const data = await resp.json();
     if (!resp.ok) throw new Error(data.detail || resp.status);
     results = data;
@@ -105,9 +118,9 @@ function saveJson() {
 
 function saveCsv() {
   function q(v) { return '"' + String(v == null ? "" : v).replaceAll('"', '""') + '"'; }
-  const head = ["url", "http", "состояние", "что на странице", "книга", "статус", "причина"];
+  const head = ["url", "статус страницы", "извлечённые данные", "совпадение с каталогом", "статус 0/1/2", "причина"];
   const lines = results.map(function (r) {
-    return [r.url, r.http_status, r.page_state, r.heading, book(r), r.status, r.reason].map(q).join(";");
+    return [r.url, pageState(r), extracted(r), book(r), r.status, r.reason].map(q).join(";");
   });
   save("check.csv", "text/csv", "\ufeff" + [head.join(";")].concat(lines).join("\r\n"));
 }

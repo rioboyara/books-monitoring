@@ -43,6 +43,12 @@ STORE = re.compile(r"лит\s?рес|litres\.ru", re.I)
 REMOVED = re.compile(r"удален[аоы]? по (требованию|жалобе)|доступ к (книге|произведению) (закрыт|ограничен)", re.I)
 # читалка прямо на странице: выбор шрифта, ночной режим, листание
 READER_PAGE = re.compile(r"шрифт|times new roman|ночной режим|страница \d+ из \d+|читать (далее|следующую)|глава (1|i|первая)\b", re.I)
+# "Автор: Оксана Алексаева Серия: ..." берём до трёх слов с заглавной, служебные подписи отсекаем
+AUTHOR_LABEL = re.compile(r"(?i:автор[а-я]*|author)\s*:\s*((?:[A-ZА-ЯЁ][\w.'-]*,?\s*){1,3})")
+LABEL_WORDS = {"Серия", "Серии", "Жанр", "Жанры", "Год", "Читает", "Чтец", "Размер", "Язык", "Возраст", "Страниц",
+               "Формат", "Добавлено", "Издательство", "Другие", "Рейтинг", "Перевод", "Переводчик", "Цикл",
+               "Читать", "Скачать", "Слушать", "Купить", "Описание", "Аннотация", "Название", "Статус",
+               "Возрастное", "Ограничение", "Издатель", "Исполнитель", "Озвучка", "Опубликовано"}
 NOT_FOUND = re.compile(r"не найден|ошибка 404|404 not found|page not found|^ошибка\b", re.I)
 
 
@@ -109,6 +115,7 @@ def get(s, url, until):
 
 def fetch(url):
     s = requests.Session()
+    s.trust_env = False  # прокси из окружения обошёл бы проверку адреса при соединении
     s.headers.update({"User-Agent": UA, "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.5"})
     until = time.monotonic() + DEADLINE
     for attempt in range(3):
@@ -240,6 +247,18 @@ def read_page(resp, body):
     return heading, text, signs
 
 
+def page_author(text):
+    for m in AUTHOR_LABEL.finditer(text):
+        words = []
+        for w in m.group(1).replace(",", " ").split():
+            if w.rstrip(".") in LABEL_WORDS:
+                break
+            words.append(w)
+        if words:
+            return " ".join(words)
+    return ""
+
+
 def decide(signs):
     strong = [signs[k] for k in ("file", "formats", "hosts", "torrent", "audio") if signs.get(k)]
     weak = [signs[k] for k in ("text", "reader", "download", "hidden") if signs.get(k)]
@@ -258,19 +277,20 @@ def decide(signs):
 
 
 def check(url, catalog):
-    out = {"url": url, "final_url": "", "http_status": None, "page_state": "", "heading": "",
-           "signs": [], "match": None, "status": 2, "reason": ""}
+    out = {"url": url, "final_url": "", "http_status": None, "content_type": "", "page_state": "", "heading": "",
+           "page_author": "", "signs": [], "match": None, "status": 2, "reason": ""}
     try:
         resp, body = fetch(url)
     except requests.RequestException as e:
         why = PRIVATE if PRIVATE in str(e) else type(e).__name__
         return {**out, "page_state": "нет ответа", "reason": f"Сайт не ответил ({why})."}
-    out.update(final_url=resp.url, http_status=resp.status_code)
+    out.update(final_url=resp.url, http_status=resp.status_code,
+               content_type=resp.headers.get("content-type", "").split(";")[0])
     try:
         heading, text, signs = read_page(resp, body)
     except Exception as e:  # битый PDF или HTML не должен ронять всю пачку
         return {**out, "page_state": "не разобрать", "reason": f"Не удалось разобрать ответ ({type(e).__name__})"}
-    out.update(heading=heading[:300], signs=[v for v in signs.values() if v])
+    out.update(heading=heading[:300], page_author=page_author(text), signs=[v for v in signs.values() if v])
 
     moved_home = urlsplit(resp.url).path in ("", "/") and urlsplit(url).path not in ("", "/")
     if resp.status_code in (404, 410) or moved_home or NOT_FOUND.search(heading):
@@ -289,8 +309,9 @@ def check(url, catalog):
     if not match and title_only:
         b = max(title_only, key=lambda b: len(b["tkey"]))
         authors = ", ".join(x["author"] for x in title_only if x["tkey"] == b["tkey"])
-        return {**out, "reason": f'Название "{b["title"]}" совпало, но автора из каталога ({authors}) на странице нет. '
-                                 "Нужна проверка человеком."}
+        shown = f' На странице указан автор: {out["page_author"]}.' if out["page_author"] else ""
+        return {**out, "reason": f'Название "{b["title"]}" совпало, но автора из каталога ({authors}) на странице нет.'
+                                 f"{shown} Нужна проверка человеком."}
     if not match:
         return {**out, "status": 0, "reason": f"Книг из каталога на странице нет. Страница про: {heading[:100]}"}
     status, why = decide(signs)
