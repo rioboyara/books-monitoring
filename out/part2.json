@@ -1,0 +1,210 @@
+[
+ {
+  "url": "https://audioknigivuhe.com/love-fantastic/16986-cvetok-v-muzhskoj-akademii-magii.html",
+  "final_url": "https://audioknigivuhe.com/love-fantastic/16986-cvetok-v-muzhskoj-akademii-magii.html",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Аудиокнига Цветок в мужской академии магии, Наталья Буланова (читает Татьяна Черничкина) – слушать или скачать онлайн",
+  "page_author": "Наталья Буланова",
+  "signs": [
+   "аудио, слушать онлайн",
+   "это аудиоверсия"
+  ],
+  "match": {
+   "book_id": "Bdc1256",
+   "author": "Наталья Буланова",
+   "title": "Цветок в мужской академии магии",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: это аудиоверсия; аудио, слушать онлайн.",
+  "checked_at": "2026-10-21T16:49:57.698365+00:00"
+ },
+ {
+  "url": "https://audiopautina.ru/wp-content/uploads/2026/05/rl2.pdf",
+  "final_url": "https://audiopautina.ru/wp-content/uploads/2026/05/rl2.pdf",
+  "http_status": 200,
+  "content_type": "application/pdf",
+  "page_state": "ok",
+  "heading": "Разреши любить. Позволь мне быть рядом. Книга 2 Анна Джейн",
+  "page_author": "",
+  "signs": [
+   "файл PDF на 265 стр."
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Разреши любить. Позволь мне быть рядом. Книга 2 Анна Джейн",
+  "checked_at": "2026-10-21T16:49:57.849969+00:00"
+ },
+ {
+  "url": "https://book1.bubooker.link/knigi_sistemnyy-razvedchik.-infiltraciya.-dilogiya_1101000100100010110001110",
+  "final_url": "https://book.bwbooker.link/knigi_sistemnyy-razvedchik.-infiltraciya.-dilogiya_1101000100100010110001110",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Системный разведчик. Инфильтрация. Дилогия, Юрич Валерий - читать онлайн без регистрации",
+  "page_author": "",
+  "signs": [
+   "текст книги прямо на странице"
+  ],
+  "match": {
+   "book_id": "B70a283",
+   "author": "Юрич Валерий",
+   "title": "Системный разведчик. Инфильтрация. Дилогия",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице.",
+  "checked_at": "2026-10-21T16:49:57.873957+00:00"
+ },
+ {
+  "url": "https://booknotor.ru/tajnovidec-tom-13-master-nevezenija-rudin-aleks/",
+  "final_url": "https://booknotor.ru/tajnovidec-tom-13-master-nevezenija-rudin-aleks/",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Тайновидец. Том 13: Мастер невезения - Рудин Алекс аудиокнига торрент mp3 | Тайновидец. Том 13: Мастер невезения — Рудин Алекс",
+  "page_author": "Рудин Алекс",
+  "signs": [
+   "торрент",
+   "кнопка скачивания",
+   "это аудиоверсия"
+  ],
+  "match": {
+   "book_id": "B845694",
+   "author": "Алекс Рудин",
+   "title": "Тайновидец. Том 13: Мастер невезения",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: это аудиоверсия; торрент; кнопка скачивания.",
+  "checked_at": "2026-10-21T16:49:58.040077+00:00"
+ },
+ {
+  "url": "https://knigaportal.com/hudozhestvennaya-literatura/boevik-fantasticheskij-boevik/1770-evgeniy-nett-sbornik-proizvedeniy.html",
+  "final_url": "https://com.knigaportal.com/hudozhestvennaya-literatura/boevik-fantasticheskij-boevik/1770-evgeniy-nett-sbornik-proizvedeniy.html",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Евгений Нетт - Сборник произведений (полная версия) скачать бесплатно | Евгений Нетт - Сборник произведений скачать бесплатно",
+  "page_author": "",
+  "signs": [
+   "кнопка скачивания",
+   "скачивание zip",
+   "файлообменники htfl.net, nitroflare.com, trbt.cc"
+  ],
+  "match": {
+   "book_id": "B819211",
+   "author": "Евгений Нетт",
+   "title": "Директива: Сохранить!",
+   "where": "текст"
+  },
+  "status": 1,
+  "reason": "Книга найдена в тексте страницы (сборник или список), автор совпал. Признаки размещения: скачивание zip; файлообменники htfl.net, nitroflare.com, trbt.cc; кнопка скачивания.",
+  "checked_at": "2026-10-21T16:49:58.232385+00:00"
+ },
+ {
+  "url": "https://knigi.fun/23537-zamugh-po-dogovoru.html",
+  "final_url": "https://knigi.fun/23537-zamugh-po-dogovoru.html",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Замуж по договору Татьяна Серганова — читать онлайн или скачать бесплатно",
+  "page_author": "Татьяна Серганова",
+  "signs": [
+   "чтение онлайн",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B4e5eb1",
+   "author": "Татьяна Серганова",
+   "title": "Замуж по договору",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн.",
+  "checked_at": "2026-10-21T16:49:58.252834+00:00"
+ },
+ {
+  "url": "https://knigoline.ru/yarost-vechnyh-9347/",
+  "final_url": "https://knigoline.ru/yarost-vechnyh-9347/",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Ярость Вечных: скачать fb2, epub, pdf, txt | Антон Карелин",
+  "page_author": "Антон Карелин",
+  "signs": [
+   "кнопка скачивания",
+   "чтение онлайн",
+   "ссылки на покупку в Литрес"
+  ],
+  "match": {
+   "book_id": "B41923c",
+   "author": "Антон Карелин",
+   "title": "Ярость Вечных",
+   "where": "заголовок"
+  },
+  "status": 2,
+  "reason": "Книга найдена в заголовке, автор совпал. Есть ссылки на магазин и признаки чтения или скачивания; назначение ссылок нужно проверить.",
+  "checked_at": "2026-10-21T16:49:58.330515+00:00"
+ },
+ {
+  "url": "https://librain.ru/zdorove/iarrou",
+  "final_url": "https://librain.ru/zdorove/iarrou",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Ярроу: читать и скачать онлайн бесплатно полностью fb2",
+  "page_author": "",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B57402a",
+   "author": "Айлин Лин",
+   "title": "Ярроу",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
+  "checked_at": "2026-10-21T16:49:58.389425+00:00"
+ },
+ {
+  "url": "https://read.xbook.life/books_yasnovidet-mozhet-kazhdyy-ili-kak-razvit-v-sebe-sverhsposobnosti_111377002",
+  "final_url": "https://read.xb0ok.link/books_yasnovidet-mozhet-kazhdyy-ili-kak-razvit-v-sebe-sverhsposobnosti_111377002",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Ясновидеть может каждый или как развить в себе сверхспособности, Хайр Хелен, книга полностью, читать бесплатно без сокращений",
+  "page_author": "",
+  "signs": [
+   "текст книги прямо на странице"
+  ],
+  "match": {
+   "book_id": "Bd9115a",
+   "author": "Хелен Хайр",
+   "title": "Ясновидеть может каждый, или Как развить в себе сверхспособности",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице.",
+  "checked_at": "2026-10-21T16:49:58.418519+00:00"
+ },
+ {
+  "url": "https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-gadosti-k-istinnoi-radosti",
+  "final_url": "https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-gadosti-k-istinnoi-radosti",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "нет содержимого",
+  "heading": "Загрузка — Библибоба",
+  "page_author": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
+  "checked_at": "2026-10-21T16:49:58.837471+00:00"
+ }
+]

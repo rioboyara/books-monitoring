@@ -66,7 +66,11 @@ def api_check(data: Urls):
 async def api_table(request: Request):
     """Своя версия исходной таблицы, например с новыми строками: возвращает обработанную таблицу.
     Для адресов, которые уже проверялись, подставляется результат проверки страницы."""
-    body = await request.body()
+    body = bytearray()
+    async for chunk in request.stream():
+        body.extend(chunk)
+        if len(body) > MAX_TABLE_BYTES:
+            raise HTTPException(400, "Нужен файл xlsx до 5 МБ")
     if not body or len(body) > MAX_TABLE_BYTES:
         raise HTTPException(400, "Нужен файл xlsx до 5 МБ")
     # разбор xlsx занимает процессор, поэтому в отдельном потоке и под тем же ограничением, что и проверка ссылок
@@ -77,7 +81,10 @@ def make_table(body):
     bad_file = HTTPException(400, 'Не удалось прочитать файл. Нужен xlsx с листом "Задание 1" в формате исходной таблицы')
     try:
         # xlsx это zip: маленький файл может распаковаться в гигабайты, поэтому смотрим размер до разбора
-        unpacked = sum(i.file_size for i in zipfile.ZipFile(io.BytesIO(body)).infolist())
+        with zipfile.ZipFile(io.BytesIO(body)) as archive:
+            unpacked = sum(i.file_size for i in archive.infolist())
+            if len(archive.infolist()) > 200:
+                raise HTTPException(400, "Слишком сложная структура файла")
     except zipfile.BadZipFile:
         raise bad_file
     if unpacked > MAX_UNPACKED_BYTES:
@@ -86,8 +93,25 @@ def make_table(body):
         raise HTTPException(429, "Сервер занят другой задачей, попробуйте через минуту")
     try:
         try:
-            wb = openpyxl.load_workbook(io.BytesIO(body))
-            sheets = [wb[name] for name in ("Задание 1", "Задание 2") if name in wb.sheetnames]
+            source = openpyxl.load_workbook(io.BytesIO(body), read_only=True, keep_links=False)
+            wb = openpyxl.Workbook()
+            wb.remove(wb.active)
+            try:
+                for name in ("Задание 1", "Задание 2"):
+                    if name not in source.sheetnames:
+                        continue
+                    ws = source[name]
+                    if (ws.max_row or 0) > MAX_TABLE_ROWS or (ws.max_column or 0) > 30:
+                        raise bad_file
+                    ws.reset_dimensions()
+                    dest = wb.create_sheet(name)
+                    for number, row in enumerate(ws.iter_rows(max_col=31, values_only=True), 1):
+                        if number > MAX_TABLE_ROWS or row[30] is not None:
+                            raise bad_file
+                        dest.append(row[:30])
+            finally:
+                source.close()
+            sheets = wb.worksheets
         except Exception:  # чужой файл может быть любым, отвечаем понятной ошибкой
             raise bad_file
         if "Задание 1" not in wb.sheetnames:

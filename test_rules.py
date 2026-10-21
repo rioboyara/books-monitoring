@@ -72,9 +72,23 @@ def test_no_internal_addresses():
 
 def test_decide():
     assert decide({"formats": "скачивание fb2", "store": "ссылки на Литрес"})[0] == 1
-    assert decide({"reader": "чтение онлайн", "store": "ссылки на Литрес"})[0] == 0
+    assert decide({"reader": "чтение онлайн", "store": "ссылки на Литрес"})[0] == 2
     assert decide({"text": "текст книги прямо на странице"})[0] == 1
     assert decide({})[0] == 0
+
+
+def test_review_regressions():
+    from normalize import book_id
+    from checker import page_author
+    assert page_author("Примечания автора: Вторая часть романа") == ""
+    assert book_id("А. Иванов", "Книга") != book_id("Б. Иванов", "Книга")
+    assert decide({"file": "PDF на 4 стр."})[0] == 1
+    assert decide({"text": "текст книги", "store": "магазин"})[0] == 1
+    both = "Босс. Будет жарко Хельга Дюран. Измена. Хочу твоего мужа Ася Исай"
+    match, candidates = find_book(both, "", CATALOG)
+    assert match is None and len(candidates) == 2
+    match, _ = find_book("Измена. Хочу твоего мужа", "Автор: Оксана Алексаева. Рекомендуем: Ася Исай", CATALOG)
+    assert match is None
 
 
 if __name__ == "__main__":

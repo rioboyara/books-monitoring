@@ -4,3 +4,7 @@ out/*
 !out/result.xlsx
 !out/pages.json
 input/*.pdf
+
+.venv/
+
+!out/part2.json

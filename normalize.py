@@ -55,9 +55,9 @@ def split_author(raw):
 
 
 def author_key(name):
-    """Слова имени по алфавиту, без инициалов: 'Рудин Алекс' == 'Алекс Рудин'."""
+    """Слова имени по алфавиту, с сохранением инициалов."""
     words = re.findall(r"\w+", name.lower().replace("ё", "е"))
-    return " ".join(sorted(w for w in words if len(w) > 1))
+    return " ".join(sorted(words))
 
 
 def book_id(author, title):
@@ -95,7 +95,8 @@ def load_rows(src, sheet="Задание 1"):
     rows = []
     for n, values in enumerate(ws.iter_rows(min_row=2, values_only=True), start=2):
         if any(values[:6]):
-            rows.append({"row": n, **dict(zip(SOURCE_COLUMNS, values[:6])), "extra": values[6:]})
+            original = dict(zip(SOURCE_COLUMNS, (*values[:6], *([None] * max(0, 6 - len(values))))))
+            rows.append({"row": n, **original, "original": original, "extra": values[6:]})
     return rows
 
 
@@ -212,7 +213,7 @@ HOW_TO_READ = [
     "Спорные: строки, где данные или сама страница вызывают вопрос, и каких данных не хватает, чтобы его закрыть.",
     "Задание 2: исходный лист с заполненными колонками статуса и признаков, плюс статус страницы, извлечённые данные, совпадение с каталогом и причина.",
     "",
-    "Нормализация: лишние пробелы и знаки по краям убраны, псевдоним в скобках вынесен отдельно. Названия сравниваются только по буквам и цифрам без пробелов, ё равно е. Автор сравнивается по набору слов без учёта порядка и инициалов.",
+    "Нормализация: лишние пробелы и знаки по краям убраны, псевдоним в скобках вынесен отдельно. Названия сравниваются только по буквам и цифрам без пробелов, ё равно е. Автор сравнивается по набору слов без учёта порядка, с сохранением инициалов.",
     "Статусы проверки страницы: 1 найдено совпадение и признаки размещения, 0 совпадение или размещение не подтверждено, 2 автоматически определить не удалось.",
 ]
 
@@ -247,6 +248,11 @@ def write_xlsx(rows, books, path, part2=None, pages=None):
             c.alignment = Alignment(wrap_text=True, vertical="top")
         for line in data:
             ws.append(line)
+            for cell in ws[ws.max_row]:
+                if isinstance(cell.value, str):
+                    cell.data_type = "s"
+                cell.alignment = Alignment(wrap_text=True, vertical="top")
+            ws.row_dimensions[ws.max_row].height = 58
         for i, w in enumerate(widths, start=1):
             ws.column_dimensions[openpyxl.utils.get_column_letter(i)].width = w
         ws.freeze_panes = "A2"
@@ -269,7 +275,7 @@ def write_xlsx(rows, books, path, part2=None, pages=None):
         "Строка в исходнике", *SOURCE_COLUMNS, "Автор (чистый)", "Псевдоним", "Название (чистое)",
         "Ключ страницы", "ID книги", "Дубль строки", "Слов названия в адресе, %", "Пометки", "Спорно",
         "Проверка страницы: статус", "Проверка страницы: причина", "Книга на странице (ID)"],
-        [[r["row"], *[r[c] for c in SOURCE_COLUMNS], r["author"], r["alias"], r["title"], r["url_key"],
+        [[r["row"], *[r.get("original", r)[c] for c in SOURCE_COLUMNS], r["author"], r["alias"], r["title"], r["url_key"],
           r["book"], "" if r["dup_of"] == r["row"] else r["dup_of"], r["url_match"], "; ".join(r["notes"]),
           "; ".join(r["doubts"]), *page_cols(r["url"])] for r in rows],
         [9, 12, 20, 30, 8, 30, 16, 20, 12, 30, 35, 10, 9, 10, 30, 40, 9, 45, 11])
@@ -311,7 +317,7 @@ def write_xlsx(rows, books, path, part2=None, pages=None):
     if part2:
         sheet("Задание 2", ["Строка в исходнике", *SOURCE_COLUMNS, "Пират-1/не пират-0 (статус 0/1/2)", "Признаки",
                             "Статус страницы", "Извлечённые данные", "Совпадение с каталогом", "Причина решения"],
-              [[r["row"], *[r[c] for c in SOURCE_COLUMNS], *part2_cols(pages.get(r["url"]))] for r in part2],
+              [[r["row"], *[r.get("original", r)[c] for c in SOURCE_COLUMNS], *part2_cols(pages.get(r["url"]))] for r in part2],
               [9, 12, 20, 30, 8, 40, 18, 12, 40, 16, 50, 30, 60])
     wb.save(path)
 

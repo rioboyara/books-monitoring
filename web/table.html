@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Обработка таблицы</title>
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v=2">
 </head>
 <body>
+<aside class="sidebar"><a class="brand" href="/">Мониторинг книг<small>Данные и проверка страниц</small></a><nav aria-label="Основная навигация"><a href="/">Обзор задания</a><a href="/check">Проверка ссылок</a><a href="/table" aria-current="page">Обработка таблицы</a><a href="/files/result.xlsx">Скачать результат</a><a href="https://github.com/rioboyara/books-monitoring" target="_blank" rel="noopener">Исходный код</a></nav><div class="side-footer">Ринат Боярский<br>Тестовое задание по мониторингу</div></aside>
 <main>
-  <nav><a href="/">Пояснительная записка</a><a href="/check">Проверка ссылок</a><b>Обработка таблицы</b><a href="/files/result.xlsx">Таблица результата (xlsx)</a><a href="https://github.com/rioboyara/books-monitoring">Код на GitHub</a></nav>
-  <h1>Обработка таблицы с новыми строками</h1>
-  <p>Загрузите исходную таблицу в том же формате, например с добавленными строками. Нужен лист "Задание 1" с колонками: правообладатель, автор, название, тип контента, url, сайт. Лист "Задание 2" необязателен.</p>
-  <p>В ответ скачается обработанная таблица с теми же листами, что и <a href="/files/result.xlsx">готовая</a>. ID уже известных книг не меняются, новые строки получают ID своей книги или новый, дубли и спорные случаи пересчитываются. Для адресов, которые уже проверялись, подставляется результат проверки страницы.</p>
-  <p><input type="file" id="file" accept=".xlsx"></p>
-  <p><button id="go">Обработать</button> <span id="state" class="muted"></span></p>
+  <h1>Порядок в исходных данных</h1><p class="lead">Очистка записей, поиск дублей и каталог книг в одном файле.</p>
+  <p>Добавьте строки в исходный файл и загрузите его сюда. Получите очищенные данные, каталог книг, дубли и спорные случаи.</p>
+  <details><summary>Требования к файлу</summary><p>Лист "Задание 1": правообладатель, автор, название, тип контента, url, сайт, именно в таком порядке. Лист "Задание 2" необязателен. Идентификаторы неизменённых книг сохраняются.</p></details>
+  <div class="panel"><label for="file">Исходная таблица</label><p class="muted small">Формат XLSX, до 5 МБ и 3 000 строк на листе.</p><p><input type="file" id="file" accept=".xlsx"></p>
+  <p><button id="go">Обработать</button> </p><p id="state" class="status-line" role="status" aria-live="polite"></p></div><p class="callout">Новые ссылки в файле не загружаются автоматически. Для них используйте раздел "Проверка ссылок". Результаты известных адресов берутся из сохранённого прогона.</p>
 </main>
 <script>
 async function upload() {
@@ -23,6 +23,8 @@ async function upload() {
     state.textContent = "Сначала выберите файл.";
     return;
   }
+  if (file.size > 5000000 || !file.name.toLowerCase().endsWith(".xlsx")) { state.textContent = "Выберите файл XLSX размером до 5 МБ."; return; }
+  document.getElementById("go").disabled = true;
   state.textContent = "Обрабатываю...";
   try {
     const resp = await fetch(location.origin + "/api/table", {method: "POST", body: file});
@@ -30,11 +32,11 @@ async function upload() {
     const link = document.createElement("a");
     link.href = URL.createObjectURL(await resp.blob());
     link.download = "result.xlsx";
-    link.click();
-    state.textContent = "Готово, файл скачан.";
+    link.click(); setTimeout(function() { URL.revokeObjectURL(link.href); }, 1000);
+    state.textContent = "Готово. Файл передан браузеру для скачивания.";
   } catch (e) {
     state.textContent = "Ошибка: " + e.message;
-  }
+  } finally { document.getElementById("go").disabled = false; }
 }
 
 document.getElementById("go").onclick = upload;

@@ -4,15 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Проверка ссылок</title>
-<link rel="stylesheet" href="/assets/style.css">
+<link rel="stylesheet" href="/assets/style.css?v=2">
 </head>
 <body>
+<aside class="sidebar"><a class="brand" href="/">Мониторинг книг<small>Данные и проверка страниц</small></a><nav aria-label="Основная навигация"><a href="/">Обзор задания</a><a href="/check" aria-current="page">Проверка ссылок</a><a href="/table">Обработка таблицы</a><a href="/files/result.xlsx">Скачать результат</a><a href="https://github.com/rioboyara/books-monitoring" target="_blank" rel="noopener">Исходный код</a></nav><div class="side-footer">Ринат Боярский<br>Тестовое задание по мониторингу</div></aside>
 <main class="wide">
-  <nav><a href="/">Пояснительная записка</a><b>Проверка ссылок</b><a href="/table">Обработка таблицы</a><a href="/files/result.xlsx">Таблица результата (xlsx)</a><a href="https://github.com/rioboyara/books-monitoring">Код на GitHub</a></nav>
   <h1>Проверка ссылок</h1>
-  <p>Адреса по одному в строке, не больше 30. Десять адресов проверяются 10-30 секунд. Каталог книг собран из обоих листов исходной таблицы, сейчас в нём 101 книга.</p>
+  <p class="lead">Адреса по одному в строке, не больше 30. Длительность зависит от ответа сайтов. Каталог книг собран из обоих листов исходной таблицы, сейчас в нём 101 книга.</p>
   <p class="muted small">Статусы: <span class="st st1">1</span> совпадение с книгой и признаки размещения, <span class="st st0">0</span> не подтверждено, <span class="st st2">2</span> автоматически определить не удалось.</p>
 
+  <div class="panel"><label for="urls">Ссылки для проверки</label><p class="muted small">Уже добавлены 10 адресов из задания. Их можно заменить своим списком.</p>
   <textarea id="urls" rows="11" spellcheck="false">https://audioknigivuhe.com/love-fantastic/16986-cvetok-v-muzhskoj-akademii-magii.html
 https://audiopautina.ru/wp-content/uploads/2026/05/rl2.pdf
 https://book1.bubooker.link/knigi_sistemnyy-razvedchik.-infiltraciya.-dilogiya_1101000100100010110001110
@@ -23,9 +24,9 @@ https://knigoline.ru/yarost-vechnyh-9347/
 https://librain.ru/zdorove/iarrou
 https://read.xbook.life/books_yasnovidet-mozhet-kazhdyy-ili-kak-razvit-v-sebe-sverhsposobnosti_111377002
 https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-gadosti-k-istinnoi-radosti</textarea>
-  <p><button id="go">Проверить</button> <span id="state" class="muted"></span></p>
+  <div class="actions"><button id="go">Проверить ссылки</button><button class="plain" id="example">Вернуть пример</button><button class="plain" id="clear">Очистить</button></div><p id="state" class="status-line" role="status" aria-live="polite"></p></div>
 
-  <div id="out" hidden>
+  <section id="out" hidden><h2>Результаты проверки</h2><div class="toolbar"><label for="filter">Показать<select id="filter"><option value="all">Все результаты</option><option value="1">1: найдено размещение</option><option value="0">0: не подтверждено</option><option value="2">2: нужна проверка</option></select></label><input id="search" type="search" aria-label="Поиск по результатам" placeholder="Сайт, книга или автор"></div>
     <p><button class="plain" id="json">Скачать JSON</button> <button class="plain" id="csv">Скачать CSV</button></p>
     <div class="table">
       <table>
@@ -33,7 +34,7 @@ https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-g
         <tbody id="rows"></tbody>
       </table>
     </div>
-  </div>
+  </section>
 </main>
 <script>
 let results = [];
@@ -69,19 +70,27 @@ function count(status) {
 function render() {
   const body = document.getElementById("rows");
   body.innerHTML = "";
+  const filter = document.getElementById("filter").value;
+  const query = document.getElementById("search").value.toLowerCase();
   for (const r of results) {
+    if (filter !== "all" && String(r.status) !== filter) continue;
+    if (query && ![r.url, book(r), r.reason].join(" ").toLowerCase().includes(query)) continue;
     const tr = body.insertRow();
     const a = document.createElement("a");
-    a.href = r.url; a.textContent = r.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+    a.href = r.url; a.textContent = new URL(r.url).hostname; a.title = r.url; a.target = "_blank"; a.rel = "noopener noreferrer";
     cell(tr, "", "url").append(a);
     cell(tr, pageState(r));
-    cell(tr, extracted(r));
+    const detail = document.createElement("details");
+    const title = document.createElement("summary"); title.textContent = "Данные и признаки";
+    const content = document.createElement("p"); content.textContent = extracted(r);
+    detail.append(title, content); cell(tr, "").append(detail);
     cell(tr, book(r));
     const st = document.createElement("span");
-    st.className = "st st" + r.status; st.textContent = r.status;
+    st.className = "st st" + r.status; st.textContent = ["0 Не подтверждено", "1 Найдено", "2 Проверить"][r.status];
     cell(tr, "").append(st);
     cell(tr, r.reason);
   }
+  if (!body.rows.length) { const row = body.insertRow(); const td = cell(row, "Нет результатов по выбранному фильтру.", "empty"); td.colSpan = 6; }
   document.getElementById("out").hidden = false;
 }
 
@@ -89,13 +98,17 @@ function save(name, type, text) {
   const link = document.createElement("a");
   link.href = URL.createObjectURL(new Blob([text], {type: type}));
   link.download = name;
-  link.click();
+  link.click(); setTimeout(function() { URL.revokeObjectURL(link.href); }, 1000);
 }
 
 async function runCheck() {
   const urls = document.getElementById("urls").value.split("\n")
     .map(function (s) { return s.trim(); }).filter(Boolean);
   const button = document.getElementById("go"), state = document.getElementById("state");
+  if (!urls.length || urls.length > 30) { state.textContent = "Добавьте от 1 до 30 ссылок."; return; }
+  if (urls.some(function(u) { try { return !["http:", "https:"].includes(new URL(u).protocol); } catch (_) { return true; } })) { state.textContent = "Проверьте адреса: каждый должен начинаться с http:// или https://."; return; }
+  results = []; document.getElementById("out").hidden = true;
+  state.classList.remove("error");
   button.disabled = true;
   state.textContent = "Проверяю " + urls.length + " адр., подождите...";
   try {
@@ -103,10 +116,11 @@ async function runCheck() {
     const data = await resp.json();
     if (!resp.ok) throw new Error(data.detail || resp.status);
     results = data;
+    document.getElementById("filter").value = "all"; document.getElementById("search").value = "";
     render();
     state.textContent = "Готово: статус 1 у " + count(1) + ", 0 у " + count(0) + ", 2 у " + count(2) + ".";
   } catch (e) {
-    state.textContent = "Ошибка: " + e.message;
+    state.classList.add("error"); state.textContent = "Не удалось выполнить проверку: " + e.message;
   } finally {
     button.disabled = false;
   }
@@ -117,7 +131,7 @@ function saveJson() {
 }
 
 function saveCsv() {
-  function q(v) { return '"' + String(v == null ? "" : v).replaceAll('"', '""') + '"'; }
+  function q(v) { return '"' + String(v == null ? "" : v).replace(/^[=+@\-\t\r]/, "' $&").replaceAll('"', '""') + '"'; }
   const head = ["url", "статус страницы", "извлечённые данные", "совпадение с каталогом", "статус 0/1/2", "причина"];
   const lines = results.map(function (r) {
     return [r.url, pageState(r), extracted(r), book(r), r.status, r.reason].map(q).join(";");
@@ -125,6 +139,11 @@ function saveCsv() {
   save("check.csv", "text/csv", "\ufeff" + [head.join(";")].concat(lines).join("\r\n"));
 }
 
+const example = document.getElementById("urls").value;
+document.getElementById("example").onclick = function() { document.getElementById("urls").value = example; };
+document.getElementById("clear").onclick = function() { document.getElementById("urls").value = ""; document.getElementById("urls").focus(); };
+document.getElementById("filter").onchange = render;
+document.getElementById("search").oninput = render;
 document.getElementById("go").onclick = runCheck;
 document.getElementById("json").onclick = saveJson;
 document.getElementById("csv").onclick = saveCsv;

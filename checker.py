@@ -14,6 +14,8 @@ import re
 import socket
 import sys
 import time
+from datetime import datetime, timezone
+from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
 from difflib import SequenceMatcher
 from urllib.parse import urljoin, urlsplit
@@ -44,7 +46,7 @@ REMOVED = re.compile(r"удален[аоы]? по (требованию|жало
 # читалка прямо на странице: выбор шрифта, ночной режим, листание
 READER_PAGE = re.compile(r"шрифт|times new roman|ночной режим|страница \d+ из \d+|читать (далее|следующую)|глава (1|i|первая)\b", re.I)
 # "Автор: Оксана Алексаева Серия: ..." берём до трёх слов с заглавной, служебные подписи отсекаем
-AUTHOR_LABEL = re.compile(r"(?i:автор[а-я]*|author)\s*:\s*((?:[A-ZА-ЯЁ][\w.'-]*,?\s*){1,3})")
+AUTHOR_LABEL = re.compile(r"(?i:автор|author)\s*:\s*((?:[A-ZА-ЯЁ][\w.'-]*,?\s*){1,3})")
 LABEL_WORDS = {"Серия", "Серии", "Жанр", "Жанры", "Год", "Читает", "Чтец", "Размер", "Язык", "Возраст", "Страниц",
                "Формат", "Добавлено", "Издательство", "Другие", "Рейтинг", "Перевод", "Переводчик", "Цикл",
                "Читать", "Скачать", "Слушать", "Купить", "Описание", "Аннотация", "Название", "Статус",
@@ -104,8 +106,10 @@ def get(s, url, until):
                 for chunk in resp.iter_content(65536):
                     body.append(chunk)
                     size += len(chunk)
-                    if size >= MAX_BYTES or time.monotonic() > until:
-                        break
+                    if size > MAX_BYTES:
+                        raise requests.RequestException("Ответ превышает допустимый размер")
+                    if time.monotonic() > until:
+                        raise requests.Timeout()
                 return resp, b"".join(body)
             url = urljoin(url, resp.headers["location"])
         if time.monotonic() > until:
@@ -149,19 +153,23 @@ def find_book(heading, text, catalog):
     for b in catalog:
         # номер тома обязателен: "Егерь-3" не должен совпасть со страницей "Егерь: назад в СССР"
         same_numbers = set(re.findall(r"\d+", b["title"])) <= set(re.findall(r"\d+", heading))
-        if b["tkey"] and (b["tkey"] in hk or same_numbers and title_in(b["twords"], head_words)):
+        if b["tkey"] and same_numbers and (b["tkey"] in hk or title_in(b["twords"], head_words)):
             where = "заголовок"
-        elif len(b["tkey"]) >= 12 and b["tkey"] in tk:
+        elif len(b["tkey"]) >= 12 and b["tkey"] in tk and re.search(r"сборник|собрание|collection", heading, re.I):
             where = "текст"
         else:
             continue
         need = min(2, len(b["awords"]))
         # книга только в тексте (сборник, список) засчитывается, если автор есть в заголовке
-        if words_in(b["awords"], head_words if where == "текст" else all_words) >= need:
+        named = page_author(text)
+        author_words = set(loose(named).split()) if named else all_words
+        if need and words_in(b["awords"], head_words if where == "текст" else author_words) >= need:
             found.append((where != "заголовок", -len(b["tkey"]), b, where))
         elif where == "заголовок":
             title_only.append(b)
     if found:
+        if len({f[2]["book_id"] for f in found}) > 1:
+            return None, [{**f[2], "ambiguous": True} for f in found]
         _, _, b, where = min(found, key=lambda f: f[:2])
         return {**{k: b[k] for k in ("book_id", "author", "title")}, "where": where}, []
     return None, title_only
@@ -192,8 +200,7 @@ def read_page(resp, body):
         meta = pdf.metadata or {}
         text = " ".join(p.extract_text() or "" for p in pdf.pages[:3])
         heading = clean(f"{meta.get('/Title', '')} {meta.get('/Author', '')}") or clean(text)[:200]
-        signs["file"] = f"файл PDF на {len(pdf.pages)} стр." if len(pdf.pages) >= 20 else ""
-        signs["fragment"] = f"PDF всего на {len(pdf.pages)} стр." if len(pdf.pages) < 20 else ""
+        signs["file"] = f"файл PDF на {len(pdf.pages)} стр."
         return heading, clean(text), signs
     if "html" not in ctype:
         return "", "", {"file": f"файл {ctype or 'без типа'}, {len(body) // 1024} КБ"}
@@ -267,8 +274,10 @@ def decide(signs):
         return 0, signs["removed"]
     if strong:
         return 1, "; ".join(kind + strong + weak)
-    if signs.get("store"):
-        return 0, "своих файлов нет, скачивание и чтение ведут на покупку в Литрес"
+    if signs.get("store") and weak and not signs.get("text"):
+        return 2, "есть ссылки на магазин и признаки чтения или скачивания; назначение ссылок нужно проверить"
+    if signs.get("store") and not weak:
+        return 0, "найдены только ссылки на магазин, размещение не подтверждено"
     if signs.get("fragment"):
         return 0, signs["fragment"] + ", похоже на фрагмент"
     if weak:
@@ -279,6 +288,7 @@ def decide(signs):
 def check(url, catalog):
     out = {"url": url, "final_url": "", "http_status": None, "content_type": "", "page_state": "", "heading": "",
            "page_author": "", "signs": [], "match": None, "status": 2, "reason": ""}
+    out["checked_at"] = datetime.now(timezone.utc).isoformat()
     try:
         resp, body = fetch(url)
     except requests.RequestException as e:
@@ -307,6 +317,9 @@ def check(url, catalog):
     match, title_only = find_book(heading, text, catalog)
     out["match"] = match
     if not match and title_only:
+        if any(b.get("ambiguous") for b in title_only):
+            return {**out, "reason": "Найдено несколько книг: " + "; ".join(
+                f'{b["author"]}. {b["title"]}' for b in title_only) + ". Нужна проверка человеком."}
         b = max(title_only, key=lambda b: len(b["tkey"]))
         authors = ", ".join(x["author"] for x in title_only if x["tkey"] == b["tkey"])
         shown = f' На странице указан автор: {out["page_author"]}.' if out["page_author"] else ""
@@ -339,6 +352,10 @@ def main(xlsx, source, dst):
     results = check_many(list(dict.fromkeys(urls)), catalog)
     with open(dst, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=1)
+    if source == "--all":
+        part2_urls = {clean(r["url"]) for r in load_rows(xlsx, "Задание 2")}
+        Path(dst).with_name("part2.json").write_text(json.dumps(
+            [r for r in results if r["url"] in part2_urls], ensure_ascii=False, indent=1), encoding="utf-8")
     print("статусы:", {s: sum(r["status"] == s for r in results) for s in (0, 1, 2)})
 
 
