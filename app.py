@@ -1,6 +1,7 @@
 """Веб-обёртка: записка на главной, проверка ссылок на /check, обработка своей таблицы на /table."""
 import io
 import json
+import zipfile
 from pathlib import Path
 from threading import BoundedSemaphore
 
@@ -8,6 +9,7 @@ import openpyxl
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import FileResponse, Response
 from fastapi.staticfiles import StaticFiles
+from starlette.concurrency import run_in_threadpool
 from pydantic import BaseModel
 
 from checker import check_many, load_catalog
@@ -17,6 +19,7 @@ HERE = Path(__file__).parent
 MAX_URLS = 30
 MAX_TABLE_BYTES = 5_000_000
 MAX_TABLE_ROWS = 3000
+MAX_UNPACKED_BYTES = 50_000_000
 XLSX = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
 busy = BoundedSemaphore(2)
 
@@ -66,16 +69,38 @@ async def api_table(request: Request):
     body = await request.body()
     if not body or len(body) > MAX_TABLE_BYTES:
         raise HTTPException(400, "Нужен файл xlsx до 5 МБ")
-    pages_file = HERE / "out" / "pages.json"
-    pages = {p["url"]: p for p in json.loads(pages_file.read_text(encoding="utf-8"))} if pages_file.exists() else {}
-    out = io.BytesIO()
+    # разбор xlsx занимает процессор, поэтому в отдельном потоке и под тем же ограничением, что и проверка ссылок
+    return await run_in_threadpool(make_table, body)
+
+
+def make_table(body):
+    bad_file = HTTPException(400, 'Не удалось прочитать файл. Нужен xlsx с листом "Задание 1" в формате исходной таблицы')
     try:
-        wb = openpyxl.load_workbook(io.BytesIO(body))
-        too_big = wb["Задание 1"].max_row > MAX_TABLE_ROWS
-        if not too_big:
+        # xlsx это zip: маленький файл может распаковаться в гигабайты, поэтому смотрим размер до разбора
+        unpacked = sum(i.file_size for i in zipfile.ZipFile(io.BytesIO(body)).infolist())
+    except zipfile.BadZipFile:
+        raise bad_file
+    if unpacked > MAX_UNPACKED_BYTES:
+        raise HTTPException(400, "Файл слишком большой после распаковки")
+    if not busy.acquire(blocking=False):
+        raise HTTPException(429, "Сервер занят другой задачей, попробуйте через минуту")
+    try:
+        try:
+            wb = openpyxl.load_workbook(io.BytesIO(body))
+            sheets = [wb[name] for name in ("Задание 1", "Задание 2") if name in wb.sheetnames]
+        except Exception:  # чужой файл может быть любым, отвечаем понятной ошибкой
+            raise bad_file
+        if "Задание 1" not in wb.sheetnames:
+            raise bad_file
+        if any(ws.max_row > MAX_TABLE_ROWS or ws.max_column > 30 for ws in sheets):
+            raise HTTPException(400, f"Не больше {MAX_TABLE_ROWS} строк и 30 колонок на листе")
+        pages_file = HERE / "out" / "pages.json"
+        pages = {p["url"]: p for p in json.loads(pages_file.read_text(encoding="utf-8"))} if pages_file.exists() else {}
+        out = io.BytesIO()
+        try:
             build(wb, out, pages)
-    except Exception:  # чужой файл может быть любым, отвечаем понятной ошибкой
-        raise HTTPException(400, 'Не удалось прочитать файл. Нужен xlsx с листом "Задание 1" в формате исходной таблицы')
-    if too_big:
-        raise HTTPException(400, f"Не больше {MAX_TABLE_ROWS} строк")
+        except Exception:
+            raise bad_file
+    finally:
+        busy.release()
     return Response(out.getvalue(), media_type=XLSX, headers={"Content-Disposition": 'attachment; filename="result.xlsx"'})
