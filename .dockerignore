@@ -1,0 +1,10 @@
+.git
+.venv
+__pycache__
+*.pyc
+.env
+*.env
+test_*.py
+REVIEW.md
+Проверка качества.md
+out

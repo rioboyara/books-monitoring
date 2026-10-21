@@ -11,3 +11,7 @@ input/*.pdf
 
 .env
 *.env
+
+test_*.py
+REVIEW.md
+Проверка качества.md
