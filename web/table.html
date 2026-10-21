@@ -31,7 +31,7 @@ async function upload() {
   if (file.size > 5000000 || !file.name.toLowerCase().endsWith(".xlsx")) { state.textContent = "Выберите файл XLSX размером до 5 МБ."; return; }
   document.getElementById("go").disabled = true;
   document.getElementById("current").hidden = true;
-  state.textContent = document.getElementById("ai-data").checked ? "Обрабатываю таблицу и проверяю спорные записи с ИИ. Это может занять до двух минут." : "Обрабатываю таблицу...";
+  state.textContent = document.getElementById("ai-data").checked ? "Обрабатываю таблицу и проверяю спорные записи с ИИ. Обычно это 10-20 секунд, не больше минуты." : "Обрабатываю таблицу...";
   try {
     const resp = await fetch(location.origin + "/api/table", {method: "POST", headers: {"X-AI-Review": document.getElementById("ai-data").checked ? "1" : "0"}, body: file});
     if (!resp.ok) throw new Error((await resp.json()).detail || resp.status);

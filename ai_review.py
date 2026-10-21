@@ -13,9 +13,9 @@ import requests
 from normalize import author_matches, clean, key, loose, needs
 
 ENDPOINT = "https://gateway.api429.com/v1/chat/completions"
-MODEL = os.environ.get("API429_MODEL", "glm-5.3-flash")
-FALLBACK_MODEL = os.environ.get("API429_FALLBACK_MODEL", "qwen-3.8-flash")
-slots = BoundedSemaphore(2)
+MODEL = os.environ.get("API429_MODEL", "deepseek-v4.1-flash")
+FALLBACK_MODEL = os.environ.get("API429_FALLBACK_MODEL", "gemini-3.5-flash-lite")
+slots = BoundedSemaphore(5)
 lock = Lock()
 hour_started, hourly_calls = time.monotonic(), 0
 
@@ -128,8 +128,8 @@ def review(out, heading, text, links, catalog, budget, inspect_link=None):
 def complete(prompt, data, max_tokens=900, timeout=35, validate=None):
     global hour_started, hourly_calls
     models = list(dict.fromkeys([MODEL, FALLBACK_MODEL]))
-    until = time.monotonic() + timeout
     with slots, requests.Session() as session:
+        until = time.monotonic() + timeout  # срок считается после очереди, иначе ожидание слота съедает время ответа
         session.trust_env = False
         for number, model in enumerate(models):
             remaining = until - time.monotonic()
@@ -231,7 +231,8 @@ def suggest_rows(rows):
                 "Уточнить автора, название и соответствие ссылки книге", source]
 
     # shortcut: до 40 спорных строк на загрузку; для больших каталогов нужна очередь.
-    with ThreadPoolExecutor(2) as pool:
+    # все пять пакетов уходят сразу, поэтому файл ждёт один ответ модели, а не три подряд
+    with ThreadPoolExecutor(5) as pool:
         batches = list(pool.map(batch_advice, [sample[i:i+8] for i in range(0, min(len(sample), 40), 8)]))
     return [row for batch in batches for row in batch] + [
         fallback(r, "Правила: лимит 40 ИИ-разборов на файл") for r in sample[40:]]
