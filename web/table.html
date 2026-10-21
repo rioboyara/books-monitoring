@@ -11,15 +11,13 @@
 <main>
   <h1>Порядок в исходных данных</h1><p class="lead">Очистка записей, поиск дублей и каталог книг в одном файле.</p>
   <p>Добавьте строки в исходный файл и загрузите его сюда. Получите очищенные данные, каталог книг, дубли и спорные случаи.</p>
-  <details><summary>Требования к файлу</summary><p>Лист "Задание 1": правообладатель, автор, название, тип контента, url, сайт, именно в таком порядке. Лист "Задание 2" необязателен. Идентификаторы неизменённых книг сохраняются.</p></details>
-  <div class="workflow">
+<div class="workflow">
   <section class="panel"><h2>Загрузить таблицу</h2><label for="file">Ваш исходный файл</label><p class="muted small">XLSX до 5 МБ, до 3 000 строк на листе.</p><input type="file" id="file" accept=".xlsx">
   <label class="small"><input type="checkbox" id="ai-data" checked> Рекомендации ИИ по спорным записям</label><p class="muted small">Данные до 8 спорных книг передаются API429. Советы будут на отдельном листе. Если ИИ не ответил, используются рекомендации по правилам с отметкой об источнике.</p>
   <div class="actions"><button id="go">Обработать таблицу</button></div><p id="state" class="status-line" role="status" aria-live="polite"></p></section>
-  <section class="panel" id="downloads"><h2>Скачать результат</h2>
-  <div id="current" hidden><h3>Результат вашего файла</h3><p id="filename" class="muted small"></p><a id="download-current" class="button" download="result.xlsx">Скачать обработанный файл</a><hr></div>
-  <h3>Готовое решение по заданию</h3><p>Обработаны исходные 150 записей. В файле каталог книг, дубли, спорные случаи, проверка ссылок и рекомендации ИИ.</p><a class="button secondary" href="/files/result.xlsx">Скачать таблицу по заданию</a>
-  <p class="muted small" id="result-hint">После обработки вашего файла результат появится здесь.</p></section>
+  <section class="panel" id="downloads"><h2>Результат</h2>
+  <div id="current"><p id="filename" class="muted small">Готовая обработка исходной таблицы задания.</p><a id="download-current" class="button" href="/files/result.xlsx" download="result.xlsx">Скачать результат</a></div>
+  <p class="muted small" id="result-hint">Загрузите и обработайте свой файл, чтобы получить новый результат.</p></section>
   </div><p class="callout">Обработка таблицы очищает записи и ищет дубли. Для загрузки страниц и проверки размещения перейдите в <a href="/check">проверку ссылок</a>.</p>
 </main>
 <script>

@@ -1,11 +1,11 @@
 """Проверки ответов ИИ без платных запросов: python test_ai_review.py."""
 import os
 from threading import BoundedSemaphore
-from unittest.mock import patch
+from unittest.mock import patch, Mock
 
 import requests
 
-from ai_review import review, verified_answer, validated_suggestions, suggest_rows
+from ai_review import review, verified_answer, validated_suggestions, suggest_rows, complete, FALLBACK_MODEL
 
 BOOK = {"book_id": "B1", "author": "Алекс Рудин", "title": "Егерь-3", "tkey": "егерь3",
         "twords": ["eger"], "awords": ["aleks", "rudin"]}
@@ -80,10 +80,21 @@ def test_advice_survives_partial_failure():
         assert 'ISBN' in result[0][3]
 
 
+def test_provider_fallback():
+    unavailable = Mock(status_code=429)
+    ready = Mock(status_code=200)
+    ready.json.return_value = {"choices": [{"message": {"content": '{"ok": true}'}}]}
+    with patch.dict(os.environ, {"API429_KEY": "test-not-a-real-key"}), patch(
+            'requests.Session.post', side_effect=[unavailable, ready]) as post:
+        answer = complete('Return JSON', {})
+        assert answer['ok'] and answer['_model'] == FALLBACK_MODEL and post.call_count == 2
+
+
 if __name__ == "__main__":
     test_validation()
     test_unavailable_api()
     test_data_recommendations()
     test_existing_book_is_preserved()
     test_advice_survives_partial_failure()
+    test_provider_fallback()
     print("ai review checks passed")
