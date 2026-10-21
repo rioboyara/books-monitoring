@@ -75,6 +75,7 @@ function count(status) {
 
 function render() {
   const body = document.getElementById("rows");
+  const opened = new Set(Array.from(body.rows).filter(r => r.querySelector('details[open]')).map(r => r.dataset.url));
   body.innerHTML = "";
   const filter = document.getElementById("filter").value;
   const query = document.getElementById("search").value.toLowerCase();
@@ -82,11 +83,13 @@ function render() {
     if (filter !== "all" && String(r.status) !== filter) continue;
     if (query && ![r.url, book(r), r.reason].join(" ").toLowerCase().includes(query)) continue;
     const tr = body.insertRow();
+    tr.dataset.url = r.url;
     const a = document.createElement("a");
     a.href = r.url; a.textContent = new URL(r.url).hostname; a.title = r.url; a.target = "_blank"; a.rel = "noopener noreferrer";
     cell(tr, "", "url").append(a);
     cell(tr, pageState(r));
     const detail = document.createElement("details");
+    detail.open = opened.has(r.url);
     const title = document.createElement("summary"); title.textContent = "Данные и признаки";
     const content = document.createElement("p"); content.textContent = extracted(r);
     detail.append(title, content); cell(tr, "").append(detail);
@@ -109,26 +112,52 @@ function save(name, type, text) {
 }
 
 async function runCheck() {
-  const urls = document.getElementById("urls").value.split("\n")
-    .map(function (s) { return s.trim(); }).filter(Boolean);
+  const urls = Array.from(new Set(document.getElementById("urls").value.split("\n")
+    .map(function (s) { return s.trim(); }).filter(Boolean)));
   const button = document.getElementById("go"), state = document.getElementById("state");
   if (!urls.length || urls.length > 30) { state.textContent = "Добавьте от 1 до 30 ссылок."; return; }
   if (urls.some(function(u) { try { return !["http:", "https:"].includes(new URL(u).protocol); } catch (_) { return true; } })) { state.textContent = "Проверьте адреса: каждый должен начинаться с http:// или https://."; return; }
   results = []; document.getElementById("out").hidden = true;
   state.classList.remove("error");
   button.disabled = true;
-  state.textContent = "Проверяю " + urls.length + " адр., подождите...";
+  document.getElementById("filter").value = "all"; document.getElementById("search").value = "";
+  state.textContent = "Проверяю ссылки. Результаты появятся по мере готовности.";
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), Math.max(150000, Math.ceil(urls.length / 8) * 90000));
   try {
-    const resp = await fetch(location.origin + "/api/check", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({urls: urls})});
-    const data = await resp.json();
-    if (!resp.ok) throw new Error(data.detail || resp.status);
-    results = data;
-    document.getElementById("filter").value = "all"; document.getElementById("search").value = "";
-    render();
+    const resp = await fetch(location.origin + "/api/check?stream=true", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({urls: urls}), signal: controller.signal});
+    if (!resp.ok) throw new Error((await resp.json()).detail || resp.status);
+    const reader = resp.body.getReader(), decoder = new TextDecoder();
+    let buffer = "", complete = false;
+    while (true) {
+      const chunk = await reader.read();
+      if (chunk.done) break;
+      buffer += decoder.decode(chunk.value, {stream: true});
+      const lines = buffer.split("\n"); buffer = lines.pop();
+      for (const line of lines) {
+        if (!line.trim()) continue;
+        const event = JSON.parse(line);
+        if (event.error) throw new Error(event.error);
+        if (event.done) complete = true;
+        if (!event.result) continue;
+        results.push(event.result);
+        results.sort((a, b) => urls.indexOf(a.url) - urls.indexOf(b.url));
+        render();
+        const finished = new Set(results.map(r => r.url));
+        const pending = urls.filter(u => !finished.has(u));
+        const hosts = Array.from(new Set(pending.map(u => new URL(u).hostname)));
+        state.textContent = "Готово " + results.length + " из " + urls.length + "." +
+          (pending.length ? " Ещё проверяются: " + hosts.slice(0, 3).join(", ") + (hosts.length > 3 ? " и другие сайты" : "") + "." : "");
+      }
+    }
+    if (!complete || results.length !== urls.length) throw new Error("Соединение прервалось до завершения проверки.");
     state.textContent = "Проверено ссылок: " + results.length + ". Признаки размещения найдены: " + count(1) + ". Не подтверждено: " + count(0) + ". Нужна ручная проверка: " + count(2) + ".";
   } catch (e) {
-    state.classList.add("error"); state.textContent = "Не удалось выполнить проверку: " + e.message;
+    controller.abort();
+    state.classList.add("error"); state.textContent = "Получено результатов: " + results.length + " из " + urls.length + ". " +
+      (e.name === "AbortError" ? "Время ожидания истекло. Готовые результаты можно скачать; остальные ссылки проверьте повторно." : e.message);
   } finally {
+    clearTimeout(timeout);
     button.disabled = false;
   }
 }

@@ -17,7 +17,7 @@ import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from threading import BoundedSemaphore, Lock
 from email.utils import parsedate_to_datetime
 from difflib import SequenceMatcher
@@ -159,12 +159,12 @@ def get(s, url, until):
     raise requests.TooManyRedirects()
 
 
-def fetch(url):
+def fetch(url, deadline=DEADLINE):
     s = requests.Session()
     s.trust_env = False  # прокси из окружения обошёл бы проверку адреса при соединении
     s.headers.update({"User-Agent": UA, "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.5",
                       "Accept": "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8"})
-    until = time.monotonic() + DEADLINE
+    until = time.monotonic() + deadline
     try:
         for attempt in range(3):
             try:
@@ -409,7 +409,7 @@ def check(url, catalog, ai_budget=None):
 
 def inspect_link(url):
     try:
-        response, body = fetch(url)
+        response, body = fetch(url, deadline=8)
         if response.status_code == 200:
             heading, text, _ = read_page(response, body)
             return {"url": url, "heading": heading[:500], "text": text[:6000]}
@@ -445,10 +445,24 @@ def classify(out, heading, text, signs, catalog):
     return {**out, "status": status, "reason": f"Книга найдена {where}, автор совпал. {why}"}
 
 
-def check_many(urls, catalog, workers=8):
+def check_many(urls, catalog, workers=8, on_result=None):
     ai_budget = BoundedSemaphore(4)  # не больше четырёх платных разборов на один список
+    results = [None] * len(urls)
     with ThreadPoolExecutor(workers) as pool:
-        return list(pool.map(lambda u: check(u, catalog, ai_budget), urls))
+        jobs = {pool.submit(check, url, catalog, ai_budget): i for i, url in enumerate(urls)}
+        for job in as_completed(jobs):
+            index = jobs[job]
+            try:
+                result = job.result()
+            except Exception:
+                result = {'url': urls[index], 'final_url': '', 'http_status': None, 'content_type': '',
+                          'page_state': 'ошибка обработки', 'heading': '', 'page_author': '', 'signs': [],
+                          'match': None, 'status': 2, 'reason': 'Не удалось обработать страницу. Нужна ручная проверка.',
+                          'checked_at': datetime.now(timezone.utc).isoformat()}
+            results[index] = result
+            if on_result:
+                on_result(result)
+    return results
 
 
 def main(xlsx, source, dst):

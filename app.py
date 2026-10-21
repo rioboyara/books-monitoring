@@ -3,11 +3,12 @@ import io
 import json
 import zipfile
 from pathlib import Path
-from threading import BoundedSemaphore
+from threading import BoundedSemaphore, Thread
+from queue import Queue, Empty
 
 import openpyxl
 from fastapi import FastAPI, HTTPException, Request
-from fastapi.responses import FileResponse, Response
+from fastapi.responses import FileResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 from starlette.concurrency import run_in_threadpool
 from pydantic import BaseModel
@@ -50,13 +51,41 @@ def table_page():
 
 
 @app.post("/api/check")
-def api_check(data: Urls):
+def api_check(data: Urls, stream: bool = False):
     urls = list(dict.fromkeys(u.strip() for u in data.urls if u.strip()))
     if not urls or len(urls) > MAX_URLS or not all(u.startswith(("http://", "https://")) for u in urls):
         raise HTTPException(400, f"Нужен список от 1 до {MAX_URLS} адресов, каждый с http:// или https://")
     # доступ к сайту закрыт логином в nginx, здесь только ограничение одновременных проверок
     if not busy.acquire(blocking=False):
         raise HTTPException(429, "Сервер занят другой проверкой, попробуйте через минуту")
+    if stream:
+        events = Queue()
+        def work():
+            try:
+                check_many(urls, catalog, on_result=lambda result: events.put({'result': result}))
+            except Exception:
+                events.put({'error': 'Проверка прервалась. Уже полученные результаты сохранены.'})
+            finally:
+                events.put({'done': True})
+                busy.release()
+        try:
+            Thread(target=work, daemon=True).start()
+        except Exception:
+            busy.release()
+            raise
+        def output():
+            yield json.dumps({'total': len(urls)}) + '\n'
+            while True:
+                try:
+                    event = events.get(timeout=2)
+                except Empty:
+                    yield '\n'
+                    continue
+                yield json.dumps(event, ensure_ascii=False) + '\n'
+                if event.get('done'):
+                    break
+        return StreamingResponse(output(), media_type='application/x-ndjson',
+                                 headers={'X-Accel-Buffering': 'no', 'Cache-Control': 'no-cache'})
     try:
         return check_many(urls, catalog)
     finally:
