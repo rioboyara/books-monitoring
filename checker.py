@@ -13,6 +13,7 @@ import json
 import re
 import socket
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from difflib import SequenceMatcher
 from urllib.parse import urljoin, urlsplit
@@ -20,12 +21,14 @@ from urllib.parse import urljoin, urlsplit
 import requests
 from bs4 import BeautifulSoup
 from pypdf import PdfReader
+from urllib3.util import connection as urllib3_connection
 
 from normalize import book_id, clean, key, load_rows, loose, split_author
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
 MAX_BYTES = 20_000_000
 TIMEOUT = (10, 25)
+DEADLINE = 40  # секунд на один адрес вместе с редиректами и повторами
 
 FORMATS = re.compile(r"\b(fb2|epub|pdf|txt|rtf|mobi|djvu|zip|rar|mp3|m4b)\b", re.I)
 DOWNLOAD = re.compile(r"скача|download|/dl/|/get", re.I)
@@ -68,32 +71,48 @@ def js_cookie(html):
     return (name.strip(), value.strip()) if name.strip() and value.strip() else None
 
 
-def is_public(url):
-    """Проверка запускается на сервере, поэтому не ходим во внутреннюю сеть (localhost, 10.x, 192.168.x)."""
-    try:
-        infos = socket.getaddrinfo(urlsplit(url).hostname, None)
-    except (socket.gaierror, UnicodeError):
-        return True  # несуществующий домен requests сам вернёт как ошибку соединения
-    return all(ipaddress.ip_address(i[4][0]).is_global for i in infos)
+PRIVATE = "адрес во внутренней сети, не проверяем"
+_connect = urllib3_connection.create_connection
 
 
-def get(s, url):
-    """GET с ручными редиректами, чтобы проверить каждый адрес в цепочке."""
+def public_connection(address, *args, **kwargs):
+    """Проверка запускается на сервере, поэтому во внутреннюю сеть (localhost, 10.x, 192.168.x) не ходим.
+    Адрес проверяется в момент соединения и соединяемся ровно с проверенным IP, так что ни редирект,
+    ни повторный DNS-ответ (DNS rebinding) проверку не обходят. Если имя не резолвится, соединения нет."""
+    host, port = address
+    infos = socket.getaddrinfo(host, port, 0, socket.SOCK_STREAM)
+    if not all(ipaddress.ip_address(i[4][0]).is_global for i in infos):
+        raise OSError(PRIVATE)
+    return _connect((infos[0][4][0], port), *args, **kwargs)  # SNI и Host берутся из URL, не из IP
+
+
+urllib3_connection.create_connection = public_connection
+
+
+def get(s, url, until):
+    """GET с ручными редиректами и общим лимитом времени на адрес."""
     for _ in range(8):
-        if not is_public(url):
-            raise requests.RequestException("адрес во внутренней сети, не проверяем")
         with s.get(url, timeout=TIMEOUT, stream=True, allow_redirects=False) as resp:
             if not resp.is_redirect:
-                return resp, b"".join(itertools.islice(resp.iter_content(65536), MAX_BYTES // 65536))
+                body, size = [], 0
+                for chunk in resp.iter_content(65536):
+                    body.append(chunk)
+                    size += len(chunk)
+                    if size >= MAX_BYTES or time.monotonic() > until:
+                        break
+                return resp, b"".join(body)
             url = urljoin(url, resp.headers["location"])
+        if time.monotonic() > until:
+            raise requests.Timeout()
     raise requests.TooManyRedirects()
 
 
 def fetch(url):
     s = requests.Session()
     s.headers.update({"User-Agent": UA, "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.5"})
+    until = time.monotonic() + DEADLINE
     for attempt in range(3):
-        resp, body = get(s, url)
+        resp, body = get(s, url, until)
         cookie = js_cookie(body.decode("utf-8", "replace")) if len(body) < 5000 and attempt < 2 else None
         if not cookie:
             return resp, body
@@ -244,7 +263,7 @@ def check(url, catalog):
     try:
         resp, body = fetch(url)
     except requests.RequestException as e:
-        why = str(e) if type(e) is requests.RequestException else type(e).__name__
+        why = PRIVATE if PRIVATE in str(e) else type(e).__name__
         return {**out, "page_state": "нет ответа", "reason": f"Сайт не ответил ({why})."}
     out.update(final_url=resp.url, http_status=resp.status_code)
     try:

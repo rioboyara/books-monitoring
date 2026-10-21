@@ -1,5 +1,6 @@
 """Веб-обёртка: записка на главной, проверка ссылок на /check, API на /api/check."""
 from pathlib import Path
+from threading import BoundedSemaphore
 
 from fastapi import FastAPI, HTTPException
 from fastapi.responses import FileResponse
@@ -10,6 +11,7 @@ from checker import check_many, load_catalog
 
 HERE = Path(__file__).parent
 MAX_URLS = 30
+busy = BoundedSemaphore(2)
 
 app = FastAPI(docs_url=None, redoc_url=None)
 catalog = load_catalog(next((HERE / "input").glob("*.xlsx")))
@@ -36,4 +38,10 @@ def api_check(data: Urls):
     urls = list(dict.fromkeys(u.strip() for u in data.urls if u.strip()))
     if not urls or len(urls) > MAX_URLS or not all(u.startswith(("http://", "https://")) for u in urls):
         raise HTTPException(400, f"Нужен список от 1 до {MAX_URLS} адресов, каждый с http:// или https://")
-    return check_many(urls, catalog)
+    # shortcut: без авторизации, только ограничение одновременных проверок; для боевого режима нужен ключ или лимит по IP
+    if not busy.acquire(blocking=False):
+        raise HTTPException(429, "Сервер занят другой проверкой, попробуйте через минуту")
+    try:
+        return check_many(urls, catalog)
+    finally:
+        busy.release()

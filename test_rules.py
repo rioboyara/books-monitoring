@@ -1,5 +1,5 @@
 """Проверка правил на примерах из задания. Запуск: python test_rules.py (или pytest)."""
-from checker import decide, find_book, js_cookie
+from checker import PRIVATE, decide, find_book, js_cookie, public_connection
 from normalize import author_key, key, loose, split_author, title_vs_url, url_key
 
 CATALOG = [
@@ -49,6 +49,16 @@ def test_matching():
     # другой том той же серии
     match, _ = find_book("Егерь: назад в СССР Рудин Алекс", "", CATALOG)
     assert match is None
+
+
+def test_no_internal_addresses():
+    for host in ("localhost", "127.0.0.1", "10.0.0.1", "192.168.1.1"):
+        try:
+            public_connection((host, 80))
+        except OSError as e:
+            assert PRIVATE in str(e)
+        else:
+            raise AssertionError(host)
 
 
 def test_decide():
