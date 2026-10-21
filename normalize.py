@@ -1,8 +1,8 @@
 """Часть 1. Нормализация строк, дубли и сопоставление с книгами.
 
 Запуск: python normalize.py input/<таблица>.xlsx out/result.xlsx [out/pages.json]
-pages.json (результат checker.py) необязателен: если он есть, в таблицу
-добавляется проверка страниц и заполняется лист "Задание 2".
+pages.json (результат checker.py) необязателен: если он есть,
+заполняется лист "Задание 2".
 """
 import hashlib
 import json
@@ -210,15 +210,9 @@ NEEDS = [
     ("два написания", "основное имя автора и варианты написания"),
     ("тега, раздела или сборника", "ссылка на страницу конкретной книги или состав сборника"),
     ("похожа на аудио", "на какие форматы есть права: текст, аудио"),
-    ("другая книга", "подтверждение правообладателя, к какой книге относится ссылка"),
-    ("автора из каталога", "варианты имени автора и псевдонимы"),
-    ("в списке на странице", "ссылка на страницу конкретной книги"),
-    ("Книг из каталога на странице нет", "проверить, та ли ссылка указана для книги"),
-    ("совпадение с каталогом не найдено", "проверить, та ли ссылка указана для книги"),
-    ("Страницы нет", "не нужны: страница удалена, ссылку можно закрыть"),
-    ("покупку в Литрес", "не нужны: страница партнёрская"),
-    ("скачать, читать или слушать нельзя", "не нужны: размещения нет"),
+    ("для разных книг", "подтверждение правообладателя, к какой книге относится ссылка"),
 ]
+
 
 def page_state(p):
     return ", ".join(str(x) for x in (p.get("http_status"), p.get("page_state")) if x) or "нет ответа"
@@ -244,7 +238,7 @@ def needs(text):
     return "; ".join(dict.fromkeys(n for k, n in NEEDS if k in text))
 
 
-def write_xlsx(rows, books, path, part2=None, pages=None, advice=None):
+def write_xlsx(rows, books, path, part2=None, pages=None):
     pages = pages or {}
     wb = openpyxl.Workbook()
     wb.remove(wb.active)
@@ -270,21 +264,14 @@ def write_xlsx(rows, books, path, part2=None, pages=None, advice=None):
         ws.auto_filter.ref = ws.dimensions
         return ws
 
-    def page_cols(url):
-        p = pages.get(url)
-        if not p:
-            return ["", "", ""]
-        found = p["match"]["book_id"] if p.get("match") else ""
-        return [p["status"], p["reason"], found]
-
+    # часть 1 только про сами записи; результаты проверки страниц собраны на листе "Задание 2"
     ws = sheet("Строки", [
         "Строка в исходнике", *SOURCE_COLUMNS, "Автор (чистый)", "Псевдоним", "Название (чистое)",
-        "Ключ страницы", "ID книги", "Дубль строки", "Слов названия в адресе, %", "Пометки", "Спорно",
-        "Проверка страницы: статус", "Проверка страницы: причина", "Книга на странице (ID)"],
+        "Ключ страницы", "ID книги", "Дубль строки", "Слов названия в адресе, %", "Пометки", "Спорно"],
         [[r["row"], *[r.get("original", r)[c] for c in SOURCE_COLUMNS], r["author"], r["alias"], r["title"], r["url_key"],
           r["book"], "" if r["dup_of"] == r["row"] else r["dup_of"], r["url_match"], "; ".join(r["notes"]),
-          "; ".join(r["doubts"]), *page_cols(r["url"])] for r in rows],
-        [9, 12, 20, 30, 8, 30, 16, 20, 12, 30, 35, 10, 9, 10, 30, 40, 9, 45, 11])
+          "; ".join(r["doubts"])] for r in rows],
+        [9, 12, 20, 30, 8, 30, 16, 20, 12, 30, 35, 10, 9, 10, 30, 40])
     for line in ws.iter_rows(min_row=2):
         if line[15].value:
             for c in line:
@@ -303,31 +290,16 @@ def write_xlsx(rows, books, path, part2=None, pages=None, advice=None):
            for r in rows if r["dup_of"] != r["row"]],
           [8, 10, 22, 40, 60, 35])
 
-    doubtful = []
-    for r in rows:
-        p = pages.get(r["url"])
-        page_doubt = ""
-        # технические сбои (бот-защита, таймаут) не спорность данных, они видны в статусе на листе "Строки"
-        if p and p.get("match") and p["match"]["book_id"] != r["book"]:
-            page_doubt = f"на странице другая книга: {p['match']['author']}. {p['match']['title']}"
-        elif p and p["page_state"] in ("ok", "страницы нет") and p["status"] != 1:
-            page_doubt = f"страница не подтвердила книгу (статус {p['status']}): {p['reason']}"
-        if r["doubts"] or page_doubt:
-            data_doubt = "; ".join(r["doubts"])
-            doubtful.append([r["row"], r["author"], r["title"], r["url"], data_doubt, page_doubt,
-                             needs(data_doubt + " " + page_doubt)])
-    sheet("Спорные", ["Строка", "Автор", "Название", "url", "Что не так по данным", "Что показала страница",
-                      "Каких данных не хватает"],
-          doubtful, [8, 22, 40, 50, 55, 55, 45])
+    sheet("Спорные", ["Строка", "Автор", "Название", "url", "Что не так", "Каких данных не хватает"],
+          [[r["row"], r["author"], r["title"], r["url"], "; ".join(r["doubts"]), needs("; ".join(r["doubts"]))]
+           for r in rows if r["doubts"]],
+          [8, 22, 40, 50, 60, 50])
 
     if part2:
         sheet("Задание 2", ["Строка в исходнике", *SOURCE_COLUMNS, "Пират-1/не пират-0 (статус 0/1/2)", "Признаки",
                             "Статус страницы", "Извлечённые данные", "Совпадение с каталогом", "Причина решения"],
               [[r["row"], *[r.get("original", r)[c] for c in SOURCE_COLUMNS], *part2_cols(pages.get(r["url"]))] for r in part2],
               [9, 12, 20, 30, 8, 40, 18, 12, 40, 16, 50, 30, 60])
-    if advice is not None:
-        sheet("Рекомендации ИИ", ["Строка в исходнике", "Название", "Почему строка спорная", "Что проверить",
-                                "Каких данных не хватает", "Источник рекомендации"], advice, [10, 30, 50, 55, 45, 30])
     wb.save(path)
 
 
@@ -339,7 +311,7 @@ def part2_cols(p):
             f"{m['author']}. {m['title']}" if m else "нет", p["reason"]]
 
 
-def build(src, dst, pages=None, advise=None):
+def build(src, dst, pages=None):
     """Собирает таблицу результата. src и dst: пути или файлы. pages: результаты checker.py по url."""
     wb = src if isinstance(src, openpyxl.Workbook) else openpyxl.load_workbook(src)
     rows = process(load_rows(wb))
@@ -347,8 +319,7 @@ def build(src, dst, pages=None, advise=None):
     part2 = load_rows(wb, "Задание 2") if "Задание 2" in wb.sheetnames else []
     for r in part2:
         r["url"] = clean(r["url"])
-    advice = advise(rows) if advise else None
-    write_xlsx(rows, books, dst, part2, pages or {}, advice)
+    write_xlsx(rows, books, dst, part2, pages or {})
     return rows, books
 
 
