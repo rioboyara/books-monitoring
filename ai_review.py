@@ -9,7 +9,7 @@ from urllib.parse import urlsplit
 
 import requests
 
-from normalize import author_matches, clean, key, loose
+from normalize import author_matches, clean, key, loose, needs
 
 ENDPOINT = "https://gateway.api429.com/v1/chat/completions"
 MODEL = os.environ.get("API429_MODEL", "gemini-3.5-flash-lite")
@@ -106,6 +106,10 @@ def review(out, heading, text, links, catalog, budget, inspect_link=None):
             {k: b[k] for k in ("book_id", "author", "title")} for b in candidates]})
         if isinstance(answer, dict) and answer.get("book_id") is None and out["match"]:
             answer["book_id"] = out["match"]["book_id"]
+        if isinstance(answer, dict) and answer.get("status") == 1 and not any(re.search(
+                r"файл|скачивание\s+(fb2|epub|pdf|txt|rtf|mobi|zip)|торрент|аудио|текст книги", sign, re.I)
+                for sign in out.get("signs", [])):
+            raise ValueError("Одна кнопка не подтверждает размещение")
         status, confidence, reason, quotes, match = verified_answer(answer, candidates, evidence)
         ai.update(proposed_status=status, evidence=quotes)
         if confidence >= .9 and status != 2:
@@ -117,7 +121,7 @@ def review(out, heading, text, links, catalog, budget, inspect_link=None):
     return out
 
 
-def complete(prompt, data, max_tokens=900):
+def complete(prompt, data, max_tokens=900, timeout=18):
     global hour_started, hourly_calls
     with lock:
         if time.monotonic() - hour_started > 3600:
@@ -128,10 +132,10 @@ def complete(prompt, data, max_tokens=900):
     with slots, requests.Session() as session:
         session.trust_env = False
         response = session.post(ENDPOINT, headers={"Authorization": "Bearer " + os.environ["API429_KEY"]},
-            json={"model": MODEL, "temperature": 0, "max_tokens": max_tokens, "messages": [
+            json={"model": MODEL, "temperature": 0, "max_tokens": max_tokens, "reasoning_effort": "low", "messages": [
                 {"role": "system", "content": prompt},
                 {"role": "user", "content": json.dumps(data, ensure_ascii=False)}]},
-            timeout=(5, 18), allow_redirects=False)
+            timeout=(5, timeout), allow_redirects=False)
         if response.status_code != 200:
             raise ValueError("ИИ недоступен")
         content = response.json()["choices"][0]["message"]["content"]
@@ -144,7 +148,7 @@ DATA_PROMPT = """Проанализируй спорные строки ката
 какой вопрос проверить и какие данные запросить. Не выдумывай ISBN, псевдонимы и полные имена.
 Верни JSON {"suggestions":[{"row":номер исходной строки,"quote":"дословная цитата из этой строки",
 "advice":"рекомендация по-русски без длинного тире","needed":"каких данных не хватает"}]}.
-Сохраняй номера переданных строк, до 8 рекомендаций, без догадок о содержимом URL."""
+Сохраняй номера переданных строк. До 8 рекомендаций. quote до 50 символов, advice до 90, needed до 60. Без догадок о содержимом URL."""
 
 
 def validated_suggestions(answer, sample):
@@ -154,23 +158,25 @@ def validated_suggestions(answer, sample):
     original = {r["row"]: r for r in sample}
     result, seen = [], set()
     for item in items:
+        if not isinstance(item, dict):
+            continue
         number = item.get("row")
         if type(number) is not int or number not in original or number in seen:
-            raise ValueError("row")
+            continue
         quote, advice, needed = (item.get(k) for k in ("quote", "advice", "needed"))
         if any(not isinstance(x, str) or not 2 <= len(x) <= 600 for x in (quote, advice, needed)):
-            raise ValueError("advice")
+            continue
         source = " ".join(str(v) for v in original[number].values())
         if clean(quote).casefold() not in clean(source).casefold():
-            raise ValueError("quote")
+            continue
         result.append([number, quote, re.sub(r"[\u2013\u2014]", "-", advice), needed])
         seen.add(number)
+    if not result:
+        raise ValueError("Нет рекомендаций с подтверждёнными цитатами")
     return result
 
 
 def suggest_rows(rows):
-    if not os.environ.get("API429_KEY"):
-        return [["", "", "ИИ не настроен. Спорные строки доступны на отдельном листе.", ""]]
     # Одинаковые вопросы по одной книге отправляем один раз, максимум 8 строк за загрузку.
     sample, seen = [], set()
     for r in rows:
@@ -181,8 +187,19 @@ def suggest_rows(rows):
         if len(sample) == 8:
             break
     if not sample:
-        return [["", "", "Спорных записей по правилам нет, ИИ-запрос не выполнялся.", ""]]
+        return [["", "", "Спорных записей по правилам нет, ИИ-запрос не выполнялся.", "", "Правила"]]
+    verified = {}
+    source = "Правила: ИИ не настроен"
     try:
-        return validated_suggestions(complete(DATA_PROMPT, {"rows": sample}, max_tokens=2000), sample)
-    except (requests.RequestException, ValueError, KeyError, IndexError, TypeError, AttributeError):
-        return [["", "", "ИИ не дал проверяемых рекомендаций. Используйте лист Спорные.", ""]]
+        if os.environ.get("API429_KEY"):
+            advice = validated_suggestions(complete(DATA_PROMPT, {"rows": sample}, max_tokens=2000, timeout=35), sample)
+            verified = {r[0]: r for r in advice}
+            source = "Правила: рекомендация ИИ для этой строки не подтверждена"
+    except requests.Timeout:
+        source = "Правила: превышено время ожидания ИИ"
+    except (requests.RequestException, ValueError, KeyError, IndexError, TypeError, AttributeError) as error:
+        source = "Правила: " + ("достигнут лимит ИИ-запросов" if str(error) == "Лимит ИИ-запросов достигнут"
+                                else "ответ ИИ не подтверждён или API недоступен")
+    return [verified[r["row"]] + ["ИИ: цитата проверена"] if r["row"] in verified else [
+        r["row"], r["title"], "Проверить: " + r["doubts"], needs(r["doubts"]) or
+        "Уточнить автора, название и соответствие ссылки книге", source] for r in sample]

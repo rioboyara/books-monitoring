@@ -5,7 +5,7 @@ from unittest.mock import patch
 
 import requests
 
-from ai_review import review, verified_answer, validated_suggestions
+from ai_review import review, verified_answer, validated_suggestions, suggest_rows
 
 BOOK = {"book_id": "B1", "author": "Алекс Рудин", "title": "Егерь-3", "tkey": "егерь3",
         "twords": ["eger"], "awords": ["aleks", "rudin"]}
@@ -69,9 +69,21 @@ def test_existing_book_is_preserved():
         assert result['status'] == 0 and result['match']['book_id'] == 'B1'
 
 
+def test_advice_survives_partial_failure():
+    sample = [{"row": 7, "author": "Автор", "title": "Книга", "doubts": "псевдоним"}]
+    good = {"row": 7, "quote": "Книга", "advice": "Уточнить автора", "needed": "Список псевдонимов"}
+    assert len(validated_suggestions({"suggestions": [good, {**good, 'row': 99}]}, sample)) == 1
+    rows = [{**sample[0], "book": "B1", "doubts": ["это же название есть у других авторов"]}]
+    with patch.dict(os.environ, {"API429_KEY": "test-not-a-real-key"}), patch('ai_review.complete', side_effect=requests.Timeout):
+        result = suggest_rows(rows)
+        assert result[0][0] == 7 and 'время ожидания' in result[0][4]
+        assert 'ISBN' in result[0][3]
+
+
 if __name__ == "__main__":
     test_validation()
     test_unavailable_api()
     test_data_recommendations()
     test_existing_book_is_preserved()
+    test_advice_survives_partial_failure()
     print("ai review checks passed")

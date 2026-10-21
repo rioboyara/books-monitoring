@@ -11,13 +11,15 @@ import ipaddress
 import itertools
 import json
 import re
+import random
 import socket
 import sys
 import time
 from datetime import datetime, timezone
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
-from threading import BoundedSemaphore
+from threading import BoundedSemaphore, Lock
+from email.utils import parsedate_to_datetime
 from difflib import SequenceMatcher
 from urllib.parse import urljoin, urlsplit
 
@@ -33,6 +35,40 @@ UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like 
 MAX_BYTES = 20_000_000
 TIMEOUT = (10, 25)
 DEADLINE = 40  # секунд на один адрес вместе с редиректами и повторами
+_host_lock = Lock()
+_next_request = {}
+
+
+def pace(url, until):
+    host = re.sub(r"^(www|s\d+)\.", "", urlsplit(url).hostname or "")
+    while True:
+        with _host_lock:
+            now = time.monotonic()
+            wait = max(0, _next_request.get(host, 0) - now)
+            if now + wait >= until:
+                raise requests.Timeout()
+            if not wait:
+                _next_request[host] = now + random.uniform(2, 2.5)
+                return
+        time.sleep(min(wait, max(0, until - time.monotonic())))
+
+
+def retry_delay(value, attempt):
+    if value:
+        try:
+            return max(0, float(value))
+        except ValueError:
+            try:
+                return max(0, (parsedate_to_datetime(value) - datetime.now(timezone.utc)).total_seconds())
+            except (ValueError, TypeError, OverflowError):
+                pass
+    return 2 ** (attempt + 1)
+
+
+def defer(url, delay):
+    host = re.sub(r"^(www|s\d+)\.", "", urlsplit(url).hostname or "")
+    with _host_lock:
+        _next_request[host] = max(_next_request.get(host, 0), time.monotonic() + delay)
 
 FORMATS = re.compile(r"\b(fb2|epub|pdf|txt|rtf|mobi|djvu|zip|rar|mp3|m4b)\b", re.I)
 DOWNLOAD = re.compile(r"скача|download|/dl/|/get", re.I)
@@ -102,7 +138,11 @@ urllib3_connection.create_connection = public_connection
 def get(s, url, until):
     """GET с ручными редиректами и общим лимитом времени на адрес."""
     for _ in range(8):
-        with s.get(url, timeout=TIMEOUT, stream=True, allow_redirects=False) as resp:
+        pace(url, until)
+        remaining = until - time.monotonic()
+        if remaining <= 0:
+            raise requests.Timeout()
+        with s.get(url, timeout=(min(TIMEOUT[0], remaining), min(TIMEOUT[1], remaining)), stream=True, allow_redirects=False) as resp:
             if not resp.is_redirect:
                 body, size = [], 0
                 for chunk in resp.iter_content(65536):
@@ -122,14 +162,30 @@ def get(s, url, until):
 def fetch(url):
     s = requests.Session()
     s.trust_env = False  # прокси из окружения обошёл бы проверку адреса при соединении
-    s.headers.update({"User-Agent": UA, "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.5"})
+    s.headers.update({"User-Agent": UA, "Accept-Language": "ru-RU,ru;q=0.9,en;q=0.5",
+                      "Accept": "text/html,application/xhtml+xml,application/pdf;q=0.9,*/*;q=0.8"})
     until = time.monotonic() + DEADLINE
-    for attempt in range(3):
-        resp, body = get(s, url, until)
-        cookie = js_cookie(body.decode("utf-8", "replace")) if len(body) < 5000 and attempt < 2 else None
-        if not cookie:
-            return resp, body
-        s.cookies.set(*cookie, domain=urlsplit(resp.url).hostname)
+    try:
+        for attempt in range(3):
+            try:
+                resp, body = get(s, url, until)
+            except (requests.Timeout, requests.ConnectionError) as error:
+                if attempt == 2 or PRIVATE in str(error) or time.monotonic() + 2 ** (attempt + 1) >= until:
+                    raise
+                defer(url, 2 ** (attempt + 1))
+                continue
+            if resp.status_code in (429, 502, 503, 504) and attempt < 2:
+                delay = retry_delay(resp.headers.get("Retry-After"), attempt)
+                defer(resp.url, delay)
+                if time.monotonic() + delay < until:
+                    url = resp.url
+                    continue
+            cookie = js_cookie(body.decode("utf-8", "replace")) if len(body) < 5000 and attempt < 2 else None
+            if not cookie:
+                return resp, body
+            s.cookies.set(*cookie, domain=urlsplit(resp.url).hostname)
+    finally:
+        s.close()
 
 
 def words_in(words, page_words):

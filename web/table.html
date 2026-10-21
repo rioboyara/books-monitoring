@@ -14,7 +14,7 @@
   <details><summary>Требования к файлу</summary><p>Лист "Задание 1": правообладатель, автор, название, тип контента, url, сайт, именно в таком порядке. Лист "Задание 2" необязателен. Идентификаторы неизменённых книг сохраняются.</p></details>
   <div class="workflow">
   <section class="panel"><h2>Загрузить таблицу</h2><label for="file">Ваш исходный файл</label><p class="muted small">XLSX до 5 МБ, до 3 000 строк на листе.</p><input type="file" id="file" accept=".xlsx">
-  <label class="small"><input type="checkbox" id="ai-data" checked> Рекомендации ИИ по спорным записям</label><p class="muted small">Данные до 8 спорных книг передаются API429. Советы будут на отдельном листе, исходные значения сохраняются.</p>
+  <label class="small"><input type="checkbox" id="ai-data" checked> Рекомендации ИИ по спорным записям</label><p class="muted small">Данные до 8 спорных книг передаются API429. Советы будут на отдельном листе. Если ИИ не ответил, используются рекомендации по правилам с отметкой об источнике.</p>
   <div class="actions"><button id="go">Обработать таблицу</button></div><p id="state" class="status-line" role="status" aria-live="polite"></p></section>
   <section class="panel" id="downloads"><h2>Скачать результат</h2>
   <div id="current" hidden><h3>Результат вашего файла</h3><p id="filename" class="muted small"></p><a id="download-current" class="button" download="result.xlsx">Скачать обработанный файл</a><hr></div>

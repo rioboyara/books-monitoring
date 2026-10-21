@@ -342,8 +342,8 @@ def write_xlsx(rows, books, path, part2=None, pages=None, advice=None):
               [[r["row"], *[r.get("original", r)[c] for c in SOURCE_COLUMNS], *part2_cols(pages.get(r["url"]))] for r in part2],
               [9, 12, 20, 30, 8, 40, 18, 12, 40, 16, 50, 30, 60])
     if advice is not None:
-        sheet("Рекомендации ИИ", ["Строка в исходнике", "Цитата из строки", "Что проверить (рекомендация ИИ)",
-                                "Каких данных не хватает"], advice, [12, 35, 65, 50])
+        sheet("Рекомендации ИИ", ["Строка в исходнике", "Цитата из строки", "Что проверить",
+                                "Каких данных не хватает", "Источник рекомендации"], advice, [12, 35, 65, 50, 50])
     wb.save(path)
 
 

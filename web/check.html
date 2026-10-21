@@ -124,7 +124,7 @@ async function runCheck() {
     results = data;
     document.getElementById("filter").value = "all"; document.getElementById("search").value = "";
     render();
-    state.textContent = "Готово: статус 1 у " + count(1) + ", 0 у " + count(0) + ", 2 у " + count(2) + ".";
+    state.textContent = "Проверено ссылок: " + results.length + ". Признаки размещения найдены: " + count(1) + ". Не подтверждено: " + count(0) + ". Нужна ручная проверка: " + count(2) + ".";
   } catch (e) {
     state.classList.add("error"); state.textContent = "Не удалось выполнить проверку: " + e.message;
   } finally {
