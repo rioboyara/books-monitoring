@@ -1,0 +1,2436 @@
+[
+ {
+  "url": "https://dolinakursov.ru/threads/disciplimit-disciplimit-sistema-kontrolja-reshenij.59305/",
+  "final_url": "https://dolinakursov.ru/threads/disciplimit-disciplimit-sistema-kontrolja-reshenij.59305/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "Проверка безопасности браузера...",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://skladchinmore.cc/threads/100-gotovyx-reshenij-s-ii-olegose.578058/",
+  "final_url": "https://s1.skladchinmore.cc/threads/100-gotovyx-reshenij-s-ii-olegose.578058/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://skladchik.tv/threads/100-gotovyx-reshenij-s-ii-olegose.487665/",
+  "final_url": "https://s4.skladchik.tv/threads/100-gotovyx-reshenij-s-ii-olegose.487665/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/100-gotovyx-reshenij-s-ii-olegose.481535/",
+  "final_url": "https://s10.skladchiki.pro/threads/100-gotovyx-reshenij-s-ii-olegose.481535/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "100 готовых решений с ИИ (Olegose) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "B5d524b",
+   "author": "OLEGOSE",
+   "title": "100 ГОТОВЫХ РЕШЕНИЙ С ИИ",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://librain.ru/molodeznaia-literatura/noc-na-lysoi-gore-gde-zabytye-bogi-slysat",
+  "final_url": "https://librain.ru/molodeznaia-literatura/noc-na-lysoi-gore-gde-zabytye-bogi-slysat",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Ночь на Лысой горе. Где забытые боги слышат: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B1d85aa",
+   "author": "Егорова Надежда",
+   "title": "Ночь на Лысой горе. Где забытые боги слышат",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://mp3deer.cc/mp3/armine-grigoryan-erevani-sirun-txa",
+  "final_url": "https://mp3deer.cc/mp3/armine-grigoryan-erevani-sirun-txa",
+  "http_status": 403,
+  "page_state": "ошибка 403",
+  "heading": "403 - Доступ запрещён - mp3deer.cc",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт ответил ошибкой 403, содержимое не получено."
+ },
+ {
+  "url": "https://skladchik.tv/threads/prompt-suno-com-ehnciklopedija-i-polnoe-rukovodstvo-po-sostavleniju-prompta-ddigital-zen.489299/",
+  "final_url": "https://s4.skladchik.tv/threads/prompt-suno-com-ehnciklopedija-i-polnoe-rukovodstvo-po-sostavleniju-prompta-ddigital-zen.489299/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://dolinakursov.ru/threads/69-sposobov-napechatat-dengi-eric-wolf.52412/",
+  "final_url": "https://dolinakursov.ru/threads/69-sposobov-napechatat-dengi-eric-wolf.52412/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "Проверка безопасности браузера...",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://dolinokursov.ru/threads/ispoved-vedmy-byt-izbrannoj-evsaron-noctis-arcana.64210/",
+  "final_url": "https://dolinokursov.ru/threads/ispoved-vedmy-byt-izbrannoj-evsaron-noctis-arcana.64210/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "Проверка безопасности браузера...",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://musportal.pro/track/1756600919-findroid-glava-01-gnev-imperii-kniga-1",
+  "final_url": "https://new.zvukofon.com/track/1756600919-findroid-glava-01-gnev-imperii-kniga-1",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Слушать онлайн и скачать Findroid - Глава 01 Гнев Империи. Книга 1: бесплатно в Mp3",
+  "signs": [
+   "аудио, слушать онлайн",
+   "скачивание mp3"
+  ],
+  "match": {
+   "book_id": "B55d926",
+   "author": "Findroid",
+   "title": "Гнев Империи. Книга 1",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание mp3; аудио, слушать онлайн."
+ },
+ {
+  "url": "https://free-kniga.ru/priklyucheniya/kontraktor-kniga-2/",
+  "final_url": "https://free-kniga.ru/priklyucheniya/kontraktor-kniga-2/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Контрактор. Книга 2: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B54dbaf",
+   "author": "Findroid",
+   "title": "Контрактор. Книга 2",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://knigi.fun/19469-kontraktor-kniga-2.html",
+  "final_url": "https://knigi.fun/19469-kontraktor-kniga-2.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Контрактор. Книга 2 Findroid — читать онлайн или скачать бесплатно",
+  "signs": [
+   "чтение онлайн",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B54dbaf",
+   "author": "Findroid",
+   "title": "Контрактор. Книга 2",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн."
+ },
+ {
+  "url": "https://kniganet.ru/romani/izmena-hochu-tvoego-muzha/",
+  "final_url": "https://kniganet.ru/romani/izmena-hochu-tvoego-muzha/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Измена. Хочу твоего мужа: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Измена. Хочу твоего мужа\" совпало, но автора из каталога (Ася Исай, Галина Колоскова, Мария Авенская) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://librain.ru/detektivy/kontraktor-kniga-2",
+  "final_url": "https://librain.ru/detektivy/kontraktor-kniga-2",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Контрактор. Книга 2: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B54dbaf",
+   "author": "Findroid",
+   "title": "Контрактор. Книга 2",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://litseries.ru/detektivy/kontraktor-kniga-2/",
+  "final_url": "https://litseries.ru/detektivy/kontraktor-kniga-2/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Контрактор. Книга 2: читать и скачать полностью онлайн бесплатно без сокращений FB2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B54dbaf",
+   "author": "Findroid",
+   "title": "Контрактор. Книга 2",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://librain.ru/boevik/antalion-mest",
+  "final_url": "https://librain.ru/boevik/antalion-mest",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Анталион. Месть: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B9411d3",
+   "author": "Helga D.B.",
+   "title": "Анталион",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://knigi.fun/32263-boss-budet-gharko.html",
+  "final_url": "https://knigi.fun/32263-boss-budet-gharko.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Босс. Будет жарко Хельга Дюран — читать онлайн или скачать бесплатно",
+  "signs": [
+   "чтение онлайн",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B6e6b88",
+   "author": "Helga Duran",
+   "title": "Босс. Будет жарко",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн."
+ },
+ {
+  "url": "https://mir-chitki.com/romany/9651-boss-budet-zharko.html",
+  "final_url": "https://mir-chitki.com/romany/9651-boss-budet-zharko.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Босс. Будет жарко - Хельга Дюран скачать книгу и читать онлайн",
+  "signs": [
+   "чтение онлайн",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B6e6b88",
+   "author": "Helga Duran",
+   "title": "Босс. Будет жарко",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн."
+ },
+ {
+  "url": "https://s4.skladchik.tv/threads/prompt-suno-com-ehnciklopedija-i-polnoe-rukovodstvo-po-sostavleniju-prompta-ddigital-zen.489299/",
+  "final_url": "https://s4.skladchik.tv/threads/prompt-suno-com-ehnciklopedija-i-polnoe-rukovodstvo-po-sostavleniju-prompta-ddigital-zen.489299/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://mir-romanov.ru/russkie/569-grubijan.html",
+  "final_url": "https://mir-romanov.ru/russkie/569-grubijan.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Грубиян - Хельга Дюран читать онлайн бесплатно",
+  "signs": [
+   "чтение онлайн",
+   "скачивание fb2"
+  ],
+  "match": {
+   "book_id": "B8d3aa4",
+   "author": "Helga Duran",
+   "title": "Грубиян",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2; чтение онлайн."
+ },
+ {
+  "url": "https://free-kniga.ru/detektivy/igruska-menta/",
+  "final_url": "https://free-kniga.ru/detektivy/igruska-menta/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Игрушка мента: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Ba91ddb",
+   "author": "Helga Duran",
+   "title": "Игрушка мента",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://librain.ru/detektivy/igruska-menta",
+  "final_url": "https://librain.ru/detektivy/igruska-menta",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Игрушка мента: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Ba91ddb",
+   "author": "Helga Duran",
+   "title": "Игрушка мента",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://chitalka.net/books/svodnye-rasplata-za-oshibki",
+  "final_url": "https://chitalka.net/books/svodnye-rasplata-za-oshibki",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Сводные. Расплата за ошибки - Helga Duran | Читать бесплатно полностью | Читалка.нет",
+  "signs": [
+   "чтение онлайн"
+  ],
+  "match": {
+   "book_id": "B4abd1f",
+   "author": "Helga Duran",
+   "title": "Сводные. Расплата за ошибки",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: чтение онлайн."
+ },
+ {
+  "url": "https://free-kniga.ru/trillery/sobstvennost-zhestokogo-213453/",
+  "final_url": "https://free-kniga.ru/trillery/sobstvennost-zhestokogo-213453/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Собственность жестокого: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": {
+   "book_id": "B5f8b85",
+   "author": "Helga Duran",
+   "title": "Собственность жестокого",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://ebooksfind.com/detektivi/tarskiy-goryachiy-tvoy/",
+  "final_url": "https://ebooksfind.com/detektivi/tarskiy-goryachiy-tvoy/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тарский горячий твой: читать и скачать полностью онлайн бесплатно без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B584abb",
+   "author": "Helga Duran",
+   "title": "Тарский горячий твой",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://free-kniga.ru/detektivy/tarskii-goriacii-tvoi/",
+  "final_url": "https://free-kniga.ru/detektivy/tarskii-goriacii-tvoi/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тарский горячий твой: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B584abb",
+   "author": "Helga Duran",
+   "title": "Тарский горячий твой",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://listaibuk.com/sovremennie-lyubovnie-romani/tarskiy-goryachiy-tvoy/",
+  "final_url": "https://listaibuk.com/sovremennie-lyubovnie-romani/tarskiy-goryachiy-tvoy/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тарский горячий твой: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B584abb",
+   "author": "Helga Duran",
+   "title": "Тарский горячий твой",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://librain.ru/sovremennaia-proza/severnyi-veter-tom-1",
+  "final_url": "https://librain.ru/sovremennaia-proza/severnyi-veter-tom-1",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Северный ветер. Том 1: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B227ba1",
+   "author": "Holly Hope Karter",
+   "title": "Северный ветер. Том 1",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://astro-babylon.ru/biblioteca-main/karmicheskaya-astrologiya.html",
+  "final_url": "https://astro-babylon.ru/biblioteca-main/karmicheskaya-astrologiya.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Кармическая астрология | Книги по кармической астрологии",
+  "signs": [
+   "текст книги прямо на странице"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Кармическая астрология | Книги по кармической астрологии"
+ },
+ {
+  "url": "https://librain.ru/boevik/pesn-polunoci",
+  "final_url": "https://librain.ru/boevik/pesn-polunoci",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Песнь Полуночи: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B8ed294",
+   "author": "J. R. Crow",
+   "title": "Песнь Полуночи",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://read.xbook.life/books_gaunerinnen_67131402",
+  "final_url": "https://read.xb0ok.link/books_gaunerinnen_67131402",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Gaunerinnen, Яна Деноль Jana, книга полностью, читать бесплатно онлайн",
+  "signs": [
+   "текст книги прямо на странице"
+  ],
+  "match": {
+   "book_id": "B754fe1",
+   "author": "Jana Denole Яна Деноль",
+   "title": "Gaunerinnen",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице."
+ },
+ {
+  "url": "https://free.chitaem-knigi.online/books/vvedenie-v-dzhiotisha-vedu-putevoditel-po-vedicheskoi-astrologii",
+  "final_url": "https://free.chitaem-knigi.online/books/vvedenie-v-dzhiotisha-vedu-putevoditel-po-vedicheskoi-astrologii",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "Загрузка — Читаем-Книги.Онлайн",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://knigi.ebooker.online/book/43218618-kniga-vvedenie-v-dzhyotisha-vedu-putevoditel-po-vedicheskoy-astrologii",
+  "final_url": "https://new.kniga-online.bid/books/religija-i-duhovnost/jezoterika-128/1000654828-vvedenie-v-dzhyotisha-vedu-putevoditel-po-vedicheskoy-astrologii.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Читать \"Введение в Джйотиша Веду: Путеводитель по ведической астрологии\" онлайн / Barrett Jane - Ебукер",
+  "signs": [
+   "текст книги прямо на странице"
+  ],
+  "match": {
+   "book_id": "B571cdc",
+   "author": "Jane Barrett",
+   "title": "Введение в Джйотиша Веду: Путеводитель по ведической астрологии",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/sprosi-ii-kak-sdelat-nejroset-lichnym-psixologom-john-hollyweeds.421570/",
+  "final_url": "https://s10.skladchiki.pro/threads/sprosi-ii-kak-sdelat-nejroset-lichnym-psixologom-john-hollyweeds.421570/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Спроси ИИ. Как сделать нейросеть личным психологом (John Hollyweeds) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "Bd7871a",
+   "author": "John Hollyweeds",
+   "title": "Спроси ИИ: как сделать нейросеть личным психологом",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://free.chitaem-knigi.online/books/sait-tvorchestva-roman-epopeia-o-nelegkikh-budniakh-stvo",
+  "final_url": "https://free.chitaem-knigi.online/books/sait-tvorchestva-roman-epopeia-o-nelegkikh-budniakh-stvo",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "Загрузка — Читаем-Книги.Онлайн",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://librain.ru/liubovnoe-fentezi/volcii-rok",
+  "final_url": "https://librain.ru/liubovnoe-fentezi/volcii-rok",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Волчий рок: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B9f7499",
+   "author": "Julia Shi",
+   "title": "Волчий рок",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://librain.ru/boevik/akseid",
+  "final_url": "https://librain.ru/boevik/akseid",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Аксейд: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B1f6137",
+   "author": "Juliet Black",
+   "title": "Аксейд",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://librain.ru/trillery/vo-imia-mira",
+  "final_url": "https://librain.ru/trillery/vo-imia-mira",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Во имя мира: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B644d34",
+   "author": "Juliet Noir",
+   "title": "Во имя мира",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://readtoday.ru/psihologiya/tsvetok-zhizni-244994/",
+  "final_url": "https://readtoday.ru/psihologiya/tsvetok-zhizni-244994/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Цветок Жизни: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B27547e",
+   "author": "Kristy Holod",
+   "title": "Цветок Жизни",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://free-kniga.ru/priklyucheniya/pozyvnoy-hottabych-7-avatar-h-ch-2/",
+  "final_url": "https://free-kniga.ru/priklyucheniya/pozyvnoy-hottabych-7-avatar-h-ch-2/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Позывной \"Хоттабыч\"#7. Аватар Х (ч.2): читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B6ea970",
+   "author": "Lanpirot",
+   "title": "Позывной «Хоттабыч»#7. Аватар \"Х\" (ч.2)",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://booksfb2.com/boevik/pozyvnoi-xottabyc7-avatar-x-c2",
+  "final_url": "https://booksfb2.com/boevik/pozyvnoi-xottabyc7-avatar-x-c2",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Позывной \"Хоттабыч\"#7. Аватар Х (ч.2): читать онлайн бесплатно и скачать полностью в fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B6ea970",
+   "author": "Lanpirot",
+   "title": "Позывной «Хоттабыч»#7. Аватар \"Х\" (ч.2)",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://free-kniga.ru/priklyucheniya/pozyvnoy-hottabych-9-ischadie-kromki-ch-2/",
+  "final_url": "https://free-kniga.ru/priklyucheniya/pozyvnoy-hottabych-9-ischadie-kromki-ch-2/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Позывной \"Хоттабыч\"#9. Исчадие Кромки (ч. 2): читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B59d090",
+   "author": "Lanpirot",
+   "title": "Позывной «Хоттабыч»#9. Исчадие Кромки (ч. 2)",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://readtoday.ru/priklyucheniya/pozyvnoy-hottabych-9-ischadie-kromki-ch-2/",
+  "final_url": "https://readtoday.ru/priklyucheniya/pozyvnoy-hottabych-9-ischadie-kromki-ch-2/",
+  "http_status": 404,
+  "page_state": "страницы нет",
+  "heading": "Страница не найдена - ReadToday | 404",
+  "signs": [
+   "чтение онлайн"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Страницы нет: ответ 404, Страница не найдена - ReadToday | 404."
+ },
+ {
+  "url": "https://librain.ru/nauka-i-obrazovanie/oge-2026-po-angliiskomu-laifxaki-feily-i-100-poleznoi-infy-cast-2",
+  "final_url": "https://librain.ru/nauka-i-obrazovanie/oge-2026-po-angliiskomu-laifxaki-feily-i-100-poleznoi-infy-cast-2",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "ОГЭ-2026 по английскому. Лайфхаки, фейлы и 100% полезной инфы. Часть 2: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: ОГЭ-2026 по английскому. Лайфхаки, фейлы и 100% полезной инфы. Часть 2: читать и скачать онлайн бесп"
+ },
+ {
+  "url": "https://librain.ru/index.php/detektivy/izmena-ia-vas-vernu",
+  "final_url": "https://librain.ru/detektivy/izmena-ia-vas-vernu",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Измена. Я вас верну: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B0930d2",
+   "author": "Оксана Алексаева",
+   "title": "Измена. Я вас верну",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://librain.ru/zdorove/metodiceskoe-posobie-po-laminirovaniiu-resnic",
+  "final_url": "https://librain.ru/zdorove/metodiceskoe-posobie-po-laminirovaniiu-resnic",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Методическое пособие по ламинированию ресниц: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B057496",
+   "author": "Lash Book",
+   "title": "Методическое пособие по ламинированию ресниц",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://storipad.ru/story/168175",
+  "final_url": "",
+  "http_status": null,
+  "page_state": "нет ответа",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не ответил (ConnectTimeout)."
+ },
+ {
+  "url": "https://languagelearning.site/french/preparation-a-lexamen-du-delf-b2-2/",
+  "final_url": "https://languagelearning.site/french/preparation-a-lexamen-du-delf-b2-2/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Préparation à l’examen du DELF B2 – Language Learning",
+  "signs": [
+   "торрент",
+   "кнопка скачивания",
+   "скачивание rar"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Préparation à l’examen du DELF B2 – Language Learning"
+ },
+ {
+  "url": "https://mp3deer.cc/mp3/%D1%81%D1%83%D0%BF%D0%B5%D1%80-%D0%B0%D1%83%D0%B4%D0%B8%D0%BE%D0%BA%D0%BD%D0%B8%D0%B3%D0%B0-%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%BA-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D0%BE%D0%B3%D0%BE-%D0%BD%D0%B5-%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D0%BE-%D0%B1%D1%8B%D1%82%D1%8C",
+  "final_url": "https://mp3deer.cc/mp3/%D1%81%D1%83%D0%BF%D0%B5%D1%80-%D0%B0%D1%83%D0%B4%D0%B8%D0%BE%D0%BA%D0%BD%D0%B8%D0%B3%D0%B0-%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%BA-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D0%BE%D0%B3%D0%BE-%D0%BD%D0%B5-%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D0%BE-%D0%B1%D1%8B%D1%82%D1%8C",
+  "http_status": 403,
+  "page_state": "ошибка 403",
+  "heading": "403 - Доступ запрещён - mp3deer.cc",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт ответил ошибкой 403, содержимое не получено."
+ },
+ {
+  "url": "https://skladmk.online/product/energiya-zhizni-lucy-zen/",
+  "final_url": "https://skladmk.online/product/energiya-zhizni-lucy-zen/",
+  "http_status": 200,
+  "page_state": "страницы нет",
+  "heading": "Ошибка | Не удается получить доступ к сайту",
+  "signs": [],
+  "match": null,
+  "status": 0,
+  "reason": "Страницы нет: ответ 200, Ошибка | Не удается получить доступ к сайту."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/vsjo-o-swot-analize-mba-tools.316150/",
+  "final_url": "https://s10.skladchiki.pro/threads/vsjo-o-swot-analize-mba-tools.316150/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Всё о SWOT-анализе (MBA. TOOLS) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "Be74d3f",
+   "author": "MBA. TOOLS",
+   "title": "SWOT. Всё о SWOT-анализе",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://skladchik.tv/threads/sex-ili-love-stories-glazami-zhenschin-michel-ardo.230533/",
+  "final_url": "https://s4.skladchik.tv/threads/sex-ili-love-stories-glazami-zhenschin-michel-ardo.230533/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://kniganet.ru/fentezi/brakovannyy-dzhinn/",
+  "final_url": "https://kniganet.ru/fentezi/brakovannyy-dzhinn/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Бракованный джинн: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Бракованный джинн\" совпало, но автора из каталога (Ravenna) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://2ivdel.tvoysadik.ru/?section_id=98",
+  "final_url": "https://2ivdel.tvoysadik.ru/?section_id=98",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Занимательные раскраски",
+  "signs": [
+   "кнопка скачивания",
+   "скачивание pdf"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Занимательные раскраски"
+ },
+ {
+  "url": "https://mx-style.net/product/levitacziya-put-k-vnutrennej-svobode-mind-wave/",
+  "final_url": "https://mx-style.net/product/levitacziya-put-k-vnutrennej-svobode-mind-wave/",
+  "http_status": 404,
+  "page_state": "страницы нет",
+  "heading": "Ошибка | Не удается получить доступ к сайту",
+  "signs": [],
+  "match": null,
+  "status": 0,
+  "reason": "Страницы нет: ответ 404, Ошибка | Не удается получить доступ к сайту."
+ },
+ {
+  "url": "https://librain.ru/delovaia-literatura/masterstvo-promt-inziniringa-prodvinutyi-uroven",
+  "final_url": "https://librain.ru/delovaia-literatura/masterstvo-promt-inziniringa-prodvinutyi-uroven",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Мастерство промт-инжиниринга. Продвинутый уровень: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Be054eb",
+   "author": "Misha Ford",
+   "title": "Мастерство промт-инжиниринга. Продвинутый уровень",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/masterstvo-promt-inzhiniringa-prodvinutyj-uroven-misha-ford.453193/",
+  "final_url": "https://s10.skladchiki.pro/threads/masterstvo-promt-inzhiniringa-prodvinutyj-uroven-misha-ford.453193/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Мастерство промт-инжиниринга. Продвинутый уровень (Misha Ford) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "Be054eb",
+   "author": "Misha Ford",
+   "title": "Мастерство промт-инжиниринга. Продвинутый уровень",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://librain.ru/zdorove/keto-recepty",
+  "final_url": "https://librain.ru/zdorove/keto-recepty",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Кето-рецепты: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Кето-рецепты\" совпало, но автора из каталога (Nika Nika) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://aknigi24.com/book/tisina-spokoistvie-v-mire-polnom-suma-tit-nat-xan-nikosho",
+  "final_url": "https://aknigi24.com/book/tisina-spokoistvie-v-mire-polnom-suma-tit-nat-xan-nikosho",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тишина. Спокойствие в мире, полном шума — скачать аудиокнигу бесплатно в mp3 или слушать онлайн | Тит Нат Хан | читает Nikosho | Aknigi24 | Тит Нат Хан — Тишина. Спокойствие в мире, полном шума Тишина. Спокойствие в мире, полном шума",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "аудио, слушать онлайн",
+   "это аудиоверсия"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Тишина\" совпало, но автора из каталога (Nina BROD) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://librain.ru/detektivy/spastis-znacit-predat",
+  "final_url": "https://librain.ru/detektivy/spastis-znacit-predat",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Спастись – значит предать: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B7ff39c",
+   "author": "Omar RazZi",
+   "title": "СПАСТИСЬ – ЗНАЧИТ ПРЕДАТЬ",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://knigi.ebooker.online/book/42876144-kniga-pyat-zvezd.-chast-5",
+  "final_url": "https://new.kniga-online.bid/books/nauchnye-i-nauchno-populjarnye-knigi/obrazovatelnaya-literatura/1000649639-pyat-zvezd.-chast-5.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Читать \"Пять звезд. Часть 5\" онлайн / Ominayashi - Ебукер",
+  "signs": [],
+  "match": {
+   "book_id": "B2c0d9e",
+   "author": "Ominayashi",
+   "title": "Пять звезд. Часть 5",
+   "where": "заголовок"
+  },
+  "status": 0,
+  "reason": "Книга найдена в заголовке, автор совпал. Книга упомянута, но скачать, читать или слушать нельзя."
+ },
+ {
+  "url": "https://read.xbook.life/books_pyat-zvezd.-chast-5_117232302",
+  "final_url": "https://read.xb0ok.link/books_pyat-zvezd.-chast-5_117232302",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Пять звезд. Часть 5, Ominayashi, книга полностью, читать бесплатно без сокращений",
+  "signs": [
+   "текст книги прямо на странице"
+  ],
+  "match": {
+   "book_id": "B2c0d9e",
+   "author": "Ominayashi",
+   "title": "Пять звезд. Часть 5",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице."
+ },
+ {
+  "url": "https://librain.ru/putesestviia-i-geografiia/perexod-v-5d-tainyi-kod-dlia-zizni-bez-granic-i-boleznei",
+  "final_url": "https://librain.ru/putesestviia-i-geografiia/perexod-v-5d-tainyi-kod-dlia-zizni-bez-granic-i-boleznei",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Переход в 5D. Тайный код для жизни без границ и болезней.: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Переход в 5D. Тайный код для жизни без границ и болезней.: читать и скачать онлайн бесплатно полност"
+ },
+ {
+  "url": "https://skladchik.tv/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.450854/",
+  "final_url": "https://s4.skladchik.tv/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.450854/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.444704/",
+  "final_url": "https://s10.skladchiki.pro/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.444704/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Настроить свой мозг. Не можешь сосредоточиться? Забываешь всё на свете? Тянешь с решением? (Rais Gu) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "B4b3214",
+   "author": "Rais Ais Gu",
+   "title": "Настроить свой мозг. Не можешь сосредоточиться? Забываешь всё на свете? Тянешь с решением?",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://skladchinabiz.app/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.436561/",
+  "final_url": "https://s1.skladchinabiz.com/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.436561/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://skladchinmore.one/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.541822/",
+  "final_url": "https://s1.skladchinmore.cc/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.541822/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://litbox.pro/sovremennie-lyubovnie-romani/ne-zachyot-dlya-ptichki/",
+  "final_url": "https://litbox.pro/sovremennie-lyubovnie-romani/ne-zachyot-dlya-ptichki/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "(Не)зачёт для птички — читать онлайн и скачать | LitBox",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B144a58",
+   "author": "Ravenna",
+   "title": "(Не)зачёт для птички",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://ruslibrary.org/fantastika-fjentezi/418-vector-sbornik-knig.html",
+  "final_url": "https://mir.ruslibrary.org/fantastika-fjentezi/418-vector-sbornik-knig.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Книга Vector. Сборник книг (полная версия)",
+  "signs": [
+   "кнопка скачивания",
+   "скачивание mp3, zip",
+   "файлообменники htfl.net, nitroflare.com, trbt.cc"
+  ],
+  "match": {
+   "book_id": "B10fce6",
+   "author": "Vector",
+   "title": "Констебль. Том III",
+   "where": "текст"
+  },
+  "status": 1,
+  "reason": "Книга найдена в тексте страницы (сборник или список), автор совпал. Признаки размещения: скачивание mp3, zip; файлообменники htfl.net, nitroflare.com, trbt.cc; кнопка скачивания."
+ },
+ {
+  "url": "https://litbox.pro/tag/ravenna/",
+  "final_url": "https://litbox.pro/tag/ravenna/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Книги автора Равенна | LitBox | Равенна - скачать и читать все книги онлайн бесплатно полностью",
+  "signs": [
+   "чтение онлайн"
+  ],
+  "match": {
+   "book_id": "B144a58",
+   "author": "Ravenna",
+   "title": "(Не)зачёт для птички",
+   "where": "текст"
+  },
+  "status": 2,
+  "reason": "Книга есть только в списке на странице автора или подборки, файлов к ней не видно. Нужна проверка человеком."
+ },
+ {
+  "url": "https://litseries.ru/romany/medovichok-533516/",
+  "final_url": "https://litseries.ru/romany/medovichok-533516/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Медовичок: читать и скачать полностью онлайн бесплатно без сокращений FB2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Медовичок\" совпало, но автора из каталога (Ravenna) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://mir-chitki.com/romany/8472-izmena-hochu-tvoego-muzha.html",
+  "final_url": "https://mir-chitki.com/romany/8472-izmena-hochu-tvoego-muzha.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Измена. Хочу твоего мужа - Оксана Алексаева скачать книгу и читать онлайн",
+  "signs": [
+   "чтение онлайн",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Измена. Хочу твоего мужа\" совпало, но автора из каталога (Ася Исай, Галина Колоскова, Мария Авенская) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://pro-books.ru/liubovnye-romany/medovicok",
+  "final_url": "https://pro-books.ru/liubovnye-romany/medovicok",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Медовичок: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Медовичок\" совпало, но автора из каталога (Ravenna) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://readtoday.ru/romany/medovichok-311872/",
+  "final_url": "https://readtoday.ru/romany/medovichok-311872/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Медовичок: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Медовичок\" совпало, но автора из каталога (Ravenna) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://skladchik.tv/threads/vedminy-runy-opisanie-rabota-avalenta-ignis.302872/",
+  "final_url": "https://s4.skladchik.tv/threads/vedminy-runy-opisanie-rabota-avalenta-ignis.302872/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/5000-words-in-a-month-william-alexander-dimatteo.254128/",
+  "final_url": "https://s10.skladchiki.pro/threads/5000-words-in-a-month-william-alexander-dimatteo.254128/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "5000 words in a month (William Alexander DiMatteo) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "Bf8c90f",
+   "author": "William Alexander DiMatteo",
+   "title": "5000 words in a month",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://mir-romanov.ru/russkie/2457-vse-bylo-ne-tak.html",
+  "final_url": "https://mir-romanov.ru/russkie/2457-vse-bylo-ne-tak.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Все было не так читать онлайн скачать FB2 бесплатно",
+  "signs": [
+   "чтение онлайн",
+   "скачивание fb2"
+  ],
+  "match": {
+   "book_id": "B8b7f62",
+   "author": "Агния Арро",
+   "title": "Все было не так",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2; чтение онлайн."
+ },
+ {
+  "url": "https://bookone.online/roman/12110-apogej-tenzor-porjadka.html",
+  "final_url": "",
+  "http_status": null,
+  "page_state": "нет ответа",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не ответил (ConnectionError)."
+ },
+ {
+  "url": "https://free-kniga.ru/romany/tsena-proscheniya-147884/",
+  "final_url": "https://free-kniga.ru/romany/tsena-proscheniya-147884/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Цена прощения: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Цена прощения: читать и скачать онлайн бесплатно полностью без сокращений"
+ },
+ {
+  "url": "https://gigabooks.ru/romany/tsena-proscheniya-686299/",
+  "final_url": "https://gigabooks.ru/romany/tsena-proscheniya-686299/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Цена прощения: читать и скачать полностью бесплатно онлайн без сокращений FB2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Цена прощения: читать и скачать полностью бесплатно онлайн без сокращений FB2"
+ },
+ {
+  "url": "https://librain.ru/sovremennye-liubovnye-romany/cena-proshheniia",
+  "final_url": "https://librain.ru/sovremennye-liubovnye-romany/cena-proshheniia",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Цена прощения: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Цена прощения: читать и скачать онлайн бесплатно полностью fb2"
+ },
+ {
+  "url": "https://litseries.ru/romany/tsena-proscheniya-203253/",
+  "final_url": "https://litseries.ru/romany/tsena-proscheniya-203253/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Цена прощения: читать и скачать полностью онлайн бесплатно без сокращений FB2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Цена прощения: читать и скачать полностью онлайн бесплатно без сокращений FB2"
+ },
+ {
+  "url": "https://mir-fjentezi.ru/samizdat-fjentezi/4043-zasada-dlja-chempiona.html",
+  "final_url": "https://mir-fjentezi.ru/samizdat-fjentezi/4043-zasada-dlja-chempiona.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Засада для чемпиона читать онлайн и скачать бесплатно",
+  "signs": [
+   "чтение онлайн",
+   "скачивание fb2"
+  ],
+  "match": {
+   "book_id": "B6715b7",
+   "author": "Алекс Коваль",
+   "title": "Засада для чемпиона",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2; чтение онлайн."
+ },
+ {
+  "url": "https://free-kniga.ru/boevik/cena-doveriia/",
+  "final_url": "https://free-kniga.ru/boevik/cena-doveriia/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Цена доверия: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Ценадоверия\" совпало, но автора из каталога (Авее Лав) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://skladchinabiz.app/threads/samosovershenstvovanie-ehto-onanizm-a-vot-samorazrushenie-adrej-sokol.419467/",
+  "final_url": "https://s1.skladchinabiz.com/threads/samosovershenstvovanie-ehto-onanizm-a-vot-samorazrushenie-adrej-sokol.419467/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://kniganet.ru/drama/nenuzhnaya-istinnaya-drakona-hozyayka-solnechnogo-pomestya/",
+  "final_url": "https://kniganet.ru/drama/nenuzhnaya-istinnaya-drakona-hozyayka-solnechnogo-pomestya/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Ненужная истинная дракона. Хозяйка Солнечного поместья: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": {
+   "book_id": "Ba025f1",
+   "author": "Адриана Дари",
+   "title": "Хозяйка Солнечного поместья",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://s10.skladchiki.pro/threads/osnovy-dzhjotish-uchebnik-po-vostochnoj-astrologii-alevtina-sijatri.291151/",
+  "final_url": "https://s10.skladchiki.pro/threads/osnovy-dzhjotish-uchebnik-po-vostochnoj-astrologii-alevtina-sijatri.291151/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Основы Джйотиш. Учебник по восточной астрологии (Алевтина Сиятри) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "B2899ff",
+   "author": "Алевтина Сиятри",
+   "title": "Основы Джйотиш. Учебник по восточной астрологии",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/osnovy-dzhjotish-uchebnik-po-vostochnoj-astrologii-alevtina-sijatri.291151/",
+  "final_url": "https://s10.skladchiki.pro/threads/osnovy-dzhjotish-uchebnik-po-vostochnoj-astrologii-alevtina-sijatri.291151/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Основы Джйотиш. Учебник по восточной астрологии (Алевтина Сиятри) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "B2899ff",
+   "author": "Алевтина Сиятри",
+   "title": "Основы Джйотиш. Учебник по восточной астрологии",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://wav-library.net/sovremennaia-proza/cena-proshheniia",
+  "final_url": "",
+  "http_status": null,
+  "page_state": "нет ответа",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не ответил (SSLError)."
+ },
+ {
+  "url": "https://knigoline.ru/tyomnyy-mag-kniga-1-nevedomyy-put-4375/",
+  "final_url": "https://knigoline.ru/tyomnyy-mag-kniga-1-nevedomyy-put-4375/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тёмный маг - книга 1. Неведомый путь: скачать бесплатно и полностью | Алекс Ключевской (Лёха) | Тёмный маг — книга 1. Неведомый путь",
+  "signs": [
+   "кнопка скачивания",
+   "чтение онлайн",
+   "ссылки на покупку в Литрес"
+  ],
+  "match": {
+   "book_id": "Be729d7",
+   "author": "Алекс Ключевской",
+   "title": "Тёмный маг. Книга 1. Неведомый путь",
+   "where": "заголовок"
+  },
+  "status": 0,
+  "reason": "Книга найдена в заголовке, автор совпал. Своих файлов нет, скачивание и чтение ведут на покупку в Литрес."
+ },
+ {
+  "url": "https://free-kniga.ru/yumor/razvedena-i-prekrasna-379393/",
+  "final_url": "https://free-kniga.ru/yumor/razvedena-i-prekrasna-379393/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Разведена и Прекрасна: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": {
+   "book_id": "B92dcc8",
+   "author": "Алекс Мара",
+   "title": "Разведенаипрекрасна",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/promtologija-kak-sdelat-nejroset-svoim-zamestitelem-aleks-promtov.472498/",
+  "final_url": "https://s10.skladchiki.pro/threads/promtologija-kak-sdelat-nejroset-svoim-zamestitelem-aleks-promtov.472498/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Промтология. Как сделать нейросеть своим заместителем (Алекс Промтов) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "B7dd037",
+   "author": "Алекс Промтов",
+   "title": "Промтология: Как сделать нейросеть своим заместителем",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://librain.ru/karera-i-kadry/sporim-boss",
+  "final_url": "https://librain.ru/karera-i-kadry/sporim-boss",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Спорим, босс?: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Ba6e475",
+   "author": "Алекс Коваль",
+   "title": "Спорим, босс?",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://litseries.ru/romany/sporim-boss-388646/",
+  "final_url": "https://litseries.ru/romany/sporim-boss-388646/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Спорим, босс?: читать и скачать полностью онлайн бесплатно без сокращений FB2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": {
+   "book_id": "Ba6e475",
+   "author": "Алекс Коваль",
+   "title": "Спорим, босс?",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://bibliophile.top/index.php?threads/11672/",
+  "final_url": "https://bibliophile.top/index.php?threads/11672/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Коган Алекс - Изучаем pytest От основ до продвинутых техник тестирования в Python [2026, PDF, RUS] | Библиофил- бесплатный сервис электронных книг. | Welcome!",
+  "signs": [],
+  "match": {
+   "book_id": "Bbec4dd",
+   "author": "Алекс Коган",
+   "title": "Изучаем pytest: От основ до продвинутых техник тестирования в Python",
+   "where": "заголовок"
+  },
+  "status": 0,
+  "reason": "Книга найдена в заголовке, автор совпал. Книга упомянута, но скачать, читать или слушать нельзя."
+ },
+ {
+  "url": "https://i-tor.pro/viewtopic.php?t=940730",
+  "final_url": "https://i-tor.pro/viewtopic.php?t=940730",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://knigoline.ru/13-y-demon-asmodeya-tom-2-9093/",
+  "final_url": "https://knigoline.ru/13-y-demon-asmodeya-tom-2-9093/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "13-й демон Асмодея - том 2: скачайте полную версию | Алекс Ключевской (Лёха) | 13-й демон Асмодея — том 2",
+  "signs": [
+   "кнопка скачивания",
+   "чтение онлайн",
+   "ссылки на покупку в Литрес"
+  ],
+  "match": {
+   "book_id": "B9fc9a4",
+   "author": "Алекс Ключевской",
+   "title": "13-й демон Асмодея. Том 2",
+   "where": "заголовок"
+  },
+  "status": 0,
+  "reason": "Книга найдена в заголовке, автор совпал. Своих файлов нет, скачивание и чтение ведут на покупку в Литрес."
+ },
+ {
+  "url": "https://skladchik.tv/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.481125/",
+  "final_url": "https://s4.skladchik.tv/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.481125/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.475408/",
+  "final_url": "https://s10.skladchiki.pro/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.475408/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Изучаем pytest. От основ до продвинутых техник тестирования в Python (Алекс Коган) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "Bbec4dd",
+   "author": "Алекс Коган",
+   "title": "Изучаем pytest: От основ до продвинутых техник тестирования в Python",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://zlib.pub/book/python-testing-with-pytest-3g998v3in3tg",
+  "final_url": "https://zlib.pub/book/python-testing-with-pytest-3g998v3in3tg",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Download Python Testing with pytest by Brian Okken | Python Testing with pytest EPUB",
+  "signs": [
+   "скачивание epub"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Download Python Testing with pytest by Brian Okken | Python Testing with pytest EPUB"
+ },
+ {
+  "url": "https://booksfb2.com/kulinariia/iskusstvo-stir-frai-ili-vok-lapsa-v-korobocke",
+  "final_url": "https://booksfb2.com/kulinariia/iskusstvo-stir-frai-ili-vok-lapsa-v-korobocke",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Искусство Стир-фрай, или Вок-лапша в коробочке: читать онлайн бесплатно и скачать полностью в fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B3e38f6",
+   "author": "Алекс Крамер",
+   "title": "Искусство Stir-Fry, или Wok лапша в коробочке",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://librain.ru/kulinariia/ulicnaia-eda-recepty-bliud-sovremennogo-strit-fuda",
+  "final_url": "https://librain.ru/kulinariia/ulicnaia-eda-recepty-bliud-sovremennogo-strit-fuda",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Уличная еда: рецепты блюд современного стрит-фуда: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bd7dc3e",
+   "author": "Алекс Крамер",
+   "title": "Уличная еда: рецепты блюд современного стрит-фуда",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
+  "final_url": "https://s4.skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://ru.z-library.sk/book/24790827/25e8ef/%D0%A3%D0%BB%D0%B8%D1%87%D0%BD%D0%B0%D1%8F-%D0%B5%D0%B4%D0%B0-%D1%80%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B-%D0%B1%D0%BB%D1%8E%D0%B4-%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-%D1%81%D1%82%D1%80%D0%B8%D1%82%D1%84%D1%83%D0%B4%D0%B0.html?dsource=recommend",
+  "final_url": "https://ru.z-library.sk/book/24790827/25e8ef/%D0%A3%D0%BB%D0%B8%D1%87%D0%BD%D0%B0%D1%8F-%D0%B5%D0%B4%D0%B0-%D1%80%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B-%D0%B1%D0%BB%D1%8E%D0%B4-%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-%D1%81%D1%82%D1%80%D0%B8%D1%82%D1%84%D1%83%D0%B4%D0%B0.html?dsource=recommend",
+  "http_status": 513,
+  "page_state": "ошибка 513",
+  "heading": "Verifying your browser | DiamWall",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт ответил ошибкой 513, содержимое не получено."
+ },
+ {
+  "url": "https://zoboko.com/book/rm9vg3d3/",
+  "final_url": "https://zoboko.com/book/rm9vg3d3/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Download Уличная еда: рецепты блюд современного стрит-фуда by Крамер Алекс | Уличная еда: рецепты блюд современного стрит-фуда PDF",
+  "signs": [
+   "кнопка скачивания",
+   "чтение онлайн"
+  ],
+  "match": {
+   "book_id": "Bd7dc3e",
+   "author": "Алекс Крамер",
+   "title": "Уличная еда: рецепты блюд современного стрит-фуда",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://libvi.ru/yumor/puhlenkaya-ryzhenkaya/",
+  "final_url": "https://libvi.ru/yumor/puhlenkaya-ryzhenkaya/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Пухленькая Рыженькая: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": {
+   "book_id": "B6f939c",
+   "author": "Алекс Мара",
+   "title": "Пухленькая Рыженькая",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://readtoday.ru/yumor/razvedena-i-prekrasna-727057/",
+  "final_url": "https://readtoday.ru/yumor/razvedena-i-prekrasna-727057/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Разведена и Прекрасна: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2"
+  ],
+  "match": {
+   "book_id": "B92dcc8",
+   "author": "Алекс Мара",
+   "title": "Разведенаипрекрасна",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://free.chitaem-knigi.online/books/devstvennost-po-kontraktu-1",
+  "final_url": "https://free.chitaem-knigi.online/books/devstvennost-po-kontraktu-1",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "Загрузка — Читаем-Книги.Онлайн",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://kniganet.ru/fentezi/devstvennost-po-kontraktu/",
+  "final_url": "https://kniganet.ru/fentezi/devstvennost-po-kontraktu/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Девственность по контракту: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание fb2, txt"
+  ],
+  "match": {
+   "book_id": "B8b2feb",
+   "author": "Алекс Найт",
+   "title": "Девственность по контракту",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://ru.fix-kniga.site/Dlya-vzroslyh/16268-devstvennost-po-kontraktu---aleks-najt.html",
+  "final_url": "https://ru.fix-kniga.site/Dlya-vzroslyh/16268-devstvennost-po-kontraktu---aleks-najt.html",
+  "http_status": 500,
+  "page_state": "ошибка 500",
+  "heading": "500 Internal Server Error",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт ответил ошибкой 500, содержимое не получено."
+ },
+ {
+  "url": "https://free.chitaem-knigi.online/books/ne-detskie-skazki-zhena-dlia-sinei-borody",
+  "final_url": "https://free.chitaem-knigi.online/books/ne-detskie-skazki-zhena-dlia-sinei-borody",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "Загрузка — Читаем-Книги.Онлайн",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://kniganet.ru/romani/zhena-dlya-siney-borody/",
+  "final_url": "https://kniganet.ru/romani/zhena-dlya-siney-borody/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Жена для Синей Бороды: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bc730f2",
+   "author": "Алекс Найт",
+   "title": "Жена для Синей Бороды",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://s3.skladchinabiz.app/threads/promtologija-bolshoe-rukovodstvo-po-nejrosetjam-aleks-promtov.465616/",
+  "final_url": "https://s1.skladchinabiz.com/threads/promtologija-bolshoe-rukovodstvo-po-nejrosetjam-aleks-promtov.465616/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://booksfb2.com/liubovnye-romany/izmena-ia-vas-vernu",
+  "final_url": "https://booksfb2.com/liubovnye-romany/izmena-ia-vas-vernu",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Измена. Я вас верну: читать онлайн бесплатно и скачать полностью в fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B0930d2",
+   "author": "Оксана Алексаева",
+   "title": "Измена. Я вас верну",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://knigi.fun/31487-izmena-hochu-tvoego-mugha.html",
+  "final_url": "https://knigi.fun/31487-izmena-hochu-tvoego-mugha.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Измена. Хочу твоего мужа Оксана Алексаева — читать онлайн или скачать бесплатно",
+  "signs": [
+   "чтение онлайн",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Измена. Хочу твоего мужа\" совпало, но автора из каталога (Ася Исай, Галина Колоскова, Мария Авенская) на странице нет. Нужна проверка человеком."
+ },
+ {
+  "url": "https://free-kniga.ru/priklyucheniya/eger-3-nazad-v-sssr-987728/",
+  "final_url": "https://free-kniga.ru/priklyucheniya/eger-3-nazad-v-sssr-987728/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Егерь-3: Назад в СССР: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B0e3c4d",
+   "author": "Алекс Рудин",
+   "title": "Егерь-3: Назад в СССР",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://free-kniga.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
+  "final_url": "https://free-kniga.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тайновидец. Том 9: Повелитель стихий: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bce9a30",
+   "author": "Алекс Рудин",
+   "title": "Тайновидец. Том 9: Повелитель стихий",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://kniganet.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
+  "final_url": "https://kniganet.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тайновидец. Том 9: Повелитель стихий: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bce9a30",
+   "author": "Алекс Рудин",
+   "title": "Тайновидец. Том 9: Повелитель стихий",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://librain.ru/detektivy/tainovidec-tom-9-povelitel-stixii",
+  "final_url": "https://librain.ru/detektivy/tainovidec-tom-9-povelitel-stixii",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тайновидец. Том 9: Повелитель стихий: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bce9a30",
+   "author": "Алекс Рудин",
+   "title": "Тайновидец. Том 9: Повелитель стихий",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://libvi.ru/fentezi/taynovidets-tom-9-povelitel-stihiy/",
+  "final_url": "https://libvi.ru/fentezi/taynovidets-tom-9-povelitel-stihiy/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тайновидец. Том 9: Повелитель стихий: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bce9a30",
+   "author": "Алекс Рудин",
+   "title": "Тайновидец. Том 9: Повелитель стихий",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://litseries.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
+  "final_url": "https://litseries.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тайновидец. Том 9: Повелитель стихий: читать и скачать полностью онлайн бесплатно без сокращений FB2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bce9a30",
+   "author": "Алекс Рудин",
+   "title": "Тайновидец. Том 9: Повелитель стихий",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://pro-books.ru/prikliuceniia/tainovidec-tom-9-povelitel-stixii",
+  "final_url": "https://pro-books.ru/prikliuceniia/tainovidec-tom-9-povelitel-stixii",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тайновидец. Том 9: Повелитель стихий: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bce9a30",
+   "author": "Алекс Рудин",
+   "title": "Тайновидец. Том 9: Повелитель стихий",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://readtoday.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
+  "final_url": "https://readtoday.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тайновидец. Том 9: Повелитель стихий: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bce9a30",
+   "author": "Алекс Рудин",
+   "title": "Тайновидец. Том 9: Повелитель стихий",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://knigo-lub.ru/erotika/dvoynoe-udovolstvie/",
+  "final_url": "https://knigo-lub.ru/erotika/dvoynoe-udovolstvie/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Двойное удовольствие: читать и скачать полностью онлайн бесплатно без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "Bbd74a3",
+   "author": "Алекс Хот",
+   "title": "Двойное удовольствие",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://wav-library.net/proza/izmena-ia-vas-vernu",
+  "final_url": "",
+  "http_status": null,
+  "page_state": "нет ответа",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не ответил (SSLError)."
+ },
+ {
+  "url": "https://readtoday.ru/priklyucheniya/oklevetannaya-zhena-drakona-hozyayka-taverny-u-chernyh-skal-945787/",
+  "final_url": "https://readtoday.ru/priklyucheniya/oklevetannaya-zhena-drakona-hozyayka-taverny-u-chernyh-skal-945787/",
+  "http_status": 404,
+  "page_state": "страницы нет",
+  "heading": "Страница не найдена - ReadToday | 404",
+  "signs": [
+   "чтение онлайн"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Страницы нет: ответ 404, Страница не найдена - ReadToday | 404."
+ },
+ {
+  "url": "https://skladchiki.pro/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.405618/",
+  "final_url": "https://s10.skladchiki.pro/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.405618/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Как начать писать картины маслом в возрасте от 18 до 100 лет (Ёся Джинн) « Складчикам курсы « Складчики",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "Be7cb4c",
+   "author": "Ёся Джинн",
+   "title": "Как начать легко писать картины маслом в любом возрасте от 18 до 100",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации."
+ },
+ {
+  "url": "https://s4.skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
+  "final_url": "https://s4.skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://litbox.pro/sovremennie-lyubovnie-romani/bud-moim-bivshim/",
+  "final_url": "https://litbox.pro/sovremennie-lyubovnie-romani/bud-moim-bivshim/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Будь моим бывшим — читать онлайн и скачать | LitBox",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B116af7",
+   "author": "Мара Алекс",
+   "title": "Будь моим бывшим",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://skladchinabiz.app/threads/promtologija-bolshoe-rukovodstvo-po-nejrosetjam-aleks-promtov.465616/",
+  "final_url": "https://s1.skladchinabiz.com/threads/promtologija-bolshoe-rukovodstvo-po-nejrosetjam-aleks-promtov.465616/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://pro-books.ru/proza/izmena-ia-vas-vernu",
+  "final_url": "https://pro-books.ru/proza/izmena-ia-vas-vernu",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Измена. Я вас верну: читать онлайн бесплатно и скачать полностью",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B0930d2",
+   "author": "Оксана Алексаева",
+   "title": "Измена. Я вас верну",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://free-kniga.ru/priklyucheniya/eger-nazad-v-sssr-669853/",
+  "final_url": "https://free-kniga.ru/priklyucheniya/eger-nazad-v-sssr-669853/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Егерь: назад в СССР: читать и скачать онлайн бесплатно полностью без сокращений",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Егерь: назад в СССР: читать и скачать онлайн бесплатно полностью без сокращений"
+ },
+ {
+  "url": "https://lllit.ru/ezoterika/noc-na-lysoi-gore-gde-zabytye-bogi-slysat",
+  "final_url": "https://librain.ru/",
+  "http_status": 200,
+  "page_state": "страницы нет",
+  "heading": "Читать книги онлайн бесплатно без регистрации и скачать FB2, EPUB, TXT | Читайте книги бесплатно в онлайн-библиотеке Librain",
+  "signs": [
+   "чтение онлайн"
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Страницы нет: редирект на главную."
+ },
+ {
+  "url": "https://librain.ru/putesestviia-i-geografiia/el-encuentro-en-buenos-aires-adaptirovannoe-ctenie-na-ispanskom-iazyke",
+  "final_url": "https://librain.ru/putesestviia-i-geografiia/el-encuentro-en-buenos-aires-adaptirovannoe-ctenie-na-ispanskom-iazyke",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "El encuentro en Buenos Aires. Адаптированное чтение на испанском языке: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B02f7e5",
+   "author": "Татьяна Клестова",
+   "title": "El encuentro en Buenos Aires. Адаптированное чтение на испанском языке",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://skladchik.tv/threads/emba-za-15-000-000-chto-imenno-izuchajut-za-ehti-dengi-v-garvarde-stehnforde-i-skolkovo-danila-dzhekson.467290/",
+  "final_url": "https://s4.skladchik.tv/threads/emba-za-15-000-000-chto-imenno-izuchajut-za-ehti-dengi-v-garvarde-stehnforde-i-skolkovo-danila-dzhekson.467290/",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://librain.ru/nauka-i-obrazovanie/english-vocabulary-booster-interesting-facts",
+  "final_url": "https://librain.ru/nauka-i-obrazovanie/english-vocabulary-booster-interesting-facts",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "English Vocabulary Booster: Interesting Facts: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B17cea6",
+   "author": "Оксана Вячеславовна Иванова",
+   "title": "English Vocabulary Booster: Interesting Facts",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://free.chitaem-knigi.online/books/english-razgovornaia-grammatika-dlia-realnogo-obshcheniia-kniga-1",
+  "final_url": "https://free.chitaem-knigi.online/books/english-razgovornaia-grammatika-dlia-realnogo-obshcheniia-kniga-1",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "Загрузка — Читаем-Книги.Онлайн",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ },
+ {
+  "url": "https://audioknigivuhe.com/love-fantastic/16986-cvetok-v-muzhskoj-akademii-magii.html",
+  "final_url": "https://audioknigivuhe.com/love-fantastic/16986-cvetok-v-muzhskoj-akademii-magii.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Аудиокнига Цветок в мужской академии магии, Наталья Буланова (читает Татьяна Черничкина) – слушать или скачать онлайн",
+  "signs": [
+   "аудио, слушать онлайн",
+   "это аудиоверсия"
+  ],
+  "match": {
+   "book_id": "Bdc1256",
+   "author": "Наталья Буланова",
+   "title": "Цветок в мужской академии магии",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: это аудиоверсия; аудио, слушать онлайн."
+ },
+ {
+  "url": "https://audiopautina.ru/wp-content/uploads/2026/05/rl2.pdf",
+  "final_url": "https://audiopautina.ru/wp-content/uploads/2026/05/rl2.pdf",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Разреши любить. Позволь мне быть рядом. Книга 2 Анна Джейн",
+  "signs": [
+   "файл PDF на 265 стр."
+  ],
+  "match": null,
+  "status": 0,
+  "reason": "Книг из каталога на странице нет. Страница про: Разреши любить. Позволь мне быть рядом. Книга 2 Анна Джейн"
+ },
+ {
+  "url": "https://book1.bubooker.link/knigi_sistemnyy-razvedchik.-infiltraciya.-dilogiya_1101000100100010110001110",
+  "final_url": "https://book.bwbooker.link/knigi_sistemnyy-razvedchik.-infiltraciya.-dilogiya_1101000100100010110001110",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Системный разведчик. Инфильтрация. Дилогия, Юрич Валерий - читать онлайн без регистрации",
+  "signs": [
+   "текст книги прямо на странице"
+  ],
+  "match": {
+   "book_id": "B70a283",
+   "author": "Юрич Валерий",
+   "title": "Системный разведчик. Инфильтрация. Дилогия",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице."
+ },
+ {
+  "url": "https://booknotor.ru/tajnovidec-tom-13-master-nevezenija-rudin-aleks/",
+  "final_url": "https://booknotor.ru/tajnovidec-tom-13-master-nevezenija-rudin-aleks/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Тайновидец. Том 13: Мастер невезения - Рудин Алекс аудиокнига торрент mp3 | Тайновидец. Том 13: Мастер невезения — Рудин Алекс",
+  "signs": [
+   "торрент",
+   "кнопка скачивания",
+   "это аудиоверсия"
+  ],
+  "match": {
+   "book_id": "B845694",
+   "author": "Алекс Рудин",
+   "title": "Тайновидец. Том 13: Мастер невезения",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: это аудиоверсия; торрент; кнопка скачивания."
+ },
+ {
+  "url": "https://knigaportal.com/hudozhestvennaya-literatura/boevik-fantasticheskij-boevik/1770-evgeniy-nett-sbornik-proizvedeniy.html",
+  "final_url": "https://com.knigaportal.com/hudozhestvennaya-literatura/boevik-fantasticheskij-boevik/1770-evgeniy-nett-sbornik-proizvedeniy.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Евгений Нетт - Сборник произведений (полная версия) скачать бесплатно | Евгений Нетт - Сборник произведений скачать бесплатно",
+  "signs": [
+   "кнопка скачивания",
+   "скачивание zip",
+   "файлообменники htfl.net, nitroflare.com, trbt.cc"
+  ],
+  "match": {
+   "book_id": "B819211",
+   "author": "Евгений Нетт",
+   "title": "Директива: Сохранить!",
+   "where": "текст"
+  },
+  "status": 1,
+  "reason": "Книга найдена в тексте страницы (сборник или список), автор совпал. Признаки размещения: скачивание zip; файлообменники htfl.net, nitroflare.com, trbt.cc; кнопка скачивания."
+ },
+ {
+  "url": "https://knigi.fun/23537-zamugh-po-dogovoru.html",
+  "final_url": "https://knigi.fun/23537-zamugh-po-dogovoru.html",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Замуж по договору Татьяна Серганова — читать онлайн или скачать бесплатно",
+  "signs": [
+   "чтение онлайн",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B4e5eb1",
+   "author": "Татьяна Серганова",
+   "title": "Замуж по договору",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн."
+ },
+ {
+  "url": "https://knigoline.ru/yarost-vechnyh-9347/",
+  "final_url": "https://knigoline.ru/yarost-vechnyh-9347/",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Ярость Вечных: скачать fb2, epub, pdf, txt | Антон Карелин",
+  "signs": [
+   "кнопка скачивания",
+   "чтение онлайн",
+   "ссылки на покупку в Литрес"
+  ],
+  "match": {
+   "book_id": "B41923c",
+   "author": "Антон Карелин",
+   "title": "Ярость Вечных",
+   "where": "заголовок"
+  },
+  "status": 0,
+  "reason": "Книга найдена в заголовке, автор совпал. Своих файлов нет, скачивание и чтение ведут на покупку в Литрес."
+ },
+ {
+  "url": "https://librain.ru/zdorove/iarrou",
+  "final_url": "https://librain.ru/zdorove/iarrou",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Ярроу: читать и скачать онлайн бесплатно полностью fb2",
+  "signs": [
+   "чтение онлайн",
+   "кнопка скачивания",
+   "скачивание epub, fb2, txt"
+  ],
+  "match": {
+   "book_id": "B57402a",
+   "author": "Айлин Лин",
+   "title": "Ярроу",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания."
+ },
+ {
+  "url": "https://read.xbook.life/books_yasnovidet-mozhet-kazhdyy-ili-kak-razvit-v-sebe-sverhsposobnosti_111377002",
+  "final_url": "https://read.xb0ok.link/books_yasnovidet-mozhet-kazhdyy-ili-kak-razvit-v-sebe-sverhsposobnosti_111377002",
+  "http_status": 200,
+  "page_state": "ok",
+  "heading": "Ясновидеть может каждый или как развить в себе сверхспособности, Хайр Хелен, книга полностью, читать бесплатно без сокращений",
+  "signs": [
+   "текст книги прямо на странице"
+  ],
+  "match": {
+   "book_id": "Bd9115a",
+   "author": "Хелен Хайр",
+   "title": "Ясновидеть может каждый, или Как развить в себе сверхспособности",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице."
+ },
+ {
+  "url": "https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-gadosti-k-istinnoi-radosti",
+  "final_url": "https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-gadosti-k-istinnoi-radosti",
+  "http_status": 200,
+  "page_state": "нет содержимого",
+  "heading": "Загрузка — Библибоба",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."
+ }
+]

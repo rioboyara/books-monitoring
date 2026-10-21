@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Проверка ссылок</title>
+<link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+<main class="wide">
+  <nav><a href="/">Пояснительная записка</a><b>Проверка ссылок</b><a href="/files/result.xlsx">Таблица результата (xlsx)</a><a href="https://github.com/rioboyara/books-monitoring">Код на GitHub</a></nav>
+  <h1>Проверка ссылок</h1>
+  <p>Адреса по одному в строке, не больше 30. Десять адресов проверяются 10-30 секунд. Каталог книг собран из обоих листов исходной таблицы, сейчас в нём 101 книга.</p>
+  <p class="muted small">Статусы: <span class="st st1">1</span> совпадение с книгой и признаки размещения, <span class="st st0">0</span> не подтверждено, <span class="st st2">2</span> автоматически определить не удалось.</p>
+
+  <textarea id="urls" rows="11" spellcheck="false">https://audioknigivuhe.com/love-fantastic/16986-cvetok-v-muzhskoj-akademii-magii.html
+https://audiopautina.ru/wp-content/uploads/2026/05/rl2.pdf
+https://book1.bubooker.link/knigi_sistemnyy-razvedchik.-infiltraciya.-dilogiya_1101000100100010110001110
+https://booknotor.ru/tajnovidec-tom-13-master-nevezenija-rudin-aleks/
+https://knigaportal.com/hudozhestvennaya-literatura/boevik-fantasticheskij-boevik/1770-evgeniy-nett-sbornik-proizvedeniy.html
+https://knigi.fun/23537-zamugh-po-dogovoru.html
+https://knigoline.ru/yarost-vechnyh-9347/
+https://librain.ru/zdorove/iarrou
+https://read.xbook.life/books_yasnovidet-mozhet-kazhdyy-ili-kak-razvit-v-sebe-sverhsposobnosti_111377002
+https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-gadosti-k-istinnoi-radosti</textarea>
+  <p><button id="go">Проверить</button> <span id="state" class="muted"></span></p>
+
+  <div id="out" hidden>
+    <p><button class="plain" id="json">Скачать JSON</button> <button class="plain" id="csv">Скачать CSV</button></p>
+    <div class="table">
+      <table>
+        <thead><tr><th>URL</th><th>Ответ сайта</th><th>Что на странице</th><th>Книга из каталога</th><th>Статус</th><th>Причина</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+  </div>
+</main>
+<script>
+let results = [];
+
+function cell(tr, text, cls) {
+  const td = tr.insertCell();
+  td.textContent = text;
+  if (cls) td.className = cls;
+  return td;
+}
+
+function book(r) {
+  return r.match ? r.match.author + ". " + r.match.title : "";
+}
+
+function count(status) {
+  return results.filter(function (r) { return r.status === status; }).length;
+}
+
+function render() {
+  const body = document.getElementById("rows");
+  body.innerHTML = "";
+  for (const r of results) {
+    const tr = body.insertRow();
+    const a = document.createElement("a");
+    a.href = r.url; a.textContent = r.url; a.target = "_blank"; a.rel = "noopener noreferrer";
+    cell(tr, "", "url").append(a);
+    cell(tr, [r.http_status, r.page_state].filter(Boolean).join(", "));
+    cell(tr, r.heading.slice(0, 160));
+    cell(tr, book(r));
+    const st = document.createElement("span");
+    st.className = "st st" + r.status; st.textContent = r.status;
+    cell(tr, "").append(st);
+    cell(tr, r.reason);
+  }
+  document.getElementById("out").hidden = false;
+}
+
+function save(name, type, text) {
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(new Blob([text], {type: type}));
+  link.download = name;
+  link.click();
+}
+
+async function runCheck() {
+  const urls = document.getElementById("urls").value.split("\n")
+    .map(function (s) { return s.trim(); }).filter(Boolean);
+  const button = document.getElementById("go"), state = document.getElementById("state");
+  button.disabled = true;
+  state.textContent = "Проверяю " + urls.length + " адр., подождите...";
+  try {
+    const resp = await fetch("/api/check", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({urls: urls})});
+    const data = await resp.json();
+    if (!resp.ok) throw new Error(data.detail || resp.status);
+    results = data;
+    render();
+    state.textContent = "Готово: статус 1 у " + count(1) + ", 0 у " + count(0) + ", 2 у " + count(2) + ".";
+  } catch (e) {
+    state.textContent = "Ошибка: " + e.message;
+  } finally {
+    button.disabled = false;
+  }
+}
+
+function saveJson() {
+  save("check.json", "application/json", JSON.stringify(results, null, 1));
+}
+
+function saveCsv() {
+  function q(v) { return '"' + String(v == null ? "" : v).replaceAll('"', '""') + '"'; }
+  const head = ["url", "http", "состояние", "что на странице", "книга", "статус", "причина"];
+  const lines = results.map(function (r) {
+    return [r.url, r.http_status, r.page_state, r.heading, book(r), r.status, r.reason].map(q).join(";");
+  });
+  save("check.csv", "text/csv", "\ufeff" + [head.join(";")].concat(lines).join("\r\n"));
+}
+
+document.getElementById("go").onclick = runCheck;
+document.getElementById("json").onclick = saveJson;
+document.getElementById("csv").onclick = saveCsv;
+</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+out/*
+!out/result.xlsx
+!out/pages.json
+input/*.pdf
