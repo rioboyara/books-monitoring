@@ -7,14 +7,20 @@
 <link rel="stylesheet" href="/assets/style.css?v=2">
 </head>
 <body>
-<aside class="sidebar"><a class="brand" href="/">Мониторинг книг<small>Данные и проверка страниц</small></a><nav aria-label="Основная навигация"><a href="/">Обзор задания</a><a href="/check">Проверка ссылок</a><a href="/table" aria-current="page">Обработка таблицы</a><a href="/files/result.xlsx">Скачать результат</a><a href="https://github.com/rioboyara/books-monitoring" target="_blank" rel="noopener">Исходный код</a></nav><div class="side-footer">Ринат Боярский<br>Тестовое задание по мониторингу</div></aside>
+<aside class="sidebar"><a class="brand" href="/">Мониторинг книг<small>Данные и проверка страниц</small></a><nav aria-label="Основная навигация"><a href="/">Обзор задания</a><a href="/check">Проверка ссылок</a><a href="/table" aria-current="page">Обработка таблицы</a><a href="https://github.com/rioboyara/books-monitoring" target="_blank" rel="noopener">Исходный код</a></nav><div class="side-footer">Ринат Боярский<br>Тестовое задание по мониторингу</div></aside>
 <main>
   <h1>Порядок в исходных данных</h1><p class="lead">Очистка записей, поиск дублей и каталог книг в одном файле.</p>
   <p>Добавьте строки в исходный файл и загрузите его сюда. Получите очищенные данные, каталог книг, дубли и спорные случаи.</p>
   <details><summary>Требования к файлу</summary><p>Лист "Задание 1": правообладатель, автор, название, тип контента, url, сайт, именно в таком порядке. Лист "Задание 2" необязателен. Идентификаторы неизменённых книг сохраняются.</p></details>
-  <div class="panel"><label for="file">Исходная таблица</label><p class="muted small">Формат XLSX, до 5 МБ и 3 000 строк на листе.</p><p><input type="file" id="file" accept=".xlsx"></p>
-  <label class="small"><input type="checkbox" id="ai-data" checked> Добавить рекомендации ИИ по спорным записям</label><p class="muted small">До 8 разных книг на отдельном листе. Их авторы, названия и пометки передаются API429. Исходные данные и каталог не изменяются.</p>
-  <p><button id="go">Обработать</button> </p><p id="state" class="status-line" role="status" aria-live="polite"></p></div><p class="callout">Новые ссылки в файле не загружаются автоматически. Для них используйте раздел "Проверка ссылок". Результаты известных адресов берутся из сохранённого прогона.</p>
+  <div class="workflow">
+  <section class="panel"><h2>Загрузить таблицу</h2><label for="file">Ваш исходный файл</label><p class="muted small">XLSX до 5 МБ, до 3 000 строк на листе.</p><input type="file" id="file" accept=".xlsx">
+  <label class="small"><input type="checkbox" id="ai-data" checked> Рекомендации ИИ по спорным записям</label><p class="muted small">Данные до 8 спорных книг передаются API429. Советы будут на отдельном листе, исходные значения сохраняются.</p>
+  <div class="actions"><button id="go">Обработать таблицу</button></div><p id="state" class="status-line" role="status" aria-live="polite"></p></section>
+  <section class="panel" id="downloads"><h2>Скачать результат</h2>
+  <div id="current" hidden><h3>Результат вашего файла</h3><p id="filename" class="muted small"></p><a id="download-current" class="button" download="result.xlsx">Скачать обработанный файл</a><hr></div>
+  <h3>Готовое решение по заданию</h3><p>Обработаны исходные 150 записей. В файле каталог книг, дубли, спорные случаи, проверка ссылок и рекомендации ИИ.</p><a class="button secondary" href="/files/result.xlsx">Скачать таблицу по заданию</a>
+  <p class="muted small" id="result-hint">После обработки вашего файла результат появится здесь.</p></section>
+  </div><p class="callout">Обработка таблицы очищает записи и ищет дубли. Для загрузки страниц и проверки размещения перейдите в <a href="/check">проверку ссылок</a>.</p>
 </main>
 <script>
 async function upload() {
@@ -26,21 +32,34 @@ async function upload() {
   }
   if (file.size > 5000000 || !file.name.toLowerCase().endsWith(".xlsx")) { state.textContent = "Выберите файл XLSX размером до 5 МБ."; return; }
   document.getElementById("go").disabled = true;
+  document.getElementById("current").hidden = true;
   state.textContent = "Обрабатываю...";
   try {
     const resp = await fetch(location.origin + "/api/table", {method: "POST", headers: {"X-AI-Review": document.getElementById("ai-data").checked ? "1" : "0"}, body: file});
     if (!resp.ok) throw new Error((await resp.json()).detail || resp.status);
-    const link = document.createElement("a");
+    const link = document.getElementById("download-current");
+    if (link.href) URL.revokeObjectURL(link.href);
     link.href = URL.createObjectURL(await resp.blob());
     link.download = "result.xlsx";
-    link.click(); setTimeout(function() { URL.revokeObjectURL(link.href); }, 1000);
-    state.textContent = "Готово. Файл передан браузеру для скачивания.";
+    document.getElementById("filename").textContent = "Исходный файл: " + file.name;
+    document.getElementById("current").hidden = false;
+    document.getElementById("result-hint").hidden = true;
+    state.textContent = "Готово. Скачайте обработанный файл в разделе результата.";
+    document.getElementById("downloads").scrollIntoView({block: "nearest"});
   } catch (e) {
     state.textContent = "Ошибка: " + e.message;
   } finally { document.getElementById("go").disabled = false; }
 }
 
 document.getElementById("go").onclick = upload;
+document.getElementById("file").onchange = function() {
+  const link = document.getElementById("download-current");
+  if (link.href) URL.revokeObjectURL(link.href);
+  link.removeAttribute("href");
+  document.getElementById("current").hidden = true;
+  document.getElementById("result-hint").hidden = false;
+  document.getElementById("state").textContent = "";
+};
 </script>
 </body>
 </html>

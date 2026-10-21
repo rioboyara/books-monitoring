@@ -61,8 +61,17 @@ def test_data_recommendations():
             raise AssertionError(item)
 
 
+def test_existing_book_is_preserved():
+    out = {"status": 2, "page_state": "ok", "reason": "Нужна проверка", "match": BOOK}
+    answer = {**ANSWER, "status": 0, "book_id": None, "content_quote": "На Литрес"}
+    with patch.dict(os.environ, {"API429_KEY": "test-not-a-real-key"}), patch('ai_review.complete', return_value=answer):
+        result = review(out, "Егерь-3", EVIDENCE + " На Литрес", [], [BOOK], BoundedSemaphore(1))
+        assert result['status'] == 0 and result['match']['book_id'] == 'B1'
+
+
 if __name__ == "__main__":
     test_validation()
     test_unavailable_api()
     test_data_recommendations()
+    test_existing_book_is_preserved()
     print("ai review checks passed")

@@ -9,7 +9,7 @@ from urllib.parse import urlsplit
 
 import requests
 
-from normalize import clean, key, loose
+from normalize import author_matches, clean, key, loose
 
 ENDPOINT = "https://gateway.api429.com/v1/chat/completions"
 MODEL = os.environ.get("API429_MODEL", "gemini-3.5-flash-lite")
@@ -60,9 +60,7 @@ def verified_answer(answer, candidates, evidence):
         raise ValueError("book_id")
     identity = bool(book and key(book["title"]) in key(quotes[0]))
     if identity:
-        actual = loose(quotes[1]).split()
-        identity = bool(book["awords"]) and all(any(SequenceMatcher(None, word, p).ratio() >= .8
-                                                   for p in actual) for word in book["awords"])
+        identity = author_matches(book["author"], quotes[1])
     if status == 1 and (not identity or not all(len(q) >= 3 for q in quotes)):
         raise ValueError("unproven match")
     if status == 0 and not (len(quotes[0]) >= 3 and (
@@ -106,6 +104,8 @@ def review(out, heading, text, links, catalog, budget, inspect_link=None):
     try:
         answer = complete(PROMPT, {"page": page, "candidates": [
             {k: b[k] for k in ("book_id", "author", "title")} for b in candidates]})
+        if isinstance(answer, dict) and answer.get("book_id") is None and out["match"]:
+            answer["book_id"] = out["match"]["book_id"]
         status, confidence, reason, quotes, match = verified_answer(answer, candidates, evidence)
         ai.update(proposed_status=status, evidence=quotes)
         if confidence >= .9 and status != 2:

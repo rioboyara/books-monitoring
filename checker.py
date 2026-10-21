@@ -26,7 +26,7 @@ from bs4 import BeautifulSoup
 from pypdf import PdfReader
 from urllib3.util import connection as urllib3_connection
 
-from normalize import book_id, clean, key, load_rows, loose, split_author
+from normalize import author_matches, book_id, clean, key, load_rows, loose, split_author
 from ai_review import review
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
@@ -146,11 +146,10 @@ def title_in(words, page_words):
     return bool(words) and words_in(words, page_words) >= need
 
 
-def find_book(heading, text, catalog):
+def find_book(heading, text, catalog, author=None):
     """Сначала ищем название (в заголовке, для сборников в тексте), потом обязательно автора."""
     hk, tk = key(heading), key(text)
     head_words = set(loose(heading).split())
-    all_words = head_words | set(loose(text).split())
     found, title_only = [], []
     for b in catalog:
         # номер тома обязателен: "Егерь-3" не должен совпасть со страницей "Егерь: назад в СССР"
@@ -161,11 +160,11 @@ def find_book(heading, text, catalog):
             where = "текст"
         else:
             continue
-        need = min(2, len(b["awords"]))
         # книга только в тексте (сборник, список) засчитывается, если автор есть в заголовке
-        named = page_author(text)
-        author_words = set(loose(named).split()) if named else all_words
-        if need and words_in(b["awords"], head_words if where == "текст" else author_words) >= need:
+        named = author or page_author(text)
+        core = re.split(r"похожие книги|рекомендуем|вам может понравиться|другие книги автора", text, flags=re.I)[0]
+        observed = heading if where == "текст" else named or heading + " " + core
+        if author_matches(b["author"], observed):
             found.append((where != "заголовок", -len(b["tkey"]), b, where))
         elif where == "заголовок":
             title_only.append(b)
@@ -216,6 +215,10 @@ def read_page(resp, body, details=None):
     # h1 обычно повторяет title, оставляем только то, что добавляет новое
     heading = " | ".join(p for p in dict.fromkeys(parts) if not any(p != q and p in q for q in parts))
     text = clean(soup.get_text(" "))
+    if details is not None:
+        author_tag = soup.select_one("meta[name='author'], [itemprop='author'], a[rel='author']")
+        if author_tag:
+            details["author"] = clean(author_tag.get("content") or author_tag.get_text(" "))[:200]
     formats, hosts = set(), set()
     # кнопки бывают ссылками, <button> и div с data-href или onclick
     clickable = soup.find_all(["a", "button"]) + soup.find_all(attrs={"data-href": True}) + \
@@ -306,7 +309,7 @@ def check(url, catalog, ai_budget=None):
         heading, text, signs = read_page(resp, body, details)
     except Exception as e:  # битый PDF или HTML не должен ронять всю пачку
         return {**out, "page_state": "не разобрать", "reason": f"Не удалось разобрать ответ ({type(e).__name__})"}
-    out.update(heading=heading[:300], page_author=page_author(text), signs=[v for v in signs.values() if v])
+    out.update(heading=heading[:300], page_author=details.get("author") or page_author(text), signs=[v for v in signs.values() if v])
 
     moved_home = urlsplit(resp.url).path in ("", "/") and urlsplit(url).path not in ("", "/")
     if resp.status_code in (404, 410) or moved_home or NOT_FOUND.search(heading):
@@ -337,7 +340,7 @@ def inspect_link(url):
 
 
 def classify(out, heading, text, signs, catalog):
-    match, title_only = find_book(heading, text, catalog)
+    match, title_only = find_book(heading, text, catalog, out.get("page_author"))
     out["match"] = match
     if not match and title_only:
         if any(b.get("ambiguous") for b in title_only):

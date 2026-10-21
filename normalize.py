@@ -8,6 +8,7 @@ import hashlib
 import json
 import re
 import sys
+from difflib import SequenceMatcher
 from collections import Counter, defaultdict
 from urllib.parse import unquote, urlsplit
 
@@ -64,6 +65,20 @@ def book_id(author, title):
     """Стабильный id: зависит только от автора и названия, поэтому не меняется при новых строках."""
     raw = author_key(split_author(author)[0]) + "|" + key(title)
     return "B" + hashlib.md5(raw.encode()).hexdigest()[:6]
+
+
+def author_matches(expected, actual):
+    """Одинаковый алфавит требует точного имени; допуск нужен только для транслитерации."""
+    expected_words = re.findall(r"\w+", clean(expected).lower().replace("ё", "е"))
+    actual_words = set(re.findall(r"\w+", clean(actual).lower().replace("ё", "е")))
+    for word in expected_words:
+        if word in actual_words:
+            continue
+        cross_script = [p for p in actual_words if bool(re.search(r"[а-я]", p)) != bool(re.search(r"[а-я]", word))]
+        if not any(loose(word)[:1] == loose(p)[:1] and SequenceMatcher(None, loose(word), loose(p)).ratio() >= .8
+                   for p in cross_script):
+            return False
+    return bool(expected_words)
 
 
 def url_key(url):

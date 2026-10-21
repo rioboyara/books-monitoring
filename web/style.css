@@ -350,7 +350,7 @@ pre {
 .sidebar nav a {
   white-space:nowrap;
   padding:8px 10px}
-.sidebar nav a:nth-last-child(-n+2) {
+.sidebar nav a[href^="https://github.com/"] {
   display:none}
 main,main.wide {
   margin:0;
@@ -411,7 +411,7 @@ body {
   font-size:12px;
   padding:8px 4px;
   line-height:1.4}
-.sidebar nav a:nth-last-child(-n+2) {
+.sidebar nav a[href^="https://github.com/"] {
   display:none}
 textarea {
   height:210px;
@@ -421,3 +421,12 @@ textarea {
 }
 
 .ai-tag { display: block; color: #32756c; font-size: 12px; margin-top: 8px; }
+
+.workflow { display: grid; grid-template-columns: 1.15fr 1fr; gap: 22px; align-items: start; }
+.workflow .panel { margin-bottom: 0; }
+.workflow h3:first-child { margin-top: 0; }
+#downloads { scroll-margin-top: 24px; }
+#downloads h3 { font-size: 16px; }
+#downloads hr { border: 0; border-top: 1px solid var(--line); margin: 25px 0; }
+#filename { overflow-wrap: anywhere; }
+@media(max-width:1100px) { .workflow { grid-template-columns: 1fr; gap: 0; } }
