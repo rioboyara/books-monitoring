@@ -4,6 +4,7 @@ import os
 import re
 import time
 from difflib import SequenceMatcher
+from concurrent.futures import ThreadPoolExecutor
 from threading import BoundedSemaphore, Lock
 from urllib.parse import urlsplit
 
@@ -12,8 +13,8 @@ import requests
 from normalize import author_matches, clean, key, loose, needs
 
 ENDPOINT = "https://gateway.api429.com/v1/chat/completions"
-MODEL = os.environ.get("API429_MODEL", "minimax-m3")
-FALLBACK_MODEL = os.environ.get("API429_FALLBACK_MODEL", "deepseek-v4.1-flash")
+MODEL = os.environ.get("API429_MODEL", "glm-5.3-flash")
+FALLBACK_MODEL = os.environ.get("API429_FALLBACK_MODEL", "qwen-3.8-flash")
 slots = BoundedSemaphore(2)
 lock = Lock()
 hour_started, hourly_calls = time.monotonic(), 0
@@ -124,7 +125,7 @@ def review(out, heading, text, links, catalog, budget, inspect_link=None):
     return out
 
 
-def complete(prompt, data, max_tokens=900, timeout=18):
+def complete(prompt, data, max_tokens=900, timeout=35, validate=None):
     global hour_started, hourly_calls
     models = list(dict.fromkeys([MODEL, FALLBACK_MODEL]))
     until = time.monotonic() + timeout
@@ -154,6 +155,8 @@ def complete(prompt, data, max_tokens=900, timeout=18):
                 answer = json.loads(content)
                 if not isinstance(answer, dict):
                     raise ValueError("Нужен объект JSON")
+                if validate:
+                    validate(answer)
                 answer["_model"] = model
                 return answer
             except (requests.RequestException, ValueError, KeyError, IndexError, TypeError, AttributeError):
@@ -196,32 +199,39 @@ def validated_suggestions(answer, sample):
 
 
 def suggest_rows(rows):
-    # Одинаковые вопросы по одной книге отправляем один раз, максимум 8 строк за загрузку.
-    sample, seen = [], set()
+    sample = []
     for r in rows:
-        if r["doubts"] and r["book"] not in seen:
+        if r["doubts"]:
             sample.append({"row": r["row"], "author": r["author"][:200], "title": r["title"][:300],
-                           "doubts": "; ".join(r["doubts"])[:700]})
-            seen.add(r["book"])
-        if len(sample) == 8:
-            break
+                           "url": r.get("url", "")[:500], "doubts": "; ".join(r["doubts"])[:700]})
     if not sample:
         return [["", "", "Спорных записей по правилам нет, ИИ-запрос не выполнялся.", "", "Правила"]]
-    verified = {}
-    used_model = MODEL
-    source = "Правила: ИИ не настроен"
-    try:
-        if os.environ.get("API429_KEY"):
-            answer = complete(DATA_PROMPT, {"rows": sample}, max_tokens=1600, timeout=35)
-            used_model = answer.get("_model", MODEL)
-            advice = validated_suggestions(answer, sample)
-            verified = {r[0]: r for r in advice}
-            source = "Правила: рекомендация ИИ для этой строки не подтверждена"
-    except requests.Timeout:
-        source = "Правила: превышено время ожидания ИИ"
-    except (requests.RequestException, ValueError, KeyError, IndexError, TypeError, AttributeError) as error:
-        source = "Правила: " + ("достигнут лимит ИИ-запросов" if str(error) == "Лимит ИИ-запросов достигнут"
-                                else "ответ ИИ не подтверждён или API недоступен")
-    return [verified[r["row"]] + ["ИИ: " + used_model + "; цитата проверена"] if r["row"] in verified else [
-        r["row"], r["title"], "Проверить: " + r["doubts"], needs(r["doubts"]) or
-        "Уточнить автора, название и соответствие ссылки книге", source] for r in sample]
+    def batch_advice(batch):
+        verified = {}
+        used_model = MODEL
+        source = "Правила: ИИ не настроен"
+        try:
+            if os.environ.get("API429_KEY"):
+                answer = complete(DATA_PROMPT, {"rows": batch}, max_tokens=2000, timeout=35,
+                                  validate=lambda a: validated_suggestions(a, batch))
+                used_model = answer.get("_model", MODEL)
+                advice = validated_suggestions(answer, batch)
+                verified = {r[0]: r for r in advice}
+                source = "Правила: рекомендация ИИ для этой строки не подтверждена"
+        except requests.Timeout:
+            source = "Правила: превышено время ожидания ИИ"
+        except (requests.RequestException, ValueError, KeyError, IndexError, TypeError, AttributeError) as error:
+            source = "Правила: " + ("достигнут лимит ИИ-запросов" if str(error) == "Лимит ИИ-запросов достигнут"
+                                    else "ответ ИИ не подтверждён или API недоступен")
+        return [verified[r["row"]] + ["ИИ: " + used_model + "; цитата проверена"] if r["row"] in verified else
+                fallback(r, source) for r in batch]
+
+    def fallback(r, source):
+        return [r["row"], r["title"], "Проверить: " + r["doubts"], needs(r["doubts"]) or
+                "Уточнить автора, название и соответствие ссылки книге", source]
+
+    # shortcut: до 40 спорных строк на загрузку; для больших каталогов нужна очередь.
+    with ThreadPoolExecutor(2) as pool:
+        batches = list(pool.map(batch_advice, [sample[i:i+8] for i in range(0, min(len(sample), 40), 8)]))
+    return [row for batch in batches for row in batch] + [
+        fallback(r, "Правила: лимит 40 ИИ-разборов на файл") for r in sample[40:]]

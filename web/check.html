@@ -59,6 +59,7 @@ function extracted(r) {
   const parts = [];
   if (r.heading) parts.push("Заголовок: " + r.heading.slice(0, 160));
   if (r.page_author) parts.push("Автор на странице: " + r.page_author);
+  if (r.extraction_method) parts.push("Загрузка: " + r.extraction_method);
   if (r.content_type && !r.content_type.includes("html")) parts.push("Тип: " + r.content_type);
   if (r.signs.length) parts.push("Признаки: " + r.signs.join(", "));
   if (r.ai) {

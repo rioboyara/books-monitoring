@@ -89,7 +89,7 @@ LABEL_WORDS = {"Серия", "Серии", "Жанр", "Жанры", "Год", "
                "Формат", "Добавлено", "Издательство", "Другие", "Рейтинг", "Перевод", "Переводчик", "Цикл",
                "Читать", "Скачать", "Слушать", "Купить", "Описание", "Аннотация", "Название", "Статус",
                "Возрастное", "Ограничение", "Издатель", "Исполнитель", "Озвучка", "Опубликовано"}
-NOT_FOUND = re.compile(r"не найден|ошибка 404|404 not found|page not found|^ошибка\b", re.I)
+NOT_FOUND = re.compile(r"страниц[аы] не найден|ошибка 404|404 not found|page not found", re.I)
 
 
 def load_catalog(path):
@@ -255,6 +255,8 @@ def read_page(resp, body, details=None):
     if "pdf" in ctype or body[:5] == b"%PDF-":
         pdf = PdfReader(io.BytesIO(body))
         meta = pdf.metadata or {}
+        if details is not None:
+            details['author'] = clean(meta.get('/Author', ''))[:200]
         text = " ".join(p.extract_text() or "" for p in pdf.pages[:3])
         heading = clean(f"{meta.get('/Title', '')} {meta.get('/Author', '')}") or clean(text)[:200]
         signs["file"] = f"файл PDF на {len(pdf.pages)} стр."
@@ -274,7 +276,9 @@ def read_page(resp, body, details=None):
     if details is not None:
         author_tag = soup.select_one("meta[name='author'], [itemprop='author'], a[rel='author']")
         if author_tag:
-            details["author"] = clean(author_tag.get("content") or author_tag.get_text(" "))[:200]
+            candidate = clean(author_tag.get("content") or author_tag.get_text(" "))[:200]
+            if not re.search(r"\b(admin|administrator|редакция|администратор)\b|^запись от\b", candidate, re.I):
+                details["author"] = candidate
     formats, hosts = set(), set()
     # кнопки бывают ссылками, <button> и div с data-href или onclick
     clickable = soup.find_all(["a", "button"]) + soup.find_all(attrs={"data-href": True}) + \
@@ -374,9 +378,28 @@ def check(url, catalog, ai_budget=None):
     if resp.status_code >= 400:
         return {**out, "page_state": f"ошибка {resp.status_code}",
                 "reason": f"Сайт ответил ошибкой {resp.status_code}, содержимое не получено."}
+    if re.search(r"^ошибка\b|не удается получить доступ|access denied|temporarily unavailable", heading, re.I):
+        return {**out, "page_state": "ошибка загрузки", "status": 2,
+                "reason": "Получена страница ошибки вместо книги. Отсутствие книги не подтверждено, нужна повторная проверка."}
+    if not signs.get("file") and len(text) < 400:
+        from browser_fetch import browser_page, HOSTS
+        out['browser_fallback'] = urlsplit(resp.url).hostname in HOSTS
+        rendered = browser_page(resp.url)
+        if rendered:
+            final_url, http, content = rendered
+            rendered_response = requests.Response()
+            rendered_response.url = final_url
+            rendered_response.status_code = http
+            rendered_response.headers["Content-Type"] = "text/html; charset=utf-8"
+            heading, text, signs = read_page(rendered_response, content, details)
+            out.update(final_url=final_url, http_status=http, heading=heading[:300],
+                       page_author=details.get("author") or page_author(text), signs=[v for v in signs.values() if v],
+                       extraction_method="браузер Playwright")
     if not signs.get("file") and len(text) < 400:
         return {**out, "page_state": "нет содержимого",
-                "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."}
+                "reason": ("Получен экран загрузки вместо книги. Браузерный повтор также не получил содержимое. Нужна ручная проверка."
+                           if out.get('browser_fallback') else
+                           "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.")}
 
     out["page_state"] = "ok"
     result = classify(out, heading, text, signs, catalog)
@@ -408,7 +431,10 @@ def classify(out, heading, text, signs, catalog):
         return {**out, "reason": f'Название "{b["title"]}" совпало, но автора из каталога ({authors}) на странице нет.'
                                  f"{shown} Нужна проверка человеком."}
     if not match:
-        return {**out, "status": 0, "reason": f"Книг из каталога на странице нет. Страница про: {heading[:100]}"}
+        if signs.get('file') and not heading and not text:
+            return {**out, "status": 2, "reason": "Файл доступен, но название и текст извлечь не удалось. Нужна ручная проверка."}
+        found = "PDF найден и прочитан" if 'PDF' in signs.get('file', '') else "Страница прочитана"
+        return {**out, "status": 0, "reason": f"{found}, но совпадение с каталогом не найдено. Обнаружено: {heading[:180]}"}
     status, why = decide(signs)
     if match["where"] == "текст" and status == 1 and not any(signs.get(k) for k in ("file", "formats", "hosts", "torrent", "audio")):
         # страница автора или тега: чтение онлайн там относится к другим книгам

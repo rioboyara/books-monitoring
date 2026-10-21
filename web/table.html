@@ -13,7 +13,7 @@
   <p>Добавьте строки в исходный файл и загрузите его сюда. Получите очищенные данные, каталог книг, дубли и спорные случаи.</p>
 <div class="workflow">
   <section class="panel"><h2>Загрузить таблицу</h2><label for="file">Ваш исходный файл</label><p class="muted small">XLSX до 5 МБ, до 3 000 строк на листе.</p><input type="file" id="file" accept=".xlsx">
-  <label class="small"><input type="checkbox" id="ai-data" checked> Рекомендации ИИ по спорным записям</label><p class="muted small">Данные до 8 спорных книг передаются API429. Советы будут на отдельном листе. Если ИИ не ответил, используются рекомендации по правилам с отметкой об источнике.</p>
+  <label class="small"><input type="checkbox" id="ai-data" checked> Рекомендации ИИ по спорным записям</label><p class="muted small">ИИ разбирает до 40 спорных строк через API429. Советы будут на отдельном листе. Если ответ не получен или не прошёл проверку, рядом будет рекомендация по правилам и отметка об этом.</p>
   <div class="actions"><button id="go">Обработать таблицу</button></div><p id="state" class="status-line" role="status" aria-live="polite"></p></section>
   <section class="panel" id="downloads"><h2>Результат</h2>
   <div id="current"><p id="filename" class="muted small">Готовая обработка исходной таблицы задания.</p><a id="download-current" class="button" href="/files/result.xlsx" download="result.xlsx">Скачать результат</a></div>
@@ -31,7 +31,7 @@ async function upload() {
   if (file.size > 5000000 || !file.name.toLowerCase().endsWith(".xlsx")) { state.textContent = "Выберите файл XLSX размером до 5 МБ."; return; }
   document.getElementById("go").disabled = true;
   document.getElementById("current").hidden = true;
-  state.textContent = "Обрабатываю...";
+  state.textContent = document.getElementById("ai-data").checked ? "Обрабатываю таблицу и проверяю спорные записи с ИИ. Это может занять до двух минут." : "Обрабатываю таблицу...";
   try {
     const resp = await fetch(location.origin + "/api/table", {method: "POST", headers: {"X-AI-Review": document.getElementById("ai-data").checked ? "1" : "0"}, body: file});
     if (!resp.ok) throw new Error((await resp.json()).detail || resp.status);

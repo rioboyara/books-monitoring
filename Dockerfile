@@ -2,6 +2,9 @@ FROM python:3.12-slim
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN python -m playwright install --with-deps chromium
+ENV PLAYWRIGHT_BROWSERS_PATH=/opt/playwright
+RUN mv /root/.cache/ms-playwright /opt/playwright && chmod -R a+rX /opt/playwright
 COPY *.py ./
 COPY input input
 COPY web web

@@ -80,6 +80,20 @@ def test_advice_survives_partial_failure():
         assert 'ISBN' in result[0][3]
 
 
+def test_all_disputed_rows_and_cap():
+    rows = [{'row': i, 'book': 'same-book', 'author': 'Автор', 'title': 'Книга',
+             'doubts': ['разные ссылки']} for i in range(1, 42)]
+    def answer(prompt, data, **kwargs):
+        assert len(data['rows']) <= 8
+        return {'suggestions': [{'row': r['row'], 'quote': r['title'], 'advice': 'Проверить ссылку',
+                                'needed': 'Верный URL'} for r in data['rows']]}
+    with patch.dict(os.environ, {'API429_KEY': 'test-not-a-real-key'}), patch('ai_review.complete', side_effect=answer) as call:
+        result = suggest_rows(rows)
+    assert [r[0] for r in result] == list(range(1, 42))
+    assert sum(r[4].startswith('ИИ:') for r in result) == 40
+    assert 'лимит' in result[-1][4] and call.call_count == 5
+
+
 def test_provider_fallback():
     unavailable = Mock(status_code=429)
     ready = Mock(status_code=200)
@@ -96,5 +110,6 @@ if __name__ == "__main__":
     test_data_recommendations()
     test_existing_book_is_preserved()
     test_advice_survives_partial_failure()
+    test_all_disputed_rows_and_cap()
     test_provider_fallback()
     print("ai review checks passed")

@@ -10,8 +10,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:46.383537+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:12.039074+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://skladchinmore.cc/threads/100-gotovyx-reshenij-s-ii-olegose.578058/",
@@ -24,30 +25,17 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:46.388495+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:12.041909+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://skladchik.tv/threads/100-gotovyx-reshenij-s-ii-olegose.487665/",
   "final_url": "https://s4.skladchik.tv/threads/100-gotovyx-reshenij-s-ii-olegose.487665/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
-  "page_author": "",
-  "signs": [],
-  "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:46.391261+00:00"
- },
- {
-  "url": "https://skladchiki.pro/threads/100-gotovyx-reshenij-s-ii-olegose.481535/",
-  "final_url": "https://s10.skladchiki.pro/threads/100-gotovyx-reshenij-s-ii-olegose.481535/",
-  "http_status": 200,
-  "content_type": "text/html",
   "page_state": "ok",
-  "heading": "100 готовых решений с ИИ (Olegose) « Складчикам курсы « Складчики",
+  "heading": "Скачать 100 готовых решений с ИИ (Olegose)",
   "page_author": "",
   "signs": [
    "кнопка скачивания",
@@ -61,7 +49,22 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:46.392601+00:00"
+  "checked_at": "2026-10-21T17:51:12.043011+00:00"
+ },
+ {
+  "url": "https://skladchiki.pro/threads/100-gotovyx-reshenij-s-ii-olegose.481535/",
+  "final_url": "https://s10.skladchiki.pro/threads/100-gotovyx-reshenij-s-ii-olegose.481535/",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "нет содержимого",
+  "heading": "",
+  "page_author": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:12.043831+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://librain.ru/molodeznaia-literatura/noc-na-lysoi-gore-gde-zabytye-bogi-slysat",
@@ -84,7 +87,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:46.394848+00:00"
+  "checked_at": "2026-10-21T17:51:12.044468+00:00"
  },
  {
   "url": "https://mp3deer.cc/mp3/armine-grigoryan-erevani-sirun-txa",
@@ -98,21 +101,32 @@
   "match": null,
   "status": 2,
   "reason": "Сайт ответил ошибкой 403, содержимое не получено.",
-  "checked_at": "2026-10-21T16:49:46.397668+00:00"
+  "checked_at": "2026-10-21T17:51:12.045475+00:00"
  },
  {
   "url": "https://skladchik.tv/threads/prompt-suno-com-ehnciklopedija-i-polnoe-rukovodstvo-po-sostavleniju-prompta-ddigital-zen.489299/",
   "final_url": "https://s4.skladchik.tv/threads/prompt-suno-com-ehnciklopedija-i-polnoe-rukovodstvo-po-sostavleniju-prompta-ddigital-zen.489299/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
+  "page_state": "ok",
+  "heading": "Скачать Prompt Suno.com. Энциклопедия и полное руководство по составлению промпта (Ddigital Zen)",
   "page_author": "",
-  "signs": [],
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:46.399817+00:00"
+  "reason": "Название \"ПРОМПТ SUNO.COM энциклопедия и полное руководство по составлению промпта.\" совпало, но автора из каталога (DIGITAL ZEN) на странице нет. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:51:12.046131+00:00",
+  "ai": {
+   "used": true,
+   "accepted": false,
+   "model": "minimax-m3",
+   "note": "ИИ не дал проверяемого ответа, сохранено решение правил"
+  },
+  "rules_status": 2,
+  "rules_reason": "Название \"ПРОМПТ SUNO.COM энциклопедия и полное руководство по составлению промпта.\" совпало, но автора из каталога (DIGITAL ZEN) на странице нет. Нужна проверка человеком."
  },
  {
   "url": "https://dolinakursov.ru/threads/69-sposobov-napechatat-dengi-eric-wolf.52412/",
@@ -125,8 +139,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:46.404332+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:12.046676+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://dolinokursov.ru/threads/ispoved-vedmy-byt-izbrannoj-evsaron-noctis-arcana.64210/",
@@ -139,8 +154,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:46.452202+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:12.163738+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://musportal.pro/track/1756600919-findroid-glava-01-gnev-imperii-kniga-1",
@@ -162,7 +178,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание mp3; аудио, слушать онлайн.",
-  "checked_at": "2026-10-21T16:49:46.459863+00:00"
+  "checked_at": "2026-10-21T17:51:12.164711+00:00"
  },
  {
   "url": "https://free-kniga.ru/priklyucheniya/kontraktor-kniga-2/",
@@ -185,7 +201,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:46.500317+00:00"
+  "checked_at": "2026-10-21T17:51:12.300224+00:00"
  },
  {
   "url": "https://knigi.fun/19469-kontraktor-kniga-2.html",
@@ -207,7 +223,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн.",
-  "checked_at": "2026-10-21T16:49:46.523221+00:00"
+  "checked_at": "2026-10-21T17:51:12.460284+00:00"
  },
  {
   "url": "https://kniganet.ru/romani/izmena-hochu-tvoego-muzha/",
@@ -216,16 +232,29 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Измена. Хочу твоего мужа: читать онлайн бесплатно и скачать полностью",
-  "page_author": "",
+  "page_author": "autoposter",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание epub, fb2"
   ],
   "match": null,
-  "status": 2,
-  "reason": "Название \"Измена. Хочу твоего мужа\" совпало, но автора из каталога (Ася Исай, Галина Колоскова, Мария Авенская) на странице нет. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:46.660304+00:00"
+  "status": 0,
+  "reason": "ИИ-проверка: Название совпадает, но указанный на странице автор Оксана Алексаева отсутствует среди кандидатов.",
+  "checked_at": "2026-10-21T17:51:14.259267+00:00",
+  "ai": {
+   "used": true,
+   "accepted": true,
+   "model": "minimax-m3",
+   "proposed_status": 0,
+   "evidence": [
+    "Измена. Хочу твоего мужа",
+    "Оксана Алексаева",
+    "Читать онлайн Скачать книгу"
+   ]
+  },
+  "rules_status": 2,
+  "rules_reason": "Название \"Измена. Хочу твоего мужа\" совпало, но автора из каталога (Ася Исай, Галина Колоскова, Мария Авенская) на странице нет. На странице указан автор: autoposter. Нужна проверка человеком."
  },
  {
   "url": "https://librain.ru/detektivy/kontraktor-kniga-2",
@@ -248,7 +277,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:46.932360+00:00"
+  "checked_at": "2026-10-21T17:51:14.344311+00:00"
  },
  {
   "url": "https://litseries.ru/detektivy/kontraktor-kniga-2/",
@@ -271,30 +300,21 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:47.027397+00:00"
+  "checked_at": "2026-10-21T17:51:14.632570+00:00"
  },
  {
   "url": "https://librain.ru/boevik/antalion-mest",
-  "final_url": "https://librain.ru/boevik/antalion-mest",
-  "http_status": 200,
-  "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "Анталион. Месть: читать и скачать онлайн бесплатно полностью fb2",
+  "final_url": "",
+  "http_status": null,
+  "content_type": "",
+  "page_state": "нет ответа",
+  "heading": "",
   "page_author": "",
-  "signs": [
-   "чтение онлайн",
-   "кнопка скачивания",
-   "скачивание epub, fb2, txt"
-  ],
-  "match": {
-   "book_id": "B9bae6e",
-   "author": "Helga D.B.",
-   "title": "Анталион",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:47.063614+00:00"
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не ответил (Timeout).",
+  "checked_at": "2026-10-21T17:51:14.696195+00:00"
  },
  {
   "url": "https://knigi.fun/32263-boss-budet-gharko.html",
@@ -316,7 +336,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн.",
-  "checked_at": "2026-10-21T16:49:47.136584+00:00"
+  "checked_at": "2026-10-21T17:51:14.745139+00:00"
  },
  {
   "url": "https://mir-chitki.com/romany/9651-boss-budet-zharko.html",
@@ -338,21 +358,32 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн.",
-  "checked_at": "2026-10-21T16:49:47.317829+00:00"
+  "checked_at": "2026-10-21T17:51:15.431579+00:00"
  },
  {
   "url": "https://s4.skladchik.tv/threads/prompt-suno-com-ehnciklopedija-i-polnoe-rukovodstvo-po-sostavleniju-prompta-ddigital-zen.489299/",
   "final_url": "https://s4.skladchik.tv/threads/prompt-suno-com-ehnciklopedija-i-polnoe-rukovodstvo-po-sostavleniju-prompta-ddigital-zen.489299/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
+  "page_state": "ok",
+  "heading": "Скачать Prompt Suno.com. Энциклопедия и полное руководство по составлению промпта (Ddigital Zen)",
   "page_author": "",
-  "signs": [],
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:47.454774+00:00"
+  "reason": "Название \"ПРОМПТ SUNO.COM энциклопедия и полное руководство по составлению промпта.\" совпало, но автора из каталога (DIGITAL ZEN) на странице нет. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:51:17.136389+00:00",
+  "ai": {
+   "used": true,
+   "accepted": false,
+   "model": "minimax-m3",
+   "note": "ИИ не дал проверяемого ответа, сохранено решение правил"
+  },
+  "rules_status": 2,
+  "rules_reason": "Название \"ПРОМПТ SUNO.COM энциклопедия и полное руководство по составлению промпта.\" совпало, но автора из каталога (DIGITAL ZEN) на странице нет. Нужна проверка человеком."
  },
  {
   "url": "https://mir-romanov.ru/russkie/569-grubijan.html",
@@ -374,7 +405,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2; чтение онлайн.",
-  "checked_at": "2026-10-21T16:49:47.632712+00:00"
+  "checked_at": "2026-10-21T17:51:17.292249+00:00"
  },
  {
   "url": "https://free-kniga.ru/detektivy/igruska-menta/",
@@ -397,7 +428,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:47.673191+00:00"
+  "checked_at": "2026-10-21T17:51:17.550940+00:00"
  },
  {
   "url": "https://librain.ru/detektivy/igruska-menta",
@@ -420,7 +451,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:47.675465+00:00"
+  "checked_at": "2026-10-21T17:51:17.693237+00:00"
  },
  {
   "url": "https://chitalka.net/books/svodnye-rasplata-za-oshibki",
@@ -429,7 +460,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Сводные. Расплата за ошибки - Helga Duran | Читать бесплатно полностью | Читалка.нет",
-  "page_author": "",
+  "page_author": "Helga Duran",
   "signs": [
    "чтение онлайн"
   ],
@@ -441,7 +472,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: чтение онлайн.",
-  "checked_at": "2026-10-21T16:49:47.912615+00:00"
+  "checked_at": "2026-10-21T17:51:17.874826+00:00"
  },
  {
   "url": "https://free-kniga.ru/trillery/sobstvennost-zhestokogo-213453/",
@@ -464,7 +495,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:47.913744+00:00"
+  "checked_at": "2026-10-21T17:51:18.264289+00:00"
  },
  {
   "url": "https://ebooksfind.com/detektivi/tarskiy-goryachiy-tvoy/",
@@ -473,7 +504,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Тарский горячий твой: читать и скачать полностью онлайн бесплатно без сокращений",
-  "page_author": "",
+  "page_author": "Daniella",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
@@ -483,11 +514,24 @@
    "book_id": "B584abb",
    "author": "Helga Duran",
    "title": "Тарский горячий твой",
-   "where": "заголовок"
+   "where": "ИИ, цитаты проверены"
   },
   "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:47.947740+00:00"
+  "reason": "ИИ-проверка: Название и автор (Хельга Дюран / Helga Duran) совпадают с каталогом, книга размещена с возможностью скачивания.",
+  "checked_at": "2026-10-21T17:51:20.093896+00:00",
+  "ai": {
+   "used": true,
+   "accepted": true,
+   "model": "minimax-m3",
+   "proposed_status": 1,
+   "evidence": [
+    "Тарский горячий твой",
+    "Хельга Дюран",
+    "Скачать книгу Тарский горячий твой бесплатно"
+   ]
+  },
+  "rules_status": 2,
+  "rules_reason": "Название \"Тарский горячий твой\" совпало, но автора из каталога (Helga Duran) на странице нет. На странице указан автор: Daniella. Нужна проверка человеком."
  },
  {
   "url": "https://free-kniga.ru/detektivy/tarskii-goriacii-tvoi/",
@@ -510,7 +554,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:48.168351+00:00"
+  "checked_at": "2026-10-21T17:51:22.239552+00:00"
  },
  {
   "url": "https://listaibuk.com/sovremennie-lyubovnie-romani/tarskiy-goryachiy-tvoy/",
@@ -519,21 +563,20 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Тарский горячий твой: читать онлайн бесплатно и скачать полностью",
-  "page_author": "",
+  "page_author": "Daniella",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание epub, fb2, txt"
   ],
-  "match": {
-   "book_id": "B584abb",
-   "author": "Helga Duran",
-   "title": "Тарский горячий твой",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:48.303555+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Тарский горячий твой\" совпало, но автора из каталога (Helga Duran) на странице нет. На странице указан автор: Daniella. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:51:22.983320+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://librain.ru/sovremennaia-proza/severnyi-veter-tom-1",
@@ -556,7 +599,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:48.325137+00:00"
+  "checked_at": "2026-10-21T17:51:24.254793+00:00"
  },
  {
   "url": "https://astro-babylon.ru/biblioteca-main/karmicheskaya-astrologiya.html",
@@ -571,8 +614,8 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Кармическая астрология | Книги по кармической астрологии",
-  "checked_at": "2026-10-21T16:49:48.374559+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Кармическая астрология | Книги по кармической астрологии",
+  "checked_at": "2026-10-21T17:51:24.371979+00:00"
  },
  {
   "url": "https://librain.ru/boevik/pesn-polunoci",
@@ -595,7 +638,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:48.395462+00:00"
+  "checked_at": "2026-10-21T17:51:24.677206+00:00"
  },
  {
   "url": "https://read.xbook.life/books_gaunerinnen_67131402",
@@ -604,7 +647,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Gaunerinnen, Яна Деноль Jana, книга полностью, читать бесплатно онлайн",
-  "page_author": "",
+  "page_author": "Яна Деноль Jana",
   "signs": [
    "текст книги прямо на странице"
   ],
@@ -616,7 +659,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице.",
-  "checked_at": "2026-10-21T16:49:48.409557+00:00"
+  "checked_at": "2026-10-21T17:51:26.443472+00:00"
  },
  {
   "url": "https://free.chitaem-knigi.online/books/vvedenie-v-dzhiotisha-vedu-putevoditel-po-vedicheskoi-astrologii",
@@ -629,8 +672,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:48.465323+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:28.804277+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://knigi.ebooker.online/book/43218618-kniga-vvedenie-v-dzhyotisha-vedu-putevoditel-po-vedicheskoy-astrologii",
@@ -639,7 +683,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Читать \"Введение в Джйотиша Веду: Путеводитель по ведической астрологии\" онлайн / Barrett Jane - Ебукер",
-  "page_author": "Jane Barrett",
+  "page_author": "Barrett Jane",
   "signs": [
    "текст книги прямо на странице"
   ],
@@ -651,29 +695,22 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице.",
-  "checked_at": "2026-10-21T16:49:48.527406+00:00"
+  "checked_at": "2026-10-21T17:51:28.912894+00:00"
  },
  {
   "url": "https://skladchiki.pro/threads/sprosi-ii-kak-sdelat-nejroset-lichnym-psixologom-john-hollyweeds.421570/",
   "final_url": "https://s10.skladchiki.pro/threads/sprosi-ii-kak-sdelat-nejroset-lichnym-psixologom-john-hollyweeds.421570/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "Спроси ИИ. Как сделать нейросеть личным психологом (John Hollyweeds) « Складчикам курсы « Складчики",
+  "page_state": "нет содержимого",
+  "heading": "",
   "page_author": "",
-  "signs": [
-   "кнопка скачивания",
-   "ссылка скрыта до регистрации"
-  ],
-  "match": {
-   "book_id": "Bd7871a",
-   "author": "John Hollyweeds",
-   "title": "Спроси ИИ: как сделать нейросеть личным психологом",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:48.719557+00:00"
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:28.950786+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://free.chitaem-knigi.online/books/sait-tvorchestva-roman-epopeia-o-nelegkikh-budniakh-stvo",
@@ -686,8 +723,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:48.939544+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:29.542471+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://librain.ru/liubovnoe-fentezi/volcii-rok",
@@ -710,7 +748,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:48.992451+00:00"
+  "checked_at": "2026-10-21T17:51:30.430030+00:00"
  },
  {
   "url": "https://librain.ru/boevik/akseid",
@@ -733,7 +771,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:49.018618+00:00"
+  "checked_at": "2026-10-21T17:51:31.005872+00:00"
  },
  {
   "url": "https://librain.ru/trillery/vo-imia-mira",
@@ -756,7 +794,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:49.108443+00:00"
+  "checked_at": "2026-10-21T17:51:31.309597+00:00"
  },
  {
   "url": "https://readtoday.ru/psihologiya/tsvetok-zhizni-244994/",
@@ -779,7 +817,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:49.136248+00:00"
+  "checked_at": "2026-10-21T17:51:31.799713+00:00"
  },
  {
   "url": "https://free-kniga.ru/priklyucheniya/pozyvnoy-hottabych-7-avatar-h-ch-2/",
@@ -802,7 +840,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:49.153045+00:00"
+  "checked_at": "2026-10-21T17:51:32.534005+00:00"
  },
  {
   "url": "https://booksfb2.com/boevik/pozyvnoi-xottabyc7-avatar-x-c2",
@@ -825,7 +863,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:49.207422+00:00"
+  "checked_at": "2026-10-21T17:51:34.160315+00:00"
  },
  {
   "url": "https://free-kniga.ru/priklyucheniya/pozyvnoy-hottabych-9-ischadie-kromki-ch-2/",
@@ -848,7 +886,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:49.215734+00:00"
+  "checked_at": "2026-10-21T17:51:34.787889+00:00"
  },
  {
   "url": "https://readtoday.ru/priklyucheniya/pozyvnoy-hottabych-9-ischadie-kromki-ch-2/",
@@ -864,48 +902,35 @@
   "match": null,
   "status": 0,
   "reason": "Страницы нет: ответ 404, Страница не найдена - ReadToday | 404.",
-  "checked_at": "2026-10-21T16:49:49.491420+00:00"
+  "checked_at": "2026-10-21T17:51:36.825808+00:00"
  },
  {
   "url": "https://librain.ru/nauka-i-obrazovanie/oge-2026-po-angliiskomu-laifxaki-feily-i-100-poleznoi-infy-cast-2",
-  "final_url": "https://librain.ru/nauka-i-obrazovanie/oge-2026-po-angliiskomu-laifxaki-feily-i-100-poleznoi-infy-cast-2",
-  "http_status": 200,
-  "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "ОГЭ-2026 по английскому. Лайфхаки, фейлы и 100% полезной инфы. Часть 2: читать и скачать онлайн бесплатно полностью fb2",
+  "final_url": "",
+  "http_status": null,
+  "content_type": "",
+  "page_state": "нет ответа",
+  "heading": "",
   "page_author": "",
-  "signs": [
-   "чтение онлайн",
-   "кнопка скачивания",
-   "скачивание epub, fb2, txt"
-  ],
+  "signs": [],
   "match": null,
-  "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: ОГЭ-2026 по английскому. Лайфхаки, фейлы и 100% полезной инфы. Часть 2: читать и скачать онлайн бесп",
-  "checked_at": "2026-10-21T16:49:49.618018+00:00"
+  "status": 2,
+  "reason": "Сайт не ответил (Timeout).",
+  "checked_at": "2026-10-21T17:51:37.862873+00:00"
  },
  {
   "url": "https://librain.ru/index.php/detektivy/izmena-ia-vas-vernu",
-  "final_url": "https://librain.ru/detektivy/izmena-ia-vas-vernu",
-  "http_status": 200,
-  "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "Измена. Я вас верну: читать и скачать онлайн бесплатно полностью fb2",
+  "final_url": "",
+  "http_status": null,
+  "content_type": "",
+  "page_state": "нет ответа",
+  "heading": "",
   "page_author": "",
-  "signs": [
-   "чтение онлайн",
-   "кнопка скачивания",
-   "скачивание epub, fb2, txt"
-  ],
-  "match": {
-   "book_id": "B0930d2",
-   "author": "Оксана Алексаева",
-   "title": "Измена. Я вас верну",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:49.660638+00:00"
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Сайт не ответил (Timeout).",
+  "checked_at": "2026-10-21T17:51:39.215314+00:00"
  },
  {
   "url": "https://librain.ru/zdorove/metodiceskoe-posobie-po-laminirovaniiu-resnic",
@@ -928,7 +953,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:49.791002+00:00"
+  "checked_at": "2026-10-21T17:51:39.313856+00:00"
  },
  {
   "url": "https://storipad.ru/story/168175",
@@ -942,7 +967,7 @@
   "match": null,
   "status": 2,
   "reason": "Сайт не ответил (ConnectTimeout).",
-  "checked_at": "2026-10-21T16:49:49.805000+00:00"
+  "checked_at": "2026-10-21T17:51:40.864438+00:00"
  },
  {
   "url": "https://languagelearning.site/french/preparation-a-lexamen-du-delf-b2-2/",
@@ -951,7 +976,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Préparation à l’examen du DELF B2 – Language Learning",
-  "page_author": "Marie-Christine Jamet",
+  "page_author": "lang001",
   "signs": [
    "торрент",
    "кнопка скачивания",
@@ -959,8 +984,8 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Préparation à l’examen du DELF B2 – Language Learning",
-  "checked_at": "2026-10-21T16:49:49.840384+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Préparation à l’examen du DELF B2 – Language Learning",
+  "checked_at": "2026-10-21T17:51:43.338278+00:00"
  },
  {
   "url": "https://mp3deer.cc/mp3/%D1%81%D1%83%D0%BF%D0%B5%D1%80-%D0%B0%D1%83%D0%B4%D0%B8%D0%BE%D0%BA%D0%BD%D0%B8%D0%B3%D0%B0-%D0%BD%D0%B0%D1%81%D0%BB%D0%B5%D0%B4%D0%BD%D0%B8%D0%BA-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D0%BE%D0%B3%D0%BE-%D0%BD%D0%B5-%D0%B4%D0%BE%D0%BB%D0%B6%D0%BD%D0%BE-%D0%B1%D1%8B%D1%82%D1%8C",
@@ -974,47 +999,25 @@
   "match": null,
   "status": 2,
   "reason": "Сайт ответил ошибкой 403, содержимое не получено.",
-  "checked_at": "2026-10-21T16:49:49.855016+00:00"
+  "checked_at": "2026-10-21T17:51:44.426239+00:00"
  },
  {
   "url": "https://skladmk.online/product/energiya-zhizni-lucy-zen/",
   "final_url": "https://skladmk.online/product/energiya-zhizni-lucy-zen/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "страницы нет",
+  "page_state": "ошибка загрузки",
   "heading": "Ошибка | Не удается получить доступ к сайту",
   "page_author": "",
   "signs": [],
   "match": null,
-  "status": 0,
-  "reason": "Страницы нет: ответ 200, Ошибка | Не удается получить доступ к сайту.",
-  "checked_at": "2026-10-21T16:49:49.948703+00:00"
+  "status": 2,
+  "reason": "Получена страница ошибки вместо книги. Отсутствие книги не подтверждено, нужна повторная проверка.",
+  "checked_at": "2026-10-21T18:00:54.536550+00:00"
  },
  {
   "url": "https://skladchiki.pro/threads/vsjo-o-swot-analize-mba-tools.316150/",
   "final_url": "https://s10.skladchiki.pro/threads/vsjo-o-swot-analize-mba-tools.316150/",
-  "http_status": 200,
-  "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "Всё о SWOT-анализе (MBA. TOOLS) « Складчикам курсы « Складчики",
-  "page_author": "",
-  "signs": [
-   "кнопка скачивания",
-   "ссылка скрыта до регистрации"
-  ],
-  "match": {
-   "book_id": "Be74d3f",
-   "author": "MBA. TOOLS",
-   "title": "SWOT. Всё о SWOT-анализе",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:49.963830+00:00"
- },
- {
-  "url": "https://skladchik.tv/threads/sex-ili-love-stories-glazami-zhenschin-michel-ardo.230533/",
-  "final_url": "https://s4.skladchik.tv/threads/sex-ili-love-stories-glazami-zhenschin-michel-ardo.230533/",
   "http_status": 200,
   "content_type": "text/html",
   "page_state": "нет содержимого",
@@ -1023,8 +1026,31 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:49.998083+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:44.807473+00:00",
+  "browser_fallback": false
+ },
+ {
+  "url": "https://skladchik.tv/threads/sex-ili-love-stories-glazami-zhenschin-michel-ardo.230533/",
+  "final_url": "https://s4.skladchik.tv/threads/sex-ili-love-stories-glazami-zhenschin-michel-ardo.230533/",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Скачать SEX, или Love-stories глазами женщин (Michel Ardo)",
+  "page_author": "",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "Bdaf254",
+   "author": "Michel Ardo",
+   "title": "SEX, или Love-stories глазами женщин",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
+  "checked_at": "2026-10-21T17:51:45.517914+00:00"
  },
  {
   "url": "https://kniganet.ru/fentezi/brakovannyy-dzhinn/",
@@ -1033,7 +1059,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Бракованный джинн: читать онлайн бесплатно и скачать полностью",
-  "page_author": "",
+  "page_author": "autoposter",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
@@ -1041,8 +1067,12 @@
   ],
   "match": null,
   "status": 2,
-  "reason": "Название \"Бракованный джинн\" совпало, но автора из каталога (Ravenna) на странице нет. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:50.158430+00:00"
+  "reason": "Название \"Бракованный джинн\" совпало, но автора из каталога (Ravenna) на странице нет. На странице указан автор: autoposter. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:51:47.339531+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://2ivdel.tvoysadik.ru/?section_id=98",
@@ -1058,8 +1088,8 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Занимательные раскраски",
-  "checked_at": "2026-10-21T16:49:50.240477+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Занимательные раскраски",
+  "checked_at": "2026-10-21T17:51:47.663844+00:00"
  },
  {
   "url": "https://mx-style.net/product/levitacziya-put-k-vnutrennej-svobode-mind-wave/",
@@ -1073,7 +1103,7 @@
   "match": null,
   "status": 0,
   "reason": "Страницы нет: ответ 404, Ошибка | Не удается получить доступ к сайту.",
-  "checked_at": "2026-10-21T16:49:50.282049+00:00"
+  "checked_at": "2026-10-21T17:51:48.132879+00:00"
  },
  {
   "url": "https://librain.ru/delovaia-literatura/masterstvo-promt-inziniringa-prodvinutyi-uroven",
@@ -1096,29 +1126,22 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:50.337719+00:00"
+  "checked_at": "2026-10-21T17:51:48.444751+00:00"
  },
  {
   "url": "https://skladchiki.pro/threads/masterstvo-promt-inzhiniringa-prodvinutyj-uroven-misha-ford.453193/",
   "final_url": "https://s10.skladchiki.pro/threads/masterstvo-promt-inzhiniringa-prodvinutyj-uroven-misha-ford.453193/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "Мастерство промт-инжиниринга. Продвинутый уровень (Misha Ford) « Складчикам курсы « Складчики",
+  "page_state": "нет содержимого",
+  "heading": "",
   "page_author": "",
-  "signs": [
-   "кнопка скачивания",
-   "ссылка скрыта до регистрации"
-  ],
-  "match": {
-   "book_id": "Be054eb",
-   "author": "Misha Ford",
-   "title": "Мастерство промт-инжиниринга. Продвинутый уровень",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:50.442562+00:00"
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:51:48.767247+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://librain.ru/zdorove/keto-recepty",
@@ -1136,7 +1159,11 @@
   "match": null,
   "status": 2,
   "reason": "Название \"Кето-рецепты\" совпало, но автора из каталога (Nika Nika) на странице нет. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:50.538453+00:00"
+  "checked_at": "2026-10-21T17:51:51.820348+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://aknigi24.com/book/tisina-spokoistvie-v-mire-polnom-suma-tit-nat-xan-nikosho",
@@ -1155,7 +1182,11 @@
   "match": null,
   "status": 2,
   "reason": "Название \"Тишина\" совпало, но автора из каталога (Nina BROD) на странице нет. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:50.563509+00:00"
+  "checked_at": "2026-10-21T17:51:54.243099+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://librain.ru/detektivy/spastis-znacit-predat",
@@ -1178,7 +1209,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:50.854627+00:00"
+  "checked_at": "2026-10-21T17:51:54.494850+00:00"
  },
  {
   "url": "https://knigi.ebooker.online/book/42876144-kniga-pyat-zvezd.-chast-5",
@@ -1187,7 +1218,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Читать \"Пять звезд. Часть 5\" онлайн / Ominayashi - Ебукер",
-  "page_author": "",
+  "page_author": "Ominayashi",
   "signs": [],
   "match": {
    "book_id": "B2c0d9e",
@@ -1197,7 +1228,7 @@
   },
   "status": 0,
   "reason": "Книга найдена в заголовке, автор совпал. Книга упомянута, но скачать, читать или слушать нельзя.",
-  "checked_at": "2026-10-21T16:49:50.887182+00:00"
+  "checked_at": "2026-10-21T17:51:54.806344+00:00"
  },
  {
   "url": "https://read.xbook.life/books_pyat-zvezd.-chast-5_117232302",
@@ -1206,7 +1237,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Пять звезд. Часть 5, Ominayashi, книга полностью, читать бесплатно без сокращений",
-  "page_author": "",
+  "page_author": "Ominayashi",
   "signs": [
    "текст книги прямо на странице"
   ],
@@ -1218,7 +1249,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице.",
-  "checked_at": "2026-10-21T16:49:51.028304+00:00"
+  "checked_at": "2026-10-21T17:51:56.789337+00:00"
  },
  {
   "url": "https://librain.ru/putesestviia-i-geografiia/perexod-v-5d-tainyi-kod-dlia-zizni-bez-granic-i-boleznei",
@@ -1235,30 +1266,16 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Переход в 5D. Тайный код для жизни без границ и болезней.: читать и скачать онлайн бесплатно полност",
-  "checked_at": "2026-10-21T16:49:51.102377+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Переход в 5D. Тайный код для жизни без границ и болезней.: читать и скачать онлайн бесплатно полностью fb2",
+  "checked_at": "2026-10-21T17:51:57.079399+00:00"
  },
  {
   "url": "https://skladchik.tv/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.450854/",
   "final_url": "https://s4.skladchik.tv/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.450854/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
-  "page_author": "",
-  "signs": [],
-  "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:51.103053+00:00"
- },
- {
-  "url": "https://skladchiki.pro/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.444704/",
-  "final_url": "https://s10.skladchiki.pro/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.444704/",
-  "http_status": 200,
-  "content_type": "text/html",
   "page_state": "ok",
-  "heading": "Настроить свой мозг. Не можешь сосредоточиться? Забываешь всё на свете? Тянешь с решением? (Rais Gu) « Складчикам курсы « Складчики",
+  "heading": "Скачать Настроить свой мозг. Не можешь сосредоточиться? Забываешь всё на свете? Тянешь с решением? (Rais Gu)",
   "page_author": "",
   "signs": [
    "кнопка скачивания",
@@ -1272,11 +1289,11 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:51.164710+00:00"
+  "checked_at": "2026-10-21T17:51:59.313032+00:00"
  },
  {
-  "url": "https://skladchinabiz.app/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.436561/",
-  "final_url": "https://s1.skladchinabiz.com/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.436561/",
+  "url": "https://skladchiki.pro/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.444704/",
+  "final_url": "https://s10.skladchiki.pro/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.444704/",
   "http_status": 200,
   "content_type": "text/html",
   "page_state": "нет содержимого",
@@ -1285,8 +1302,31 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:51.219410+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:02.304402+00:00",
+  "browser_fallback": false
+ },
+ {
+  "url": "https://skladchinabiz.app/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.436561/",
+  "final_url": "https://s1.skladchinabiz.com/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.436561/",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Курс Настроить свой мозг. Не можешь сосредоточиться? Забываешь всё на свете? Тянешь с решением? [Rais Gu] со скидкой 96%",
+  "page_author": "",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "B4b3214",
+   "author": "Rais Ais Gu",
+   "title": "Настроить свой мозг. Не можешь сосредоточиться? Забываешь всё на свете? Тянешь с решением?",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
+  "checked_at": "2026-10-21T17:52:04.951505+00:00"
  },
  {
   "url": "https://skladchinmore.one/threads/nastroit-svoj-mozg-ne-mozhesh-sosredotochitsja-zabyvaesh-vsjo-na-svete-tjanesh-s-resheniem-rais-gu.541822/",
@@ -1299,8 +1339,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:51.292121+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:05.982754+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://litbox.pro/sovremennie-lyubovnie-romani/ne-zachyot-dlya-ptichki/",
@@ -1309,21 +1350,20 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "(Не)зачёт для птички — читать онлайн и скачать | LitBox",
-  "page_author": "",
+  "page_author": "Daniella",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание epub, fb2, txt"
   ],
-  "match": {
-   "book_id": "B144a58",
-   "author": "Ravenna",
-   "title": "(Не)зачёт для птички",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:51.356579+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"(Не)зачёт для птички\" совпало, но автора из каталога (Ravenna) на странице нет. На странице указан автор: Daniella. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:52:06.622319+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://ruslibrary.org/fantastika-fjentezi/418-vector-sbornik-knig.html",
@@ -1346,7 +1386,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в тексте страницы (сборник или список), автор совпал. Признаки размещения: скачивание mp3, zip; файлообменники htfl.net, nitroflare.com, trbt.cc; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:51.488744+00:00"
+  "checked_at": "2026-10-21T17:52:07.026540+00:00"
  },
  {
   "url": "https://litbox.pro/tag/ravenna/",
@@ -1355,14 +1395,14 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Книги автора Равенна | LitBox | Равенна - скачать и читать все книги онлайн бесплатно полностью",
-  "page_author": "",
+  "page_author": "Равенна",
   "signs": [
    "чтение онлайн"
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Книги автора Равенна | LitBox | Равенна - скачать и читать все книги онлайн бесплатно полностью",
-  "checked_at": "2026-10-21T16:49:51.584870+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Книги автора Равенна | LitBox | Равенна - скачать и читать все книги онлайн бесплатно полностью",
+  "checked_at": "2026-10-21T17:52:07.603247+00:00"
  },
  {
   "url": "https://litseries.ru/romany/medovichok-533516/",
@@ -1380,7 +1420,11 @@
   "match": null,
   "status": 2,
   "reason": "Название \"Медовичок\" совпало, но автора из каталога (Ravenna) на странице нет. На странице указан автор: Юлия Ши. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:51.603659+00:00"
+  "checked_at": "2026-10-21T17:52:08.219413+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://mir-chitki.com/romany/8472-izmena-hochu-tvoego-muzha.html",
@@ -1397,7 +1441,11 @@
   "match": null,
   "status": 2,
   "reason": "Название \"Измена. Хочу твоего мужа\" совпало, но автора из каталога (Ася Исай, Галина Колоскова, Мария Авенская) на странице нет. На странице указан автор: Оксана Алексаева. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:51.755928+00:00"
+  "checked_at": "2026-10-21T17:52:09.354715+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://pro-books.ru/liubovnye-romany/medovicok",
@@ -1415,7 +1463,11 @@
   "match": null,
   "status": 2,
   "reason": "Название \"Медовичок\" совпало, но автора из каталога (Ravenna) на странице нет. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:51.757466+00:00"
+  "checked_at": "2026-10-21T17:52:10.082616+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://readtoday.ru/romany/medovichok-311872/",
@@ -1433,11 +1485,37 @@
   "match": null,
   "status": 2,
   "reason": "Название \"Медовичок\" совпало, но автора из каталога (Ravenna) на странице нет. На странице указан автор: Юлия Ши. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:51.921962+00:00"
+  "checked_at": "2026-10-21T17:52:10.866524+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://skladchik.tv/threads/vedminy-runy-opisanie-rabota-avalenta-ignis.302872/",
   "final_url": "https://s4.skladchik.tv/threads/vedminy-runy-opisanie-rabota-avalenta-ignis.302872/",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "ok",
+  "heading": "Скачать Ведьмины руны. Описание. Работа (Авалента Игнис)",
+  "page_author": "",
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "B8b83ea",
+   "author": "Авалента Игнис",
+   "title": "Ведьмины руны. Описание. Работа",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
+  "checked_at": "2026-10-21T17:52:12.545656+00:00"
+ },
+ {
+  "url": "https://skladchiki.pro/threads/5000-words-in-a-month-william-alexander-dimatteo.254128/",
+  "final_url": "https://s10.skladchiki.pro/threads/5000-words-in-a-month-william-alexander-dimatteo.254128/",
   "http_status": 200,
   "content_type": "text/html",
   "page_state": "нет содержимого",
@@ -1446,30 +1524,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:51.962750+00:00"
- },
- {
-  "url": "https://skladchiki.pro/threads/5000-words-in-a-month-william-alexander-dimatteo.254128/",
-  "final_url": "https://s10.skladchiki.pro/threads/5000-words-in-a-month-william-alexander-dimatteo.254128/",
-  "http_status": 200,
-  "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "5000 words in a month (William Alexander DiMatteo) « Складчикам курсы « Складчики",
-  "page_author": "",
-  "signs": [
-   "кнопка скачивания",
-   "ссылка скрыта до регистрации"
-  ],
-  "match": {
-   "book_id": "Bf8c90f",
-   "author": "William Alexander DiMatteo",
-   "title": "5000 words in a month",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:51.989836+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:13.095596+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://mir-romanov.ru/russkie/2457-vse-bylo-ne-tak.html",
@@ -1491,7 +1548,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2; чтение онлайн.",
-  "checked_at": "2026-10-21T16:49:52.189489+00:00"
+  "checked_at": "2026-10-21T17:52:13.430402+00:00"
  },
  {
   "url": "https://bookone.online/roman/12110-apogej-tenzor-porjadka.html",
@@ -1505,7 +1562,7 @@
   "match": null,
   "status": 2,
   "reason": "Сайт не ответил (ConnectionError).",
-  "checked_at": "2026-10-21T16:49:52.356737+00:00"
+  "checked_at": "2026-10-21T17:52:13.644840+00:00"
  },
  {
   "url": "https://free-kniga.ru/romany/tsena-proscheniya-147884/",
@@ -1522,8 +1579,8 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Цена прощения: читать и скачать онлайн бесплатно полностью без сокращений",
-  "checked_at": "2026-10-21T16:49:52.365134+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Цена прощения: читать и скачать онлайн бесплатно полностью без сокращений",
+  "checked_at": "2026-10-21T17:52:15.304744+00:00"
  },
  {
   "url": "https://gigabooks.ru/romany/tsena-proscheniya-686299/",
@@ -1540,8 +1597,8 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Цена прощения: читать и скачать полностью бесплатно онлайн без сокращений FB2",
-  "checked_at": "2026-10-21T16:49:52.418516+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Цена прощения: читать и скачать полностью бесплатно онлайн без сокращений FB2",
+  "checked_at": "2026-10-21T17:52:15.648793+00:00"
  },
  {
   "url": "https://librain.ru/sovremennye-liubovnye-romany/cena-proshheniia",
@@ -1558,8 +1615,8 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Цена прощения: читать и скачать онлайн бесплатно полностью fb2",
-  "checked_at": "2026-10-21T16:49:52.443111+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Цена прощения: читать и скачать онлайн бесплатно полностью fb2",
+  "checked_at": "2026-10-21T17:52:15.903321+00:00"
  },
  {
   "url": "https://litseries.ru/romany/tsena-proscheniya-203253/",
@@ -1576,8 +1633,8 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Цена прощения: читать и скачать полностью онлайн бесплатно без сокращений FB2",
-  "checked_at": "2026-10-21T16:49:52.735616+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Цена прощения: читать и скачать полностью онлайн бесплатно без сокращений FB2",
+  "checked_at": "2026-10-21T17:52:16.943958+00:00"
  },
  {
   "url": "https://mir-fjentezi.ru/samizdat-fjentezi/4043-zasada-dlja-chempiona.html",
@@ -1599,7 +1656,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2; чтение онлайн.",
-  "checked_at": "2026-10-21T16:49:52.875366+00:00"
+  "checked_at": "2026-10-21T17:52:17.375202+00:00"
  },
  {
   "url": "https://free-kniga.ru/boevik/cena-doveriia/",
@@ -1617,21 +1674,33 @@
   "match": null,
   "status": 2,
   "reason": "Название \"Ценадоверия\" совпало, но автора из каталога (Авее Лав) на странице нет. На странице указан автор: ИИ Текст. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:53.053308+00:00"
+  "checked_at": "2026-10-21T17:52:17.376349+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://skladchinabiz.app/threads/samosovershenstvovanie-ehto-onanizm-a-vot-samorazrushenie-adrej-sokol.419467/",
   "final_url": "https://s1.skladchinabiz.com/threads/samosovershenstvovanie-ehto-onanizm-a-vot-samorazrushenie-adrej-sokol.419467/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
+  "page_state": "ok",
+  "heading": "Курс Самосовершенствование – это онанизм а вот саморазрушение... [Адрей Сокол] со скидкой 91%",
   "page_author": "",
-  "signs": [],
-  "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:53.067236+00:00"
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "B14dce4",
+   "author": "Адрей Сокол",
+   "title": "Самосовершенствование – это онанизм, а вот саморазрушение…",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
+  "checked_at": "2026-10-21T17:52:17.584776+00:00"
  },
  {
   "url": "https://kniganet.ru/drama/nenuzhnaya-istinnaya-drakona-hozyayka-solnechnogo-pomestya/",
@@ -1640,65 +1709,50 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Ненужная истинная дракона. Хозяйка Солнечного поместья: читать онлайн бесплатно и скачать полностью",
-  "page_author": "",
+  "page_author": "autoposter",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание epub, fb2"
   ],
-  "match": {
-   "book_id": "Ba025f1",
-   "author": "Адриана Дари",
-   "title": "Хозяйка Солнечного поместья",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:53.098167+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Хозяйка Солнечного поместья\" совпало, но автора из каталога (Адриана Дари) на странице нет. На странице указан автор: autoposter. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:52:17.724890+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://s10.skladchiki.pro/threads/osnovy-dzhjotish-uchebnik-po-vostochnoj-astrologii-alevtina-sijatri.291151/",
   "final_url": "https://s10.skladchiki.pro/threads/osnovy-dzhjotish-uchebnik-po-vostochnoj-astrologii-alevtina-sijatri.291151/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "Основы Джйотиш. Учебник по восточной астрологии (Алевтина Сиятри) « Складчикам курсы « Складчики",
+  "page_state": "нет содержимого",
+  "heading": "",
   "page_author": "",
-  "signs": [
-   "кнопка скачивания",
-   "ссылка скрыта до регистрации"
-  ],
-  "match": {
-   "book_id": "B2899ff",
-   "author": "Алевтина Сиятри",
-   "title": "Основы Джйотиш. Учебник по восточной астрологии",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:53.099502+00:00"
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:17.894216+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://skladchiki.pro/threads/osnovy-dzhjotish-uchebnik-po-vostochnoj-astrologii-alevtina-sijatri.291151/",
   "final_url": "https://s10.skladchiki.pro/threads/osnovy-dzhjotish-uchebnik-po-vostochnoj-astrologii-alevtina-sijatri.291151/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "Основы Джйотиш. Учебник по восточной астрологии (Алевтина Сиятри) « Складчикам курсы « Складчики",
+  "page_state": "нет содержимого",
+  "heading": "",
   "page_author": "",
-  "signs": [
-   "кнопка скачивания",
-   "ссылка скрыта до регистрации"
-  ],
-  "match": {
-   "book_id": "B2899ff",
-   "author": "Алевтина Сиятри",
-   "title": "Основы Джйотиш. Учебник по восточной астрологии",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:53.248587+00:00"
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:18.125844+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://wav-library.net/sovremennaia-proza/cena-proshheniia",
@@ -1712,7 +1766,7 @@
   "match": null,
   "status": 2,
   "reason": "Сайт не ответил (SSLError).",
-  "checked_at": "2026-10-21T16:49:53.312777+00:00"
+  "checked_at": "2026-10-21T17:52:18.281209+00:00"
  },
  {
   "url": "https://knigoline.ru/tyomnyy-mag-kniga-1-nevedomyy-put-4375/",
@@ -1721,7 +1775,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Тёмный маг - книга 1. Неведомый путь: скачать бесплатно и полностью | Алекс Ключевской (Лёха) | Тёмный маг — книга 1. Неведомый путь",
-  "page_author": "Алекс Ключевской",
+  "page_author": "Алекс Ключевской (Лёха)",
   "signs": [
    "кнопка скачивания",
    "чтение онлайн",
@@ -1735,7 +1789,11 @@
   },
   "status": 2,
   "reason": "Книга найдена в заголовке, автор совпал. Есть ссылки на магазин и признаки чтения или скачивания; назначение ссылок нужно проверить.",
-  "checked_at": "2026-10-21T16:49:53.386257+00:00"
+  "checked_at": "2026-10-21T17:52:18.832961+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://free-kniga.ru/yumor/razvedena-i-prekrasna-379393/",
@@ -1758,29 +1816,22 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:53.430522+00:00"
+  "checked_at": "2026-10-21T17:52:19.272603+00:00"
  },
  {
   "url": "https://skladchiki.pro/threads/promtologija-kak-sdelat-nejroset-svoim-zamestitelem-aleks-promtov.472498/",
   "final_url": "https://s10.skladchiki.pro/threads/promtologija-kak-sdelat-nejroset-svoim-zamestitelem-aleks-promtov.472498/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "ok",
-  "heading": "Промтология. Как сделать нейросеть своим заместителем (Алекс Промтов) « Складчикам курсы « Складчики",
+  "page_state": "нет содержимого",
+  "heading": "",
   "page_author": "",
-  "signs": [
-   "кнопка скачивания",
-   "ссылка скрыта до регистрации"
-  ],
-  "match": {
-   "book_id": "B7dd037",
-   "author": "Алекс Промтов",
-   "title": "Промтология: Как сделать нейросеть своим заместителем",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:53.513303+00:00"
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:19.284734+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://librain.ru/karera-i-kadry/sporim-boss",
@@ -1803,7 +1854,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:53.517309+00:00"
+  "checked_at": "2026-10-21T17:52:21.937772+00:00"
  },
  {
   "url": "https://litseries.ru/romany/sporim-boss-388646/",
@@ -1826,7 +1877,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:53.707332+00:00"
+  "checked_at": "2026-10-21T17:52:22.064935+00:00"
  },
  {
   "url": "https://bibliophile.top/index.php?threads/11672/",
@@ -1845,7 +1896,7 @@
   },
   "status": 0,
   "reason": "Книга найдена в заголовке, автор совпал. Книга упомянута, но скачать, читать или слушать нельзя.",
-  "checked_at": "2026-10-21T16:49:53.759223+00:00"
+  "checked_at": "2026-10-21T17:52:22.195811+00:00"
  },
  {
   "url": "https://i-tor.pro/viewtopic.php?t=940730",
@@ -1858,8 +1909,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:53.890380+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:23.424649+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://knigoline.ru/13-y-demon-asmodeya-tom-2-9093/",
@@ -1868,7 +1920,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "13-й демон Асмодея - том 2: скачайте полную версию | Алекс Ключевской (Лёха) | 13-й демон Асмодея — том 2",
-  "page_author": "Алекс Ключевской",
+  "page_author": "Алекс Ключевской (Лёха)",
   "signs": [
    "кнопка скачивания",
    "чтение онлайн",
@@ -1882,29 +1934,19 @@
   },
   "status": 2,
   "reason": "Книга найдена в заголовке, автор совпал. Есть ссылки на магазин и признаки чтения или скачивания; назначение ссылок нужно проверить.",
-  "checked_at": "2026-10-21T16:49:54.223404+00:00"
+  "checked_at": "2026-10-21T17:52:24.543696+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://skladchik.tv/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.481125/",
   "final_url": "https://s4.skladchik.tv/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.481125/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
-  "page_author": "",
-  "signs": [],
-  "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:54.287982+00:00"
- },
- {
-  "url": "https://skladchiki.pro/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.475408/",
-  "final_url": "https://s10.skladchiki.pro/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.475408/",
-  "http_status": 200,
-  "content_type": "text/html",
   "page_state": "ok",
-  "heading": "Изучаем pytest. От основ до продвинутых техник тестирования в Python (Алекс Коган) « Складчикам курсы « Складчики",
+  "heading": "Скачать Изучаем pytest. От основ до продвинутых техник тестирования в Python (Алекс Коган)",
   "page_author": "",
   "signs": [
    "кнопка скачивания",
@@ -1918,7 +1960,22 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:54.297529+00:00"
+  "checked_at": "2026-10-21T17:52:24.735342+00:00"
+ },
+ {
+  "url": "https://skladchiki.pro/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.475408/",
+  "final_url": "https://s10.skladchiki.pro/threads/izuchaem-pytest-ot-osnov-do-prodvinutyx-texnik-testirovanija-v-python-aleks-kogan.475408/",
+  "http_status": 200,
+  "content_type": "text/html",
+  "page_state": "нет содержимого",
+  "heading": "",
+  "page_author": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:24.747831+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://zlib.pub/book/python-testing-with-pytest-3g998v3in3tg",
@@ -1933,8 +1990,8 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Download Python Testing with pytest by Brian Okken | Python Testing with pytest EPUB",
-  "checked_at": "2026-10-21T16:49:54.314951+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Download Python Testing with pytest by Brian Okken | Python Testing with pytest EPUB",
+  "checked_at": "2026-10-21T17:52:24.870140+00:00"
  },
  {
   "url": "https://booksfb2.com/kulinariia/iskusstvo-stir-frai-ili-vok-lapsa-v-korobocke",
@@ -1957,7 +2014,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:54.368590+00:00"
+  "checked_at": "2026-10-21T17:52:24.893069+00:00"
  },
  {
   "url": "https://librain.ru/kulinariia/ulicnaia-eda-recepty-bliud-sovremennogo-strit-fuda",
@@ -1980,21 +2037,29 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:54.615258+00:00"
+  "checked_at": "2026-10-21T17:52:25.222689+00:00"
  },
  {
   "url": "https://skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
   "final_url": "https://s4.skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
+  "page_state": "ok",
+  "heading": "Скачать Как начать писать картины маслом в возрасте от 18 до 100 лет (Ёся Джинн)",
   "page_author": "",
-  "signs": [],
-  "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:54.788502+00:00"
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "Be7cb4c",
+   "author": "Ёся Джинн",
+   "title": "Как начать легко писать картины маслом в любом возрасте от 18 до 100",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
+  "checked_at": "2026-10-21T17:52:25.857460+00:00"
  },
  {
   "url": "https://ru.z-library.sk/book/24790827/25e8ef/%D0%A3%D0%BB%D0%B8%D1%87%D0%BD%D0%B0%D1%8F-%D0%B5%D0%B4%D0%B0-%D1%80%D0%B5%D1%86%D0%B5%D0%BF%D1%82%D1%8B-%D0%B1%D0%BB%D1%8E%D0%B4-%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D0%BE%D0%B3%D0%BE-%D1%81%D1%82%D1%80%D0%B8%D1%82%D1%84%D1%83%D0%B4%D0%B0.html?dsource=recommend",
@@ -2008,7 +2073,7 @@
   "match": null,
   "status": 2,
   "reason": "Сайт ответил ошибкой 513, содержимое не получено.",
-  "checked_at": "2026-10-21T16:49:54.831426+00:00"
+  "checked_at": "2026-10-21T17:52:26.863872+00:00"
  },
  {
   "url": "https://zoboko.com/book/rm9vg3d3/",
@@ -2030,7 +2095,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:54.854329+00:00"
+  "checked_at": "2026-10-21T17:52:27.144551+00:00"
  },
  {
   "url": "https://libvi.ru/yumor/puhlenkaya-ryzhenkaya/",
@@ -2039,21 +2104,20 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Пухленькая Рыженькая: читать онлайн бесплатно и скачать полностью",
-  "page_author": "",
+  "page_author": "liv",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание epub, fb2"
   ],
-  "match": {
-   "book_id": "B6f939c",
-   "author": "Алекс Мара",
-   "title": "Пухленькая Рыженькая",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:55.025196+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Пухленькая Рыженькая\" совпало, но автора из каталога (Алекс Мара) на странице нет. На странице указан автор: liv. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:52:27.454258+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://readtoday.ru/yumor/razvedena-i-prekrasna-727057/",
@@ -2076,7 +2140,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:55.147425+00:00"
+  "checked_at": "2026-10-21T17:52:28.091210+00:00"
  },
  {
   "url": "https://free.chitaem-knigi.online/books/devstvennost-po-kontraktu-1",
@@ -2089,8 +2153,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:55.155884+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:29.087995+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://kniganet.ru/fentezi/devstvennost-po-kontraktu/",
@@ -2099,21 +2164,20 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Девственность по контракту: читать онлайн бесплатно и скачать полностью",
-  "page_author": "",
+  "page_author": "autoposter",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание fb2, txt"
   ],
-  "match": {
-   "book_id": "B8b2feb",
-   "author": "Алекс Найт",
-   "title": "Девственность по контракту",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:55.199413+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Девственность по контракту\" совпало, но автора из каталога (Алекс Найт) на странице нет. На странице указан автор: autoposter. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:52:29.728846+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://ru.fix-kniga.site/Dlya-vzroslyh/16268-devstvennost-po-kontraktu---aleks-najt.html",
@@ -2127,7 +2191,7 @@
   "match": null,
   "status": 2,
   "reason": "Сайт ответил ошибкой 500, содержимое не получено.",
-  "checked_at": "2026-10-21T16:49:55.213690+00:00"
+  "checked_at": "2026-10-21T17:52:30.307390+00:00"
  },
  {
   "url": "https://free.chitaem-knigi.online/books/ne-detskie-skazki-zhena-dlia-sinei-borody",
@@ -2140,8 +2204,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:55.410210+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:30.322657+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://kniganet.ru/romani/zhena-dlya-siney-borody/",
@@ -2150,35 +2215,37 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Жена для Синей Бороды: читать онлайн бесплатно и скачать полностью",
-  "page_author": "",
+  "page_author": "autoposter",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание fb2, txt"
   ],
-  "match": {
-   "book_id": "Bc730f2",
-   "author": "Алекс Найт",
-   "title": "Жена для Синей Бороды",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:55.521445+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Жена для Синей Бороды\" совпало, но автора из каталога (Алекс Найт) на странице нет. На странице указан автор: autoposter. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:52:30.353600+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://s3.skladchinabiz.app/threads/promtologija-bolshoe-rukovodstvo-po-nejrosetjam-aleks-promtov.465616/",
   "final_url": "https://s1.skladchinabiz.com/threads/promtologija-bolshoe-rukovodstvo-po-nejrosetjam-aleks-promtov.465616/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
+  "page_state": "ok",
+  "heading": "Курс Промтология. Большое руководство по нейросетям [Алекс Промтов] со скидкой 50%",
   "page_author": "",
-  "signs": [],
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
   "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:55.531431+00:00"
+  "status": 0,
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Курс Промтология. Большое руководство по нейросетям [Алекс Промтов] со скидкой 50%",
+  "checked_at": "2026-10-21T17:52:30.642087+00:00"
  },
  {
   "url": "https://booksfb2.com/liubovnye-romany/izmena-ia-vas-vernu",
@@ -2201,7 +2268,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:55.691801+00:00"
+  "checked_at": "2026-10-21T17:52:30.762066+00:00"
  },
  {
   "url": "https://knigi.fun/31487-izmena-hochu-tvoego-mugha.html",
@@ -2218,7 +2285,11 @@
   "match": null,
   "status": 2,
   "reason": "Название \"Измена. Хочу твоего мужа\" совпало, но автора из каталога (Ася Исай, Галина Колоскова, Мария Авенская) на странице нет. На странице указан автор: Оксана Алексаева. Нужна проверка человеком.",
-  "checked_at": "2026-10-21T16:49:55.863376+00:00"
+  "checked_at": "2026-10-21T17:52:31.401748+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://free-kniga.ru/priklyucheniya/eger-3-nazad-v-sssr-987728/",
@@ -2241,7 +2312,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:55.904099+00:00"
+  "checked_at": "2026-10-21T17:52:31.632786+00:00"
  },
  {
   "url": "https://free-kniga.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
@@ -2264,7 +2335,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:55.916223+00:00"
+  "checked_at": "2026-10-21T17:52:31.803935+00:00"
  },
  {
   "url": "https://kniganet.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
@@ -2273,21 +2344,20 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Тайновидец. Том 9: Повелитель стихий: читать онлайн бесплатно и скачать полностью",
-  "page_author": "",
+  "page_author": "autoposter",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание fb2, txt"
   ],
-  "match": {
-   "book_id": "Bce9a30",
-   "author": "Алекс Рудин",
-   "title": "Тайновидец. Том 9: Повелитель стихий",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:56.178003+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Тайновидец. Том 9: Повелитель стихий\" совпало, но автора из каталога (Алекс Рудин) на странице нет. На странице указан автор: autoposter. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:52:32.186075+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://librain.ru/detektivy/tainovidec-tom-9-povelitel-stixii",
@@ -2310,7 +2380,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:56.178917+00:00"
+  "checked_at": "2026-10-21T17:52:32.352208+00:00"
  },
  {
   "url": "https://libvi.ru/fentezi/taynovidets-tom-9-povelitel-stihiy/",
@@ -2319,21 +2389,20 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Тайновидец. Том 9: Повелитель стихий: читать онлайн бесплатно и скачать полностью",
-  "page_author": "",
+  "page_author": "liv",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание fb2, txt"
   ],
-  "match": {
-   "book_id": "Bce9a30",
-   "author": "Алекс Рудин",
-   "title": "Тайновидец. Том 9: Повелитель стихий",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:56.184727+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Тайновидец. Том 9: Повелитель стихий\" совпало, но автора из каталога (Алекс Рудин) на странице нет. На странице указан автор: liv. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:52:33.198786+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://litseries.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
@@ -2356,7 +2425,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:56.340263+00:00"
+  "checked_at": "2026-10-21T17:52:33.256252+00:00"
  },
  {
   "url": "https://pro-books.ru/prikliuceniia/tainovidec-tom-9-povelitel-stixii",
@@ -2379,7 +2448,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:56.434037+00:00"
+  "checked_at": "2026-10-21T17:52:33.773872+00:00"
  },
  {
   "url": "https://readtoday.ru/priklyucheniya/taynovidets-tom-9-povelitel-stihiy/",
@@ -2402,7 +2471,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:56.785890+00:00"
+  "checked_at": "2026-10-21T17:52:34.624920+00:00"
  },
  {
   "url": "https://knigo-lub.ru/erotika/dvoynoe-udovolstvie/",
@@ -2411,21 +2480,20 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Двойное удовольствие: читать и скачать полностью онлайн бесплатно без сокращений",
-  "page_author": "",
+  "page_author": "Mery",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание epub, fb2, txt"
   ],
-  "match": {
-   "book_id": "Bbd74a3",
-   "author": "Алекс Хот",
-   "title": "Двойное удовольствие",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:56.806415+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Двойное удовольствие\" совпало, но автора из каталога (Алекс Хот) на странице нет. На странице указан автор: Mery. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:52:34.658589+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://wav-library.net/proza/izmena-ia-vas-vernu",
@@ -2439,7 +2507,7 @@
   "match": null,
   "status": 2,
   "reason": "Сайт не ответил (SSLError).",
-  "checked_at": "2026-10-21T16:49:56.856417+00:00"
+  "checked_at": "2026-10-21T17:52:35.026564+00:00"
  },
  {
   "url": "https://readtoday.ru/priklyucheniya/oklevetannaya-zhena-drakona-hozyayka-taverny-u-chernyh-skal-945787/",
@@ -2455,15 +2523,30 @@
   "match": null,
   "status": 0,
   "reason": "Страницы нет: ответ 404, Страница не найдена - ReadToday | 404.",
-  "checked_at": "2026-10-21T16:49:56.933515+00:00"
+  "checked_at": "2026-10-21T17:52:35.787468+00:00"
  },
  {
   "url": "https://skladchiki.pro/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.405618/",
   "final_url": "https://s10.skladchiki.pro/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.405618/",
   "http_status": 200,
   "content_type": "text/html",
+  "page_state": "нет содержимого",
+  "heading": "",
+  "page_author": "",
+  "signs": [],
+  "match": null,
+  "status": 2,
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:35.897274+00:00",
+  "browser_fallback": false
+ },
+ {
+  "url": "https://s4.skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
+  "final_url": "https://s4.skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
+  "http_status": 200,
+  "content_type": "text/html",
   "page_state": "ok",
-  "heading": "Как начать писать картины маслом в возрасте от 18 до 100 лет (Ёся Джинн) « Складчикам курсы « Складчики",
+  "heading": "Скачать Как начать писать картины маслом в возрасте от 18 до 100 лет (Ёся Джинн)",
   "page_author": "",
   "signs": [
    "кнопка скачивания",
@@ -2477,21 +2560,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
-  "checked_at": "2026-10-21T16:49:57.014828+00:00"
- },
- {
-  "url": "https://s4.skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
-  "final_url": "https://s4.skladchik.tv/threads/kak-nachat-pisat-kartiny-maslom-v-vozraste-ot-18-do-100-let-josja-dzhinn.414633/",
-  "http_status": 200,
-  "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
-  "page_author": "",
-  "signs": [],
-  "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:57.028109+00:00"
+  "checked_at": "2026-10-21T17:52:35.973985+00:00"
  },
  {
   "url": "https://litbox.pro/sovremennie-lyubovnie-romani/bud-moim-bivshim/",
@@ -2500,35 +2569,37 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Будь моим бывшим — читать онлайн и скачать | LitBox",
-  "page_author": "",
+  "page_author": "Daniella",
   "signs": [
    "чтение онлайн",
    "кнопка скачивания",
    "скачивание epub, fb2, txt"
   ],
-  "match": {
-   "book_id": "B116af7",
-   "author": "Мара Алекс",
-   "title": "Будь моим бывшим",
-   "where": "заголовок"
-  },
-  "status": 1,
-  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:57.055682+00:00"
+  "match": null,
+  "status": 2,
+  "reason": "Название \"Будь моим бывшим\" совпало, но автора из каталога (Мара Алекс) на странице нет. На странице указан автор: Daniella. Нужна проверка человеком.",
+  "checked_at": "2026-10-21T17:52:36.129291+00:00",
+  "ai": {
+   "used": false,
+   "note": "Лимит ИИ-разборов на этот список достигнут"
+  }
  },
  {
   "url": "https://skladchinabiz.app/threads/promtologija-bolshoe-rukovodstvo-po-nejrosetjam-aleks-promtov.465616/",
   "final_url": "https://s1.skladchinabiz.com/threads/promtologija-bolshoe-rukovodstvo-po-nejrosetjam-aleks-promtov.465616/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
+  "page_state": "ok",
+  "heading": "Курс Промтология. Большое руководство по нейросетям [Алекс Промтов] со скидкой 50%",
   "page_author": "",
-  "signs": [],
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
   "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:57.092374+00:00"
+  "status": 0,
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Курс Промтология. Большое руководство по нейросетям [Алекс Промтов] со скидкой 50%",
+  "checked_at": "2026-10-21T17:52:36.297636+00:00"
  },
  {
   "url": "https://pro-books.ru/proza/izmena-ia-vas-vernu",
@@ -2551,7 +2622,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:57.271470+00:00"
+  "checked_at": "2026-10-21T17:52:36.481822+00:00"
  },
  {
   "url": "https://free-kniga.ru/priklyucheniya/eger-nazad-v-sssr-669853/",
@@ -2568,8 +2639,8 @@
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Егерь: назад в СССР: читать и скачать онлайн бесплатно полностью без сокращений",
-  "checked_at": "2026-10-21T16:49:57.278337+00:00"
+  "reason": "Страница прочитана, но совпадение с каталогом не найдено. Обнаружено: Егерь: назад в СССР: читать и скачать онлайн бесплатно полностью без сокращений",
+  "checked_at": "2026-10-21T17:52:36.880328+00:00"
  },
  {
   "url": "https://lllit.ru/ezoterika/noc-na-lysoi-gore-gde-zabytye-bogi-slysat",
@@ -2585,7 +2656,7 @@
   "match": null,
   "status": 0,
   "reason": "Страницы нет: редирект на главную.",
-  "checked_at": "2026-10-21T16:49:57.321336+00:00"
+  "checked_at": "2026-10-21T17:52:37.662507+00:00"
  },
  {
   "url": "https://librain.ru/putesestviia-i-geografiia/el-encuentro-en-buenos-aires-adaptirovannoe-ctenie-na-ispanskom-iazyke",
@@ -2608,21 +2679,29 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:57.322907+00:00"
+  "checked_at": "2026-10-21T17:52:38.410212+00:00"
  },
  {
   "url": "https://skladchik.tv/threads/emba-za-15-000-000-chto-imenno-izuchajut-za-ehti-dengi-v-garvarde-stehnforde-i-skolkovo-danila-dzhekson.467290/",
   "final_url": "https://s4.skladchik.tv/threads/emba-za-15-000-000-chto-imenno-izuchajut-za-ehti-dengi-v-garvarde-stehnforde-i-skolkovo-danila-dzhekson.467290/",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "",
+  "page_state": "ok",
+  "heading": "Скачать EMBA за 15 000 000 ₽. Что именно изучают за эти деньги в Гарварде, Стэнфорде и Сколково (Данила Джексон)",
   "page_author": "",
-  "signs": [],
-  "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:57.450987+00:00"
+  "signs": [
+   "кнопка скачивания",
+   "ссылка скрыта до регистрации"
+  ],
+  "match": {
+   "book_id": "B3ff35a",
+   "author": "Данила Джексон",
+   "title": "EMBA за 15 000 000 ₽. Что именно изучают за эти деньги в Гарварде, Стэнфорде и Сколково",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: кнопка скачивания; ссылка скрыта до регистрации.",
+  "checked_at": "2026-10-21T17:52:38.666875+00:00"
  },
  {
   "url": "https://librain.ru/nauka-i-obrazovanie/english-vocabulary-booster-interesting-facts",
@@ -2645,7 +2724,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T16:49:57.478736+00:00"
+  "checked_at": "2026-10-21T17:52:39.274419+00:00"
  },
  {
   "url": "https://free.chitaem-knigi.online/books/english-razgovornaia-grammatika-dlia-realnogo-obshcheniia-kniga-1",
@@ -2658,8 +2737,9 @@
   "signs": [],
   "match": null,
   "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T16:49:57.696327+00:00"
+  "reason": "Получен экран загрузки вместо содержимого. Нужна проверка в браузере.",
+  "checked_at": "2026-10-21T17:52:40.720664+00:00",
+  "browser_fallback": false
  },
  {
   "url": "https://audioknigivuhe.com/love-fantastic/16986-cvetok-v-muzhskoj-akademii-magii.html",
@@ -2681,7 +2761,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: это аудиоверсия; аудио, слушать онлайн.",
-  "checked_at": "2026-10-21T17:00:32.757400+00:00"
+  "checked_at": "2026-10-21T17:52:40.780536+00:00"
  },
  {
   "url": "https://audiopautina.ru/wp-content/uploads/2026/05/rl2.pdf",
@@ -2690,14 +2770,14 @@
   "content_type": "application/pdf",
   "page_state": "ok",
   "heading": "Разреши любить. Позволь мне быть рядом. Книга 2 Анна Джейн",
-  "page_author": "",
+  "page_author": "Анна Джейн",
   "signs": [
    "файл PDF на 265 стр."
   ],
   "match": null,
   "status": 0,
-  "reason": "Книг из каталога на странице нет. Страница про: Разреши любить. Позволь мне быть рядом. Книга 2 Анна Джейн",
-  "checked_at": "2026-10-21T17:00:32.758807+00:00"
+  "reason": "PDF найден и прочитан, но совпадение с каталогом не найдено. Обнаружено: Разреши любить. Позволь мне быть рядом. Книга 2 Анна Джейн",
+  "checked_at": "2026-10-21T17:52:41.064846+00:00"
  },
  {
   "url": "https://book1.bubooker.link/knigi_sistemnyy-razvedchik.-infiltraciya.-dilogiya_1101000100100010110001110",
@@ -2706,7 +2786,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Системный разведчик. Инфильтрация. Дилогия, Юрич Валерий - читать онлайн без регистрации",
-  "page_author": "",
+  "page_author": "Юрич Валерий",
   "signs": [
    "текст книги прямо на странице"
   ],
@@ -2718,7 +2798,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице.",
-  "checked_at": "2026-10-21T17:00:32.760628+00:00"
+  "checked_at": "2026-10-21T17:52:41.266189+00:00"
  },
  {
   "url": "https://booknotor.ru/tajnovidec-tom-13-master-nevezenija-rudin-aleks/",
@@ -2741,7 +2821,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: это аудиоверсия; торрент; кнопка скачивания.",
-  "checked_at": "2026-10-21T17:00:32.761739+00:00"
+  "checked_at": "2026-10-21T18:00:54.538089+00:00"
  },
  {
   "url": "https://knigaportal.com/hudozhestvennaya-literatura/boevik-fantasticheskij-boevik/1770-evgeniy-nett-sbornik-proizvedeniy.html",
@@ -2764,7 +2844,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в тексте страницы (сборник или список), автор совпал. Признаки размещения: скачивание zip; файлообменники htfl.net, nitroflare.com, trbt.cc; кнопка скачивания.",
-  "checked_at": "2026-10-21T17:00:32.762988+00:00"
+  "checked_at": "2026-10-21T17:52:41.815425+00:00"
  },
  {
   "url": "https://knigi.fun/23537-zamugh-po-dogovoru.html",
@@ -2786,7 +2866,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн.",
-  "checked_at": "2026-10-21T17:00:32.764640+00:00"
+  "checked_at": "2026-10-21T17:52:41.849924+00:00"
  },
  {
   "url": "https://knigoline.ru/yarost-vechnyh-9347/",
@@ -2801,20 +2881,21 @@
    "чтение онлайн",
    "ссылки на покупку в Литрес"
   ],
-  "match": null,
-  "status": 0,
-  "reason": "ИИ-проверка: Есть совпадение названия и автора, но размещение книги не подтверждено: на сайте предлагается лишь покупка платной версии на партнёрском ресурсе.",
-  "checked_at": "2026-10-21T17:00:32.765838+00:00",
+  "match": {
+   "book_id": "B41923c",
+   "author": "Антон Карелин",
+   "title": "Ярость Вечных",
+   "where": "заголовок"
+  },
+  "status": 2,
+  "reason": "Книга найдена в заголовке, автор совпал. Есть ссылки на магазин и признаки чтения или скачивания; назначение ссылок нужно проверить.",
+  "checked_at": "2026-10-21T18:00:54.539533+00:00",
   "ai": {
    "used": true,
-   "accepted": true,
-   "model": "gemini-3.5-flash-lite",
-   "proposed_status": 0,
-   "evidence": [
-    "Ярость Вечных",
-    "Антон Карелин",
-    "На Литрес · 199 ₽"
-   ]
+   "accepted": false,
+   "model": "glm-5.3-flash",
+   "inspected_url": "https://knigoline.ru/download/book/9347/",
+   "note": "ИИ не дал проверяемого ответа, сохранено решение правил"
   },
   "rules_status": 2,
   "rules_reason": "Книга найдена в заголовке, автор совпал. Есть ссылки на магазин и признаки чтения или скачивания; назначение ссылок нужно проверить."
@@ -2840,7 +2921,7 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: скачивание epub, fb2, txt; чтение онлайн; кнопка скачивания.",
-  "checked_at": "2026-10-21T17:00:32.766865+00:00"
+  "checked_at": "2026-10-21T17:52:42.206644+00:00"
  },
  {
   "url": "https://read.xbook.life/books_yasnovidet-mozhet-kazhdyy-ili-kak-razvit-v-sebe-sverhsposobnosti_111377002",
@@ -2849,7 +2930,7 @@
   "content_type": "text/html",
   "page_state": "ok",
   "heading": "Ясновидеть может каждый или как развить в себе сверхспособности, Хайр Хелен, книга полностью, читать бесплатно без сокращений",
-  "page_author": "",
+  "page_author": "Хайр Хелен",
   "signs": [
    "текст книги прямо на странице"
   ],
@@ -2861,20 +2942,29 @@
   },
   "status": 1,
   "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице.",
-  "checked_at": "2026-10-21T17:00:32.963115+00:00"
+  "checked_at": "2026-10-21T17:52:42.434911+00:00"
  },
  {
   "url": "https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-gadosti-k-istinnoi-radosti",
-  "final_url": "https://yaa.bibliboba.org/books/ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-gadosti-k-istinnoi-radosti",
+  "final_url": "https://biblo.iboba.club/books-ia-mir-instruktsiia-po-perekhodu-ot-vnutrennei-gadosti-k-istinnoi-radosti",
   "http_status": 200,
   "content_type": "text/html",
-  "page_state": "нет содержимого",
-  "heading": "Загрузка — Библибоба",
-  "page_author": "",
-  "signs": [],
-  "match": null,
-  "status": 2,
-  "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом.",
-  "checked_at": "2026-10-21T17:00:33.110304+00:00"
+  "page_state": "ok",
+  "heading": "Читать Я-Мир. Инструкция по переходу от внутренней гадости к истинной радости (Игорь Леонидович Науменко) бесплатно и полностью – книга жанра \"Наука, Образование / Психология\" без регистрации | Читать книгу Я-Мир. Инструкция по переходу от внутренней гадости к истинной радости полностью",
+  "page_author": "Игорь Леонидович Науменко",
+  "signs": [
+   "текст книги прямо на странице"
+  ],
+  "match": {
+   "book_id": "B4a50a3",
+   "author": "Игорь Леонидович Науменко",
+   "title": "Я-Мир. Инструкция по переходу от внутренней гадости к истинной радости",
+   "where": "заголовок"
+  },
+  "status": 1,
+  "reason": "Книга найдена в заголовке, автор совпал. Признаки размещения: текст книги прямо на странице.",
+  "checked_at": "2026-10-21T17:51:08.366730+00:00",
+  "browser_fallback": true,
+  "extraction_method": "браузер Playwright"
  }
 ]
