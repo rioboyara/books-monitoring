@@ -419,3 +419,5 @@ textarea {
 .legend {
   display:block}
 }
+
+.ai-tag { display: block; color: #32756c; font-size: 12px; margin-top: 8px; }

@@ -13,6 +13,7 @@
   <p>Добавьте строки в исходный файл и загрузите его сюда. Получите очищенные данные, каталог книг, дубли и спорные случаи.</p>
   <details><summary>Требования к файлу</summary><p>Лист "Задание 1": правообладатель, автор, название, тип контента, url, сайт, именно в таком порядке. Лист "Задание 2" необязателен. Идентификаторы неизменённых книг сохраняются.</p></details>
   <div class="panel"><label for="file">Исходная таблица</label><p class="muted small">Формат XLSX, до 5 МБ и 3 000 строк на листе.</p><p><input type="file" id="file" accept=".xlsx"></p>
+  <label class="small"><input type="checkbox" id="ai-data" checked> Добавить рекомендации ИИ по спорным записям</label><p class="muted small">До 8 разных книг на отдельном листе. Их авторы, названия и пометки передаются API429. Исходные данные и каталог не изменяются.</p>
   <p><button id="go">Обработать</button> </p><p id="state" class="status-line" role="status" aria-live="polite"></p></div><p class="callout">Новые ссылки в файле не загружаются автоматически. Для них используйте раздел "Проверка ссылок". Результаты известных адресов берутся из сохранённого прогона.</p>
 </main>
 <script>
@@ -27,7 +28,7 @@ async function upload() {
   document.getElementById("go").disabled = true;
   state.textContent = "Обрабатываю...";
   try {
-    const resp = await fetch(location.origin + "/api/table", {method: "POST", body: file});
+    const resp = await fetch(location.origin + "/api/table", {method: "POST", headers: {"X-AI-Review": document.getElementById("ai-data").checked ? "1" : "0"}, body: file});
     if (!resp.ok) throw new Error((await resp.json()).detail || resp.status);
     const link = document.createElement("a");
     link.href = URL.createObjectURL(await resp.blob());

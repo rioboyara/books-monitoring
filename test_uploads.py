@@ -1,6 +1,7 @@
 """Проверка обработки файлов: python test_uploads.py (нужен httpx)."""
 import io
 import zipfile
+from unittest.mock import patch
 from pathlib import Path
 import openpyxl
 from fastapi.testclient import TestClient
@@ -37,6 +38,12 @@ def test_uploads():
     output = openpyxl.load_workbook(io.BytesIO(result.content))['Строки']
     assert output['F2'].value == '  https://example.org/book  '
     assert output['D2'].value == '=1+1' and output['D2'].data_type == 's'
+    with patch('app.suggest_rows', return_value=[[2, 'Книга', 'Проверить автора', 'ID книги']]):
+        assisted = client.post('/api/table', content=src.read_bytes(), headers={'X-AI-Review': '1'})
+        assert assisted.status_code == 200
+        assisted_wb = openpyxl.load_workbook(io.BytesIO(assisted.content))
+        assert assisted_wb['Рекомендации ИИ']['A2'].value == 2
+        assert assisted_wb['Строки']['D2'].value == wb['Строки']['D2'].value
     rows = process(load_rows(src))
     print('source counts', len(rows), len(catalog(rows)), sum(r['dup_of'] != r['row'] for r in rows))
 

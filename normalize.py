@@ -222,19 +222,26 @@ def page_state(p):
     return ", ".join(str(x) for x in (p.get("http_status"), p.get("page_state")) if x) or "нет ответа"
 
 
+def ai_summary(p):
+    ai = p.get("ai")
+    if not ai:
+        return ""
+    return "ИИ: " + ("решение уточнено, цитаты проверены" if ai.get("accepted") else ai.get("note", "нужна ручная проверка"))
+
+
 def extracted(p):
     """Что прототип достал со страницы: заголовок, автор, тип файла."""
     return "; ".join(filter(None, [
         f"заголовок: {p['heading'][:150]}" if p.get("heading") else "",
         f"автор на странице: {p['page_author']}" if p.get("page_author") else "",
-        f"тип: {p['content_type']}" if p.get("content_type") and "html" not in p["content_type"] else ""]))
+        f"тип: {p['content_type']}" if p.get("content_type") and "html" not in p["content_type"] else "", ai_summary(p)]))
 
 
 def needs(text):
     return "; ".join(dict.fromkeys(n for k, n in NEEDS if k in text))
 
 
-def write_xlsx(rows, books, path, part2=None, pages=None):
+def write_xlsx(rows, books, path, part2=None, pages=None, advice=None):
     pages = pages or {}
     wb = openpyxl.Workbook()
     head = Font(bold=True)
@@ -319,6 +326,9 @@ def write_xlsx(rows, books, path, part2=None, pages=None):
                             "Статус страницы", "Извлечённые данные", "Совпадение с каталогом", "Причина решения"],
               [[r["row"], *[r.get("original", r)[c] for c in SOURCE_COLUMNS], *part2_cols(pages.get(r["url"]))] for r in part2],
               [9, 12, 20, 30, 8, 40, 18, 12, 40, 16, 50, 30, 60])
+    if advice is not None:
+        sheet("Рекомендации ИИ", ["Строка в исходнике", "Цитата из строки", "Что проверить (рекомендация ИИ)",
+                                "Каких данных не хватает"], advice, [12, 35, 65, 50])
     wb.save(path)
 
 
@@ -330,7 +340,7 @@ def part2_cols(p):
             f"{m['author']}. {m['title']}" if m else "нет", p["reason"]]
 
 
-def build(src, dst, pages=None):
+def build(src, dst, pages=None, advise=None):
     """Собирает таблицу результата. src и dst: пути или файлы. pages: результаты checker.py по url."""
     wb = src if isinstance(src, openpyxl.Workbook) else openpyxl.load_workbook(src)
     rows = process(load_rows(wb))
@@ -338,7 +348,8 @@ def build(src, dst, pages=None):
     part2 = load_rows(wb, "Задание 2") if "Задание 2" in wb.sheetnames else []
     for r in part2:
         r["url"] = clean(r["url"])
-    write_xlsx(rows, books, dst, part2, pages or {})
+    advice = advise(rows) if advise else None
+    write_xlsx(rows, books, dst, part2, pages or {}, advice)
     return rows, books
 
 

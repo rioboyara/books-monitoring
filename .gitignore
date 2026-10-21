@@ -8,3 +8,6 @@ input/*.pdf
 .venv/
 
 !out/part2.json
+
+.env
+*.env

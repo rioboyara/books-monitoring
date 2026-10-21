@@ -17,6 +17,7 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from concurrent.futures import ThreadPoolExecutor
+from threading import BoundedSemaphore
 from difflib import SequenceMatcher
 from urllib.parse import urljoin, urlsplit
 
@@ -26,6 +27,7 @@ from pypdf import PdfReader
 from urllib3.util import connection as urllib3_connection
 
 from normalize import book_id, clean, key, load_rows, loose, split_author
+from ai_review import review
 
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"
 MAX_BYTES = 20_000_000
@@ -191,7 +193,7 @@ def decode(body, ctype):
         return body.decode("utf-8", "replace")
 
 
-def read_page(resp, body):
+def read_page(resp, body, details=None):
     """Заголовок, видимый текст и признаки размещения."""
     signs = {}
     ctype = resp.headers.get("content-type", "").lower()
@@ -222,6 +224,9 @@ def read_page(resp, body):
         href = el.get("href") or el.get("data-href") or el.get("onclick") or ""
         label = clean(el.get_text(" "))
         both = href + " " + (label if len(label) <= 60 else "")
+        if details is not None and href and len(details.setdefault("links", [])) < 30 and (
+                DOWNLOAD.search(both) or READER.search(both) or STORE.search(both)):
+            details["links"].append({"label": label[:120], "url": urljoin(resp.url, href)[:500]})
         if FILE_HOSTS.search(href):
             hosts.add(urlsplit(href).hostname)
         if TORRENT.search(both):
@@ -285,7 +290,7 @@ def decide(signs):
     return 0, "книга упомянута, но скачать, читать или слушать нельзя"
 
 
-def check(url, catalog):
+def check(url, catalog, ai_budget=None):
     out = {"url": url, "final_url": "", "http_status": None, "content_type": "", "page_state": "", "heading": "",
            "page_author": "", "signs": [], "match": None, "status": 2, "reason": ""}
     out["checked_at"] = datetime.now(timezone.utc).isoformat()
@@ -297,7 +302,8 @@ def check(url, catalog):
     out.update(final_url=resp.url, http_status=resp.status_code,
                content_type=resp.headers.get("content-type", "").split(";")[0])
     try:
-        heading, text, signs = read_page(resp, body)
+        details = {}
+        heading, text, signs = read_page(resp, body, details)
     except Exception as e:  # битый PDF или HTML не должен ронять всю пачку
         return {**out, "page_state": "не разобрать", "reason": f"Не удалось разобрать ответ ({type(e).__name__})"}
     out.update(heading=heading[:300], page_author=page_author(text), signs=[v for v in signs.values() if v])
@@ -314,6 +320,23 @@ def check(url, catalog):
                 "reason": "Сайт не отдал содержимое без браузера: проверка на бота или страница собирается скриптом."}
 
     out["page_state"] = "ok"
+    result = classify(out, heading, text, signs, catalog)
+    return review(result, heading, text, details.get("links", []), catalog,
+                  ai_budget if ai_budget is not None else BoundedSemaphore(1), inspect_link)
+
+
+def inspect_link(url):
+    try:
+        response, body = fetch(url)
+        if response.status_code == 200:
+            heading, text, _ = read_page(response, body)
+            return {"url": url, "heading": heading[:500], "text": text[:6000]}
+    except Exception:  # повреждённая промежуточная страница не должна прерывать проверку списка
+        pass
+    return None
+
+
+def classify(out, heading, text, signs, catalog):
     match, title_only = find_book(heading, text, catalog)
     out["match"] = match
     if not match and title_only:
@@ -338,8 +361,9 @@ def check(url, catalog):
 
 
 def check_many(urls, catalog, workers=8):
+    ai_budget = BoundedSemaphore(4)  # не больше четырёх платных разборов на один список
     with ThreadPoolExecutor(workers) as pool:
-        return list(pool.map(lambda u: check(u, catalog), urls))
+        return list(pool.map(lambda u: check(u, catalog, ai_budget), urls))
 
 
 def main(xlsx, source, dst):

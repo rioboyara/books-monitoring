@@ -11,6 +11,7 @@
 <main class="wide">
   <h1>Проверка ссылок</h1>
   <p class="lead">Адреса по одному в строке, не больше 30. Длительность зависит от ответа сайтов. Каталог книг собран из обоих листов исходной таблицы, сейчас в нём 101 книга.</p>
+  <p class="muted small">Спорные доступные страницы дополнительно анализирует ИИ через API429. До четырёх разборов на список. Текст и признаки этих страниц передаются модели.</p>
   <p class="muted small">Статусы: <span class="st st1">1</span> совпадение с книгой и признаки размещения, <span class="st st0">0</span> не подтверждено, <span class="st st2">2</span> автоматически определить не удалось.</p>
 
   <div class="panel"><label for="urls">Ссылки для проверки</label><p class="muted small">Уже добавлены 10 адресов из задания. Их можно заменить своим списком.</p>
@@ -60,6 +61,10 @@ function extracted(r) {
   if (r.page_author) parts.push("Автор на странице: " + r.page_author);
   if (r.content_type && !r.content_type.includes("html")) parts.push("Тип: " + r.content_type);
   if (r.signs.length) parts.push("Признаки: " + r.signs.join(", "));
+  if (r.ai) {
+    parts.push("ИИ: " + (r.ai.accepted ? "решение принято" : r.ai.note || "результат не принят"));
+    if (r.ai.evidence) parts.push("Цитаты: " + r.ai.evidence.filter(Boolean).join("; "));
+  }
   return parts.join(". ");
 }
 
@@ -88,7 +93,8 @@ function render() {
     const st = document.createElement("span");
     st.className = "st st" + r.status; st.textContent = ["0 Не подтверждено", "1 Найдено", "2 Проверить"][r.status];
     cell(tr, "").append(st);
-    cell(tr, r.reason);
+    const reason = cell(tr, r.reason);
+    if (r.ai && r.ai.used) { const tag = document.createElement("small"); tag.className = "ai-tag"; tag.textContent = r.ai.accepted ? "Решение уточнено ИИ" : "ИИ: ручная проверка сохраняется"; reason.append(tag); }
   }
   if (!body.rows.length) { const row = body.insertRow(); const td = cell(row, "Нет результатов по выбранному фильтру.", "empty"); td.colSpan = 6; }
   document.getElementById("out").hidden = false;

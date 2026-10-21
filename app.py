@@ -14,6 +14,7 @@ from pydantic import BaseModel
 
 from checker import check_many, load_catalog
 from normalize import build
+from ai_review import suggest_rows
 
 HERE = Path(__file__).parent
 MAX_URLS = 30
@@ -74,10 +75,10 @@ async def api_table(request: Request):
     if not body or len(body) > MAX_TABLE_BYTES:
         raise HTTPException(400, "Нужен файл xlsx до 5 МБ")
     # разбор xlsx занимает процессор, поэтому в отдельном потоке и под тем же ограничением, что и проверка ссылок
-    return await run_in_threadpool(make_table, body)
+    return await run_in_threadpool(make_table, body, request.headers.get("X-AI-Review") == "1")
 
 
-def make_table(body):
+def make_table(body, use_ai=False):
     bad_file = HTTPException(400, 'Не удалось прочитать файл. Нужен xlsx с листом "Задание 1" в формате исходной таблицы')
     try:
         # xlsx это zip: маленький файл может распаковаться в гигабайты, поэтому смотрим размер до разбора
@@ -122,7 +123,7 @@ def make_table(body):
         pages = {p["url"]: p for p in json.loads(pages_file.read_text(encoding="utf-8"))} if pages_file.exists() else {}
         out = io.BytesIO()
         try:
-            build(wb, out, pages)
+            build(wb, out, pages, advise=suggest_rows if use_ai else None)
         except Exception:
             raise bad_file
     finally:
