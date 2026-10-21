@@ -205,7 +205,7 @@ def suggest_rows(rows):
             sample.append({"row": r["row"], "author": r["author"][:200], "title": r["title"][:300],
                            "url": r.get("url", "")[:500], "doubts": "; ".join(r["doubts"])[:700]})
     if not sample:
-        return [["", "", "Спорных записей по правилам нет, ИИ-запрос не выполнялся.", "", "Правила"]]
+        return [["", "", "Спорных записей по правилам нет, ИИ-запрос не выполнялся.", "", "", "Правила"]]
     def batch_advice(batch):
         verified = {}
         used_model = MODEL
@@ -223,11 +223,13 @@ def suggest_rows(rows):
         except (requests.RequestException, ValueError, KeyError, IndexError, TypeError, AttributeError) as error:
             source = "Правила: " + ("достигнут лимит ИИ-запросов" if str(error) == "Лимит ИИ-запросов достигнут"
                                     else "ответ ИИ не подтверждён или API недоступен")
-        return [verified[r["row"]] + ["ИИ: " + used_model + "; цитата проверена"] if r["row"] in verified else
+        # цитата нужна только для проверки привязки к строке, в таблицу идёт причина спорности из правил
+        return [[r["row"], r["title"], r["doubts"], *verified[r["row"]][2:4],
+                 "ИИ: " + used_model + ", привязка к строке проверена"] if r["row"] in verified else
                 fallback(r, source) for r in batch]
 
     def fallback(r, source):
-        return [r["row"], r["title"], "Проверить: " + r["doubts"], needs(r["doubts"]) or
+        return [r["row"], r["title"], r["doubts"], "Проверить вручную по причине спорности", needs(r["doubts"]) or
                 "Уточнить автора, название и соответствие ссылки книге", source]
 
     # shortcut: до 40 спорных строк на загрузку; для больших каталогов нужна очередь.

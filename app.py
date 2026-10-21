@@ -127,14 +127,13 @@ def make_table(body, use_ai=False):
             wb = openpyxl.Workbook()
             wb.remove(wb.active)
             try:
-                for name in ("Задание 1", "Задание 2"):
-                    if name not in source.sheetnames:
-                        continue
-                    ws = source[name]
+                # лист "Задание 2" относится к проверке страниц на /check, здесь обрабатываются только данные
+                if "Задание 1" in source.sheetnames:
+                    ws = source["Задание 1"]
                     if (ws.max_row or 0) > MAX_TABLE_ROWS or (ws.max_column or 0) > 30:
                         raise bad_file
                     ws.reset_dimensions()
-                    dest = wb.create_sheet(name)
+                    dest = wb.create_sheet("Задание 1")
                     for number, row in enumerate(ws.iter_rows(max_col=31, values_only=True), 1):
                         if number > MAX_TABLE_ROWS or row[30] is not None:
                             raise bad_file
